@@ -1,0 +1,34 @@
+<div class="select-search">
+    <ul class="select-search-list">
+        <li class="select-search-list-item select-search-list-item_selection"
+            *ngFor="let item of output; let $index=index; let $last=last; trackBy: index"
+            [class.focused]="backspaceFocus && last"
+            (click)="removeOne($index)"
+            [innerHTML]="getListFormatted(item)">
+        </li>
+        <li class="select-search-list-item select-search-list-item_input"
+            [class.select-search-list-item_hide]="inputHide">
+            <input autocomplete="off"
+                   [(ngModel)]="query"
+                   (input)="updateOptionsInDelay()"
+                   (focus)="showDropdownList()"
+                   (blur)="hideDropdownList()"
+                   (keydown)="keyDown($event)"/>
+        </li>
+        <li class="select-search-list-item" [hidden]="!dataListSub || dataListSub.closed">
+            <div class="select-search-list-item_loader"></div>
+        </li>
+
+    </ul>
+</div>
+<div class="select-dropdown" *ngIf="isOpen">
+    <ul class="select-dropdown-optgroup">
+        <li class="select-dropdown-optgroup-option"
+            *ngFor="let option of options; let i=index"
+            (mousedown)="selectOne($event, option)"
+            [class.active]="i === selectorPosition"
+            [innerHTML]="getDropdownFormatted(option)">
+            {{ option }}
+        </li>
+    </ul>
+</div>
