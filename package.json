@@ -1,0 +1,23 @@
+{
+  "name": "vibor",
+  "version": "0.1.1",
+  "description": "Angular 2+ select directive",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/noblecoderu/vibor.git"
+  },
+  "keywords": [
+    "angular",
+    "angular2",
+    "ng",
+    "ng2",
+    "select"
+  ],
+  "author": "Aleksey Nikitin <aleksey@noblecode.ru>",
+  "bugs": {
+    "url": "https://github.com/noblecoderu/vibor/issues"
+  },
+  "homepage": "https://github.com/noblecoderu/vibor",
+  "dependencies": {}
+}
