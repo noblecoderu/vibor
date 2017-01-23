@@ -15,8 +15,8 @@ import {
 
 @Component({
     selector: 'vibor',
-    templateUrl: 'vibor/vibor.component.html',
-    styleUrls: ['vibor/style.css'],
+    templateUrl: 'vibor.component.html',
+    // styleUrls: ['style.css'],
     encapsulation: ViewEncapsulation.None,
     providers: [{ 
       provide: NG_VALUE_ACCESSOR,

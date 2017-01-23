@@ -1,0 +1,1 @@
+export {ViborModule} from './src/vibor.module';
