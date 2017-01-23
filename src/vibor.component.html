@@ -1,18 +1,21 @@
 <div class="select-search">
     <ul class="select-search-list">
         <li class="select-search-list-item select-search-list-item_selection"
-            *ngFor="let item of output; let $index=index; let $last=last; trackBy: index"
+            *ngFor="let item of output; let $index=index; let $last=last; trackBy: TrackByFn;"
             [class.focused]="backspaceFocus && last"
-            (click)="removeOne($index)"
+            (click)="!disabled && removeOne($index)"
             [innerHTML]="getListFormatted(item)">
         </li>
         <li class="select-search-list-item select-search-list-item_input"
-            [class.select-search-list-item_hide]="inputHide">
+            [class.select-search-list-item_hide]="InputHide">
             <input autocomplete="off"
+                   [disabled]="disabled"
+                   [required]="required"                   
                    [(ngModel)]="query"
+                   [placeholder]="output.length == 0 ? placeholder : ''"
                    (input)="updateOptionsInDelay()"
-                   (focus)="showDropdownList()"
                    (blur)="hideDropdownList()"
+                   (focus)="showDropdownList()"
                    (keydown)="keyDown($event)"/>
         </li>
         <li class="select-search-list-item" [hidden]="!dataListSub || dataListSub.closed">
@@ -24,11 +27,29 @@
 <div class="select-dropdown" *ngIf="isOpen">
     <ul class="select-dropdown-optgroup">
         <li class="select-dropdown-optgroup-option"
-            *ngFor="let option of options; let i=index"
+            *ngFor="let option of Options; let i=index"
             (mousedown)="selectOne($event, option)"
             [class.active]="i === selectorPosition"
             [innerHTML]="getDropdownFormatted(option)">
-            {{ option }}
+        </li>
+        <li class="select-dropdown-optgroup-option loader" *ngIf="dataListSub && !dataListSub.closed">
+            Загрузка
+        </li>
+        <li class="select-dropdown-optgroup-option loader" 
+            (mousedown)="selectOne($event, CreateNew(query));"
+            *ngIf="newMessage && (!dataListSub || dataListSub.closed) && Options.length == 0">
+            {{ newMessage }}
         </li>
     </ul>
+    <div class="select-dropdown-pager" *ngIf="CurrentCache && CurrentCache.countPages > 1">
+        <p class="select-dropdown-pager-page">
+            {{ CurrentCache.currentPage | number }} / {{ CurrentCache.countPages | number }}
+        </p>
+        <button
+            class="select-dropdown-pager-loadmore"
+                *ngIf="CurrentCache.countPages > 1 && CurrentCache.currentPage < CurrentCache.countPages"
+                (mousedown)="nextPage($event)">
+            Загрузить ещё
+        </button>
+    </div>
 </div>

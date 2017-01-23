@@ -1,11 +1,11 @@
 // DEFAULT MODULEs
-import { NgModule }             from '@angular/core';
-import { FormsModule }          from '@angular/forms';
-import { CommonModule }         from '@angular/common';
-import { HttpModule }           from '@angular/http';
+import { NgModule }             from "@angular/core";
+import { FormsModule }          from "@angular/forms";
+import { CommonModule }         from "@angular/common";
+import { HttpModule }           from "@angular/http";
 
 // MY IMPORTS
-import { ViborComponent  }                     from './vibor.component'
+import { ViborComponent  }                     from "./vibor.component";
 
 
 @NgModule({
