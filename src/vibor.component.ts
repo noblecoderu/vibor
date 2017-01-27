@@ -14,6 +14,8 @@ import {
     scrollActiveOption
 } from "./helpers";
 
+const deepEqual: any = require("deep-equal");
+
 @Component({
     selector: "vibor",
     templateUrl: "vibor.component.html",
@@ -389,7 +391,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
         let newOutput: Array<any> = [];
         for (let v of newValue){
             for (let d of dataList){
-                if (fetchFromObject(d, this.modelProperty) === v) {
+                if (deepEqual(fetchFromObject(d, this.modelProperty), v)) {
                     newOutput.push(d);
                 }
             }
@@ -411,7 +413,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
         }
         return options.filter(op => {
             return this.output.findIndex(o => {
-                return fetchFromObject(o, this.modelProperty) === fetchFromObject(op, this.modelProperty);
+                return deepEqual(fetchFromObject(o, this.modelProperty), fetchFromObject(op, this.modelProperty));
             }) === -1;
         });
     }
