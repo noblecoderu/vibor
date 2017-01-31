@@ -263,6 +263,17 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
                 this.el.classList.remove("cleanMode");
             }
         }
+        if (inputs["dataList"] && inputs["dataList"].currentValue) {
+            // Output
+            if (this.Model === undefined || this.Model == null) {
+                this.output = [];
+                this.changeFullModel.emit(this.output);
+            } else if (this.Model instanceof Array && this.multiple) {
+                this.Output = this.Model;
+            } else if (!(this.Model instanceof Array) && !this.multiple) {
+                this.Output = [this.Model];
+            }
+        }
         if (inputs["multiple"]) {
             if (!("_model" in inputs)) setTimeout(() => this.Model = undefined, 10); // Костыль, надо бы исправить
             if (inputs["multiple"].currentValue) {
@@ -386,6 +397,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
             }
             return;
         } else {
+            if (this.dataList === undefined) return;
             throw new Error("dataList value Error");
         }
         let newOutput: Array<any> = [];
