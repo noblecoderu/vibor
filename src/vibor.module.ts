@@ -1,5 +1,6 @@
 // DEFAULT MODULEs
-import { NgModule }             from "@angular/core";
+import { NgModule, 
+         ModuleWithProviders }  from "@angular/core";
 import { FormsModule }          from "@angular/forms";
 import { CommonModule }         from "@angular/common";
 import { HttpModule }           from "@angular/http";
@@ -13,4 +14,11 @@ import { ViborComponent  }                     from "./vibor.component";
     declarations: [ ViborComponent ],
     exports:      [ ViborComponent ]
 })
-export class ViborModule { }
+export class ViborModule { 
+    public static forRoot(): ModuleWithProviders {
+        return {
+            ngModule: ViborModule,
+            providers: [ ]
+        };
+    }
+}

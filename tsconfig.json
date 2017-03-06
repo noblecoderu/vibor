@@ -16,7 +16,7 @@
     "types": [
         "node"
     ],
-    "typeroots": [
+    "typeRoots": [
         "../node_modules/@types"
     ]
   }
