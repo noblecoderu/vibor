@@ -1,7 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "outDir": "./dist/out-tsc",
+    "outDir": "./lib",
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",
@@ -18,5 +18,11 @@
     "typeRoots": [
       "node_modules/@types"
     ]
-  }
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/*.spec.ts",
+    "**/*.e2e-spec.ts"
+  ]
 }

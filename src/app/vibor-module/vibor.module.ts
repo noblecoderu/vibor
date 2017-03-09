@@ -8,11 +8,4 @@ import { ViborComponent } from './vibor/vibor.component';
   declarations: [ ViborComponent ],
   exports: [ ViborComponent ]
 })
-export class ViborModule {
-  public static forRoot(): ModuleWithProviders {
-        return {
-            ngModule: ViborModule,
-            providers: [ ]
-        };
-    }
-}
+export class ViborModule {}
