@@ -21,9 +21,9 @@ import {
 const deepEqual = require('deep-equal');
 
 @Component({
-  selector: 'app-vibor',
+  selector: 'vibor',
   templateUrl: './vibor.component.html',
-  styleUrls: ['./vibor.component.css']
+  styleUrls: ['./vibor.component.scss']
 })
 export class ViborComponent implements OnInit {
 

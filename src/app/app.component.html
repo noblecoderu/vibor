@@ -1,4 +1,7 @@
 <h1>
   {{title}}
-  <app-vibor></app-vibor>
+  <vibor  [placeholder]="'Россия / Самара'"
+          [viewProperty]="'value'"
+          [modelProperty]="'key'"
+          [dataList]="timezones"></vibor>
 </h1>
