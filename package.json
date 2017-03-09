@@ -20,7 +20,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ngc tsconfig.json",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -42,6 +42,7 @@
   },
   "devDependencies": {
     "@angular/cli": "1.0.0-rc.1",
+    "@angular/compiler": "^2.4.0",
     "@angular/compiler-cli": "^2.4.0",
     "@types/jasmine": "2.5.38",
     "@types/node": "^6.0.65",
