@@ -23,9 +23,15 @@ const deepEqual = require('deep-equal');
 @Component({
   selector: 'vibor',
   templateUrl: './vibor.component.html',
-  styleUrls: ['./vibor.component.scss']
+  styleUrls: ['./vibor.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+  providers: [{
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(() => ViborComponent),
+    multi: true
+  }]
 })
-export class ViborComponent implements OnInit {
+export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
 
   // Local Variable
   private firstLoad: boolean = false;
