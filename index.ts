@@ -1,1 +1,1 @@
-export {ViborModule} from "./src/vibor.module";
+export { ViborModule } from './src/app/vibor-module/vibor.module';

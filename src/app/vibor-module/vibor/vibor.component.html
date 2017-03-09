@@ -10,7 +10,7 @@
             [class.select-search-list-item_hide]="InputHide">
             <input autocomplete="off"
                    [disabled]="disabled"
-                   [required]="required"                   
+                   [required]="required"
                    [(ngModel)]="query"
                    [placeholder]="output.length == 0 ? placeholder : ''"
                    (input)="updateOptionsInDelay()"
@@ -35,7 +35,7 @@
         <li class="select-dropdown-optgroup-option loader" *ngIf="dataListSub && !dataListSub.closed">
             Загрузка
         </li>
-        <li class="select-dropdown-optgroup-option loader" 
+        <li class="select-dropdown-optgroup-option loader"
             (mousedown)="selectOne($event, CreateNew(query));"
             *ngIf="newMessage && (!dataListSub || dataListSub.closed) && Options.length == 0">
             {{ newMessage }}
