@@ -79,12 +79,12 @@ const template =  '   <div class="select-search">  '  +
 
 @Component({
      selector: 'vibor',
-     template: template
-    //  providers: [{
-    //    provide: NG_VALUE_ACCESSOR,
-    //    useExisting: forwardRef(() => ViborComponent),
-    //    multi: true
-    //  }]
+     template: template,
+     providers: [{
+       provide: NG_VALUE_ACCESSOR,
+       useExisting: forwardRef(() => ViborComponent),
+       multi: true
+     }]
  })
 export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
 

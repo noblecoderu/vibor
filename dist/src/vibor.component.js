@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var forms_1 = require("@angular/forms");
 var helpers_1 = require("./helpers");
 var deepEqual = require('deep-equal');
 var template = '   <div class="select-search">  ' +
@@ -68,7 +69,7 @@ var template = '   <div class="select-search">  ' +
     '       </div>  ' +
     '   </div>  ' +
     '    ';
-var ViborComponent = (function () {
+var ViborComponent = ViborComponent_1 = (function () {
     function ViborComponent(elementRef) {
         // Local Variable
         this.firstLoad = false;
@@ -555,17 +556,18 @@ __decorate([
     core_1.Input(),
     __metadata("design:type", Function)
 ], ViborComponent.prototype, "CreateNew", void 0);
-ViborComponent = __decorate([
+ViborComponent = ViborComponent_1 = __decorate([
     core_1.Component({
         selector: 'vibor',
-        template: template
-        //  providers: [{
-        //    provide: NG_VALUE_ACCESSOR,
-        //    useExisting: forwardRef(() => ViborComponent),
-        //    multi: true
-        //  }]
+        template: template,
+        providers: [{
+                provide: forms_1.NG_VALUE_ACCESSOR,
+                useExisting: core_1.forwardRef(function () { return ViborComponent_1; }),
+                multi: true
+            }]
     }),
     __metadata("design:paramtypes", [core_1.ElementRef])
 ], ViborComponent);
 exports.ViborComponent = ViborComponent;
+var ViborComponent_1;
 //# sourceMappingURL=vibor.component.js.map

@@ -25,24 +25,24 @@ var import6 = require("@angular/core/src/linker/view_type");
 var import7 = require("@angular/core/src/change_detection/constants");
 var import8 = require("@angular/core/src/linker/component_factory");
 var import9 = require("@angular/core/src/linker/element_ref");
-var import10 = require("@angular/core/src/linker/view_container");
-var import11 = require("@angular/core/src/security");
-var import12 = require("../node_modules/@angular/common/src/directives/ng_if.ngfactory");
-var import13 = require("@angular/core/src/linker/template_ref");
-var import14 = require("@angular/common/src/directives/ng_if");
-var import15 = require("../node_modules/@angular/common/src/directives/ng_for.ngfactory");
-var import16 = require("@angular/core/src/change_detection/differs/iterable_differs");
-var import17 = require("@angular/common/src/directives/ng_for");
-var import18 = require("../node_modules/@angular/forms/src/directives/default_value_accessor.ngfactory");
-var import19 = require("../node_modules/@angular/forms/src/directives/validators.ngfactory");
-var import20 = require("../node_modules/@angular/forms/src/directives/ng_model.ngfactory");
-var import21 = require("../node_modules/@angular/forms/src/directives/ng_control_status.ngfactory");
-var import22 = require("@angular/common/src/pipes/number_pipe");
-var import23 = require("@angular/core/src/i18n/tokens");
-var import24 = require("@angular/forms/src/directives/default_value_accessor");
-var import25 = require("@angular/forms/src/directives/validators");
-var import26 = require("@angular/forms/src/validators");
-var import27 = require("@angular/forms/src/directives/control_value_accessor");
+var import10 = require("@angular/forms/src/directives/control_value_accessor");
+var import11 = require("@angular/core/src/linker/view_container");
+var import12 = require("@angular/core/src/security");
+var import13 = require("../node_modules/@angular/common/src/directives/ng_if.ngfactory");
+var import14 = require("@angular/core/src/linker/template_ref");
+var import15 = require("@angular/common/src/directives/ng_if");
+var import16 = require("../node_modules/@angular/common/src/directives/ng_for.ngfactory");
+var import17 = require("@angular/core/src/change_detection/differs/iterable_differs");
+var import18 = require("@angular/common/src/directives/ng_for");
+var import19 = require("../node_modules/@angular/forms/src/directives/default_value_accessor.ngfactory");
+var import20 = require("../node_modules/@angular/forms/src/directives/validators.ngfactory");
+var import21 = require("../node_modules/@angular/forms/src/directives/ng_model.ngfactory");
+var import22 = require("../node_modules/@angular/forms/src/directives/ng_control_status.ngfactory");
+var import23 = require("@angular/common/src/pipes/number_pipe");
+var import24 = require("@angular/core/src/i18n/tokens");
+var import25 = require("@angular/forms/src/directives/default_value_accessor");
+var import26 = require("@angular/forms/src/directives/validators");
+var import27 = require("@angular/forms/src/validators");
 var import28 = require("@angular/forms/src/directives/ng_model");
 var import29 = require("@angular/forms/src/directives/ng_control");
 var import30 = require("@angular/forms/src/directives/ng_control_status");
@@ -258,6 +258,16 @@ var View_ViborComponent_Host0 = (function (_super) {
     function View_ViborComponent_Host0(viewUtils, parentView, parentIndex, parentElement) {
         return _super.call(this, View_ViborComponent_Host0, renderType_ViborComponent_Host, import6.ViewType.HOST, viewUtils, parentView, parentIndex, parentElement, import7.ChangeDetectorStatus.CheckAlways) || this;
     }
+    Object.defineProperty(View_ViborComponent_Host0.prototype, "_NG_VALUE_ACCESSOR_0_4", {
+        get: function () {
+            if ((this.__NG_VALUE_ACCESSOR_0_4 == null)) {
+                (this.__NG_VALUE_ACCESSOR_0_4 = [this._ViborComponent_0_3.context]);
+            }
+            return this.__NG_VALUE_ACCESSOR_0_4;
+        },
+        enumerable: true,
+        configurable: true
+    });
     View_ViborComponent_Host0.prototype.createInternal = function (rootSelector) {
         this._el_0 = import3.selectOrCreateRenderHostElement(this.renderer, 'vibor', import3.EMPTY_INLINE_ARRAY, rootSelector, null);
         this.compView_0 = new View_ViborComponent0(this.viewUtils, this, 0, this._el_0);
@@ -269,6 +279,9 @@ var View_ViborComponent_Host0 = (function (_super) {
     View_ViborComponent_Host0.prototype.injectorGetInternal = function (token, requestNodeIndex, notFoundResult) {
         if (((token === import0.ViborComponent) && (0 === requestNodeIndex))) {
             return this._ViborComponent_0_3.context;
+        }
+        if (((token === import10.NG_VALUE_ACCESSOR) && (0 === requestNodeIndex))) {
+            return this._NG_VALUE_ACCESSOR_0_4;
         }
         return notFoundResult;
     };
@@ -313,7 +326,7 @@ var View_ViborComponent1 = (function (_super) {
         }
         var currVal_3 = this.parentView.context.getListFormatted(this.context.$implicit);
         if (import3.checkBinding(throwOnChange, this._expr_3, currVal_3)) {
-            this.renderer.setElementProperty(this._el_0, 'innerHTML', this.viewUtils.sanitizer.sanitize(import11.SecurityContext.HTML, currVal_3));
+            this.renderer.setElementProperty(this._el_0, 'innerHTML', this.viewUtils.sanitizer.sanitize(import12.SecurityContext.HTML, currVal_3));
             this._expr_3 = currVal_3;
         }
     };
@@ -357,7 +370,7 @@ var View_ViborComponent3 = (function (_super) {
         }
         var currVal_3 = this.parentView.parentView.context.getDropdownFormatted(this.context.$implicit);
         if (import3.checkBinding(throwOnChange, this._expr_3, currVal_3)) {
-            this.renderer.setElementProperty(this._el_0, 'innerHTML', this.viewUtils.sanitizer.sanitize(import11.SecurityContext.HTML, currVal_3));
+            this.renderer.setElementProperty(this._el_0, 'innerHTML', this.viewUtils.sanitizer.sanitize(import12.SecurityContext.HTML, currVal_3));
             this._expr_3 = currVal_3;
         }
     };
@@ -475,9 +488,9 @@ var View_ViborComponent6 = (function (_super) {
         this._text_3 = this.renderer.createText(this._el_2, '', null);
         this._text_4 = this.renderer.createText(this._el_0, '             ', null);
         this._anchor_5 = this.renderer.createTemplateAnchor(this._el_0, null);
-        this._vc_5 = new import10.ViewContainer(5, 0, this, this._anchor_5);
-        this._TemplateRef_5_5 = new import13.TemplateRef_(this, 5, this._anchor_5);
-        this._NgIf_5_6 = new import12.Wrapper_NgIf(this._vc_5.vcRef, this._TemplateRef_5_5);
+        this._vc_5 = new import11.ViewContainer(5, 0, this, this._anchor_5);
+        this._TemplateRef_5_5 = new import14.TemplateRef_(this, 5, this._anchor_5);
+        this._NgIf_5_6 = new import13.Wrapper_NgIf(this._vc_5.vcRef, this._TemplateRef_5_5);
         this._text_6 = this.renderer.createText(this._el_0, '         ', null);
         this._pipe_number_0_0 = import3.pureProxy1(this.parentView.parentView._pipe_number_0.transform.bind(this.parentView.parentView._pipe_number_0));
         this._pipe_number_0_1 = import3.pureProxy1(this.parentView.parentView._pipe_number_0.transform.bind(this.parentView.parentView._pipe_number_0));
@@ -493,10 +506,10 @@ var View_ViborComponent6 = (function (_super) {
         return null;
     };
     View_ViborComponent6.prototype.injectorGetInternal = function (token, requestNodeIndex, notFoundResult) {
-        if (((token === import13.TemplateRef) && (5 === requestNodeIndex))) {
+        if (((token === import14.TemplateRef) && (5 === requestNodeIndex))) {
             return this._TemplateRef_5_5;
         }
-        if (((token === import14.NgIf) && (5 === requestNodeIndex))) {
+        if (((token === import15.NgIf) && (5 === requestNodeIndex))) {
             return this._NgIf_5_6.context;
         }
         return notFoundResult;
@@ -539,25 +552,25 @@ var View_ViborComponent2 = (function (_super) {
         this._el_2 = import3.createRenderElement(this.renderer, this._el_0, 'ul', new import3.InlineArray2(2, 'class', 'select-dropdown-optgroup'), null);
         this._text_3 = this.renderer.createText(this._el_2, '             ', null);
         this._anchor_4 = this.renderer.createTemplateAnchor(this._el_2, null);
-        this._vc_4 = new import10.ViewContainer(4, 2, this, this._anchor_4);
-        this._TemplateRef_4_5 = new import13.TemplateRef_(this, 4, this._anchor_4);
-        this._NgFor_4_6 = new import15.Wrapper_NgFor(this._vc_4.vcRef, this._TemplateRef_4_5, this.parentView.injectorGet(import16.IterableDiffers, this.parentIndex), this.parentView.ref);
+        this._vc_4 = new import11.ViewContainer(4, 2, this, this._anchor_4);
+        this._TemplateRef_4_5 = new import14.TemplateRef_(this, 4, this._anchor_4);
+        this._NgFor_4_6 = new import16.Wrapper_NgFor(this._vc_4.vcRef, this._TemplateRef_4_5, this.parentView.injectorGet(import17.IterableDiffers, this.parentIndex), this.parentView.ref);
         this._text_5 = this.renderer.createText(this._el_2, '             ', null);
         this._anchor_6 = this.renderer.createTemplateAnchor(this._el_2, null);
-        this._vc_6 = new import10.ViewContainer(6, 2, this, this._anchor_6);
-        this._TemplateRef_6_5 = new import13.TemplateRef_(this, 6, this._anchor_6);
-        this._NgIf_6_6 = new import12.Wrapper_NgIf(this._vc_6.vcRef, this._TemplateRef_6_5);
+        this._vc_6 = new import11.ViewContainer(6, 2, this, this._anchor_6);
+        this._TemplateRef_6_5 = new import14.TemplateRef_(this, 6, this._anchor_6);
+        this._NgIf_6_6 = new import13.Wrapper_NgIf(this._vc_6.vcRef, this._TemplateRef_6_5);
         this._text_7 = this.renderer.createText(this._el_2, '             ', null);
         this._anchor_8 = this.renderer.createTemplateAnchor(this._el_2, null);
-        this._vc_8 = new import10.ViewContainer(8, 2, this, this._anchor_8);
-        this._TemplateRef_8_5 = new import13.TemplateRef_(this, 8, this._anchor_8);
-        this._NgIf_8_6 = new import12.Wrapper_NgIf(this._vc_8.vcRef, this._TemplateRef_8_5);
+        this._vc_8 = new import11.ViewContainer(8, 2, this, this._anchor_8);
+        this._TemplateRef_8_5 = new import14.TemplateRef_(this, 8, this._anchor_8);
+        this._NgIf_8_6 = new import13.Wrapper_NgIf(this._vc_8.vcRef, this._TemplateRef_8_5);
         this._text_9 = this.renderer.createText(this._el_2, '         ', null);
         this._text_10 = this.renderer.createText(this._el_0, '         ', null);
         this._anchor_11 = this.renderer.createTemplateAnchor(this._el_0, null);
-        this._vc_11 = new import10.ViewContainer(11, 0, this, this._anchor_11);
-        this._TemplateRef_11_5 = new import13.TemplateRef_(this, 11, this._anchor_11);
-        this._NgIf_11_6 = new import12.Wrapper_NgIf(this._vc_11.vcRef, this._TemplateRef_11_5);
+        this._vc_11 = new import11.ViewContainer(11, 0, this, this._anchor_11);
+        this._TemplateRef_11_5 = new import14.TemplateRef_(this, 11, this._anchor_11);
+        this._NgIf_11_6 = new import13.Wrapper_NgIf(this._vc_11.vcRef, this._TemplateRef_11_5);
         this._text_12 = this.renderer.createText(this._el_0, '     ', null);
         this.init(this._el_0, (this.renderer.directRenderer ? null : [
             this._el_0,
@@ -577,28 +590,28 @@ var View_ViborComponent2 = (function (_super) {
         return null;
     };
     View_ViborComponent2.prototype.injectorGetInternal = function (token, requestNodeIndex, notFoundResult) {
-        if (((token === import13.TemplateRef) && (4 === requestNodeIndex))) {
+        if (((token === import14.TemplateRef) && (4 === requestNodeIndex))) {
             return this._TemplateRef_4_5;
         }
-        if (((token === import17.NgFor) && (4 === requestNodeIndex))) {
+        if (((token === import18.NgFor) && (4 === requestNodeIndex))) {
             return this._NgFor_4_6.context;
         }
-        if (((token === import13.TemplateRef) && (6 === requestNodeIndex))) {
+        if (((token === import14.TemplateRef) && (6 === requestNodeIndex))) {
             return this._TemplateRef_6_5;
         }
-        if (((token === import14.NgIf) && (6 === requestNodeIndex))) {
+        if (((token === import15.NgIf) && (6 === requestNodeIndex))) {
             return this._NgIf_6_6.context;
         }
-        if (((token === import13.TemplateRef) && (8 === requestNodeIndex))) {
+        if (((token === import14.TemplateRef) && (8 === requestNodeIndex))) {
             return this._TemplateRef_8_5;
         }
-        if (((token === import14.NgIf) && (8 === requestNodeIndex))) {
+        if (((token === import15.NgIf) && (8 === requestNodeIndex))) {
             return this._NgIf_8_6.context;
         }
-        if (((token === import13.TemplateRef) && (11 === requestNodeIndex))) {
+        if (((token === import14.TemplateRef) && (11 === requestNodeIndex))) {
             return this._TemplateRef_11_5;
         }
-        if (((token === import14.NgIf) && (11 === requestNodeIndex))) {
+        if (((token === import15.NgIf) && (11 === requestNodeIndex))) {
             return this._NgIf_11_6.context;
         }
         return notFoundResult;
@@ -665,20 +678,20 @@ var View_ViborComponent0 = (function (_super) {
         this._el_3 = import3.createRenderElement(this.renderer, this._el_1, 'ul', new import3.InlineArray2(2, 'class', 'select-search-list'), null);
         this._text_4 = this.renderer.createText(this._el_3, '             ', null);
         this._anchor_5 = this.renderer.createTemplateAnchor(this._el_3, null);
-        this._vc_5 = new import10.ViewContainer(5, 3, this, this._anchor_5);
-        this._TemplateRef_5_5 = new import13.TemplateRef_(this, 5, this._anchor_5);
-        this._NgFor_5_6 = new import15.Wrapper_NgFor(this._vc_5.vcRef, this._TemplateRef_5_5, this.parentView.injectorGet(import16.IterableDiffers, this.parentIndex), this.ref);
+        this._vc_5 = new import11.ViewContainer(5, 3, this, this._anchor_5);
+        this._TemplateRef_5_5 = new import14.TemplateRef_(this, 5, this._anchor_5);
+        this._NgFor_5_6 = new import16.Wrapper_NgFor(this._vc_5.vcRef, this._TemplateRef_5_5, this.parentView.injectorGet(import17.IterableDiffers, this.parentIndex), this.ref);
         this._text_6 = this.renderer.createText(this._el_3, '             ', null);
         this._el_7 = import3.createRenderElement(this.renderer, this._el_3, 'li', new import3.InlineArray2(2, 'class', 'select-search-list-item select-search-list-item_input'), null);
         this._text_8 = this.renderer.createText(this._el_7, '                 ', null);
         this._el_9 = import3.createRenderElement(this.renderer, this._el_7, 'input', new import3.InlineArray2(2, 'autocomplete', 'off'), null);
-        this._DefaultValueAccessor_9_3 = new import18.Wrapper_DefaultValueAccessor(this.renderer, new import9.ElementRef(this._el_9));
-        this._RequiredValidator_9_4 = new import19.Wrapper_RequiredValidator();
+        this._DefaultValueAccessor_9_3 = new import19.Wrapper_DefaultValueAccessor(this.renderer, new import9.ElementRef(this._el_9));
+        this._RequiredValidator_9_4 = new import20.Wrapper_RequiredValidator();
         this._NG_VALIDATORS_9_5 = [this._RequiredValidator_9_4.context];
         this._NG_VALUE_ACCESSOR_9_6 = [this._DefaultValueAccessor_9_3.context];
-        this._NgModel_9_7 = new import20.Wrapper_NgModel(null, this._NG_VALIDATORS_9_5, null, this._NG_VALUE_ACCESSOR_9_6);
+        this._NgModel_9_7 = new import21.Wrapper_NgModel(null, this._NG_VALIDATORS_9_5, null, this._NG_VALUE_ACCESSOR_9_6);
         this._NgControl_9_8 = this._NgModel_9_7.context;
-        this._NgControlStatus_9_9 = new import21.Wrapper_NgControlStatus(this._NgControl_9_8);
+        this._NgControlStatus_9_9 = new import22.Wrapper_NgControlStatus(this._NgControl_9_8);
         this._text_10 = this.renderer.createText(this._el_7, '             ', null);
         this._text_11 = this.renderer.createText(this._el_3, '             ', null);
         this._el_12 = import3.createRenderElement(this.renderer, this._el_3, 'li', new import3.InlineArray2(2, 'class', 'select-search-list-item'), null);
@@ -689,13 +702,13 @@ var View_ViborComponent0 = (function (_super) {
         this._text_17 = this.renderer.createText(this._el_1, '     ', null);
         this._text_18 = this.renderer.createText(parentRenderNode, '     ', null);
         this._anchor_19 = this.renderer.createTemplateAnchor(parentRenderNode, null);
-        this._vc_19 = new import10.ViewContainer(19, null, this, this._anchor_19);
-        this._TemplateRef_19_5 = new import13.TemplateRef_(this, 19, this._anchor_19);
-        this._NgIf_19_6 = new import12.Wrapper_NgIf(this._vc_19.vcRef, this._TemplateRef_19_5);
+        this._vc_19 = new import11.ViewContainer(19, null, this, this._anchor_19);
+        this._TemplateRef_19_5 = new import14.TemplateRef_(this, 19, this._anchor_19);
+        this._NgIf_19_6 = new import13.Wrapper_NgIf(this._vc_19.vcRef, this._TemplateRef_19_5);
         this._text_20 = this.renderer.createText(parentRenderNode, '      ', null);
         var disposable_0 = import3.subscribeToRenderElement(this, this._el_9, new import3.InlineArray16(10, 'ngModelChange', null, 'input', null, 'blur', null, 'focus', null, 'keydown', null), this.eventHandler(this.handleEvent_9));
         this._NgModel_9_7.subscribe(this, this.eventHandler(this.handleEvent_9), true);
-        this._pipe_number_0 = new import22.DecimalPipe(this.parentView.injectorGet(import23.LOCALE_ID, this.parentIndex));
+        this._pipe_number_0 = new import23.DecimalPipe(this.parentView.injectorGet(import24.LOCALE_ID, this.parentIndex));
         this.init(null, (this.renderer.directRenderer ? null : [
             this._text_0,
             this._el_1,
@@ -722,22 +735,22 @@ var View_ViborComponent0 = (function (_super) {
         return null;
     };
     View_ViborComponent0.prototype.injectorGetInternal = function (token, requestNodeIndex, notFoundResult) {
-        if (((token === import13.TemplateRef) && (5 === requestNodeIndex))) {
+        if (((token === import14.TemplateRef) && (5 === requestNodeIndex))) {
             return this._TemplateRef_5_5;
         }
-        if (((token === import17.NgFor) && (5 === requestNodeIndex))) {
+        if (((token === import18.NgFor) && (5 === requestNodeIndex))) {
             return this._NgFor_5_6.context;
         }
-        if (((token === import24.DefaultValueAccessor) && (9 === requestNodeIndex))) {
+        if (((token === import25.DefaultValueAccessor) && (9 === requestNodeIndex))) {
             return this._DefaultValueAccessor_9_3.context;
         }
-        if (((token === import25.RequiredValidator) && (9 === requestNodeIndex))) {
+        if (((token === import26.RequiredValidator) && (9 === requestNodeIndex))) {
             return this._RequiredValidator_9_4.context;
         }
-        if (((token === import26.NG_VALIDATORS) && (9 === requestNodeIndex))) {
+        if (((token === import27.NG_VALIDATORS) && (9 === requestNodeIndex))) {
             return this._NG_VALIDATORS_9_5;
         }
-        if (((token === import27.NG_VALUE_ACCESSOR) && (9 === requestNodeIndex))) {
+        if (((token === import10.NG_VALUE_ACCESSOR) && (9 === requestNodeIndex))) {
             return this._NG_VALUE_ACCESSOR_9_6;
         }
         if (((token === import28.NgModel) && (9 === requestNodeIndex))) {
@@ -749,10 +762,10 @@ var View_ViborComponent0 = (function (_super) {
         if (((token === import30.NgControlStatus) && (9 === requestNodeIndex))) {
             return this._NgControlStatus_9_9.context;
         }
-        if (((token === import13.TemplateRef) && (19 === requestNodeIndex))) {
+        if (((token === import14.TemplateRef) && (19 === requestNodeIndex))) {
             return this._TemplateRef_19_5;
         }
-        if (((token === import14.NgIf) && (19 === requestNodeIndex))) {
+        if (((token === import15.NgIf) && (19 === requestNodeIndex))) {
             return this._NgIf_19_6.context;
         }
         return notFoundResult;
