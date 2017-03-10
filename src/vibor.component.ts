@@ -2,7 +2,7 @@ import {
   Component, OnInit, OnChanges,
   Input, Output, forwardRef,
   EventEmitter, ElementRef,
-  ViewEncapsulation, SimpleChanges
+  SimpleChanges
 } from '@angular/core';
 
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -20,29 +20,84 @@ import {
 
 const deepEqual = require('deep-equal');
 
+const template =  '   <div class="select-search">  '  + 
+ '       <ul class="select-search-list">  '  + 
+ '           <li class="select-search-list-item select-search-list-item_selection"  '  + 
+ '               *ngFor="let item of output; let $index=index; let $last=last; trackBy: TrackByFn;"  '  + 
+ '               [class.focused]="backspaceFocus && last"  '  + 
+ '               (click)="!disabled && removeOne($index)"  '  + 
+ '               [innerHTML]="getListFormatted(item)">  '  + 
+ '           </li>  '  + 
+ '           <li class="select-search-list-item select-search-list-item_input"  '  + 
+ '               [class.select-search-list-item_hide]="InputHide">  '  + 
+ '               <input autocomplete="off"  '  + 
+ '                      [disabled]="disabled"  '  + 
+ '                      [required]="required"  '  + 
+ '                      [(ngModel)]="query"  '  + 
+ '                      [placeholder]="output.length == 0 ? placeholder : \'\'"  '  + 
+ '                      (input)="updateOptionsInDelay()"  '  + 
+ '                      (blur)="hideDropdownList()"  '  + 
+ '                      (focus)="showDropdownList()"  '  + 
+ '                      (keydown)="keyDown($event)"/>  '  + 
+ '           </li>  '  + 
+ '           <li class="select-search-list-item" [hidden]="!dataListSub || dataListSub.closed">  '  + 
+ '               <div class="select-search-list-item_loader"></div>  '  + 
+ '           </li>  '  + 
+ '     '  + 
+ '       </ul>  '  + 
+ '   </div>  '  + 
+ '   <div class="select-dropdown" *ngIf="isOpen">  '  + 
+ '       <ul class="select-dropdown-optgroup">  '  + 
+ '           <li class="select-dropdown-optgroup-option"  '  + 
+ '               *ngFor="let option of Options; let i=index"  '  + 
+ '               (mousedown)="selectOne($event, option)"  '  + 
+ '               [class.active]="i === selectorPosition"  '  + 
+ '               [innerHTML]="getDropdownFormatted(option)">  '  + 
+ '           </li>  '  + 
+ '           <li class="select-dropdown-optgroup-option loader" *ngIf="dataListSub && !dataListSub.closed">  '  + 
+ '               Загрузка  '  + 
+ '           </li>  '  + 
+ '           <li class="select-dropdown-optgroup-option loader"  '  + 
+ '               (mousedown)="selectOne($event, CreateNew(query));"  '  + 
+ '               *ngIf="newMessage && (!dataListSub || dataListSub.closed) && Options.length == 0">  '  + 
+ '               {{ newMessage }}  '  + 
+ '           </li>  '  + 
+ '       </ul>  '  + 
+ '       <div class="select-dropdown-pager" *ngIf="CurrentCache && CurrentCache.countPages > 1">  '  + 
+ '           <p class="select-dropdown-pager-page">  '  + 
+ '               {{ CurrentCache.currentPage | number }} / {{ CurrentCache.countPages | number }}  '  + 
+ '           </p>  '  + 
+ '           <button  '  + 
+ '               class="select-dropdown-pager-loadmore"  '  + 
+ '                   *ngIf="CurrentCache.countPages > 1 && CurrentCache.currentPage < CurrentCache.countPages"  '  + 
+ '                   (mousedown)="nextPage($event)">  '  + 
+ '               Загрузить ещё  '  + 
+ '           </button>  '  + 
+ '       </div>  '  + 
+ '   </div>  '  + 
+ '    ' ; 
+
 @Component({
-  selector: 'vibor',
-  templateUrl: './vibor.component.html',
-  styleUrls: ['./vibor.component.scss'],
-  encapsulation: ViewEncapsulation.None,
-  providers: [{
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => ViborComponent),
-    multi: true
-  }]
-})
+     selector: 'vibor',
+     template: template
+    //  providers: [{
+    //    provide: NG_VALUE_ACCESSOR,
+    //    useExisting: forwardRef(() => ViborComponent),
+    //    multi: true
+    //  }]
+ })
 export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
 
   // Local Variable
   private firstLoad: boolean = false;
   private options: Array<any>;
-  private output: Array<any>;
+  public output: Array<any>;
 
   private showLoader: boolean;
-  private isOpen: boolean;
+  public isOpen: boolean;
 
   private oldQuery: string = '';
-  private query: string = '';
+  public query: string = '';
 
   private selectorPosition: number = 0;
   private waitTime: number = 500;
@@ -85,22 +140,22 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
   }
 
   // Subscription
-  private dataListSub: Subscription;
+  public dataListSub: Subscription;
 
 
   // OPTIONS
-  private TrackByFn(index: number): any {
+  public TrackByFn(index: number): any {
     return index;
   }
 
-  private showDropdownList(): void {
+  public showDropdownList(): void {
     this.el.classList.add('open-vibor');
     this.inputEl.focus();
     this.updateOptions();
     this.onTouched();
   }
 
-  private hideDropdownList(): void {
+  public hideDropdownList(): void {
     this.el.classList.remove('open-vibor');
     this.isOpen = false;
     this.inputEl.blur();
@@ -114,7 +169,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
     };
   })();
 
-  private updateOptions(): void {
+  public updateOptions(): void {
     this.isOpen = true;
     if (this.dataList instanceof Array) {
       this.options = this.dataList.filter(data => {
@@ -132,7 +187,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
           currentPage: 1,
           objects: []
         };
-        let tmp: CacheInfo = this.CurrentCache, params: {} = {};
+        let tmp: CacheInfo = this.CurrentCache, params: any = {};
         params[this.searchProperty] = this.query;
         this.dataListSub = (<Observable<IDataResponse>>this.dataList(params, 1)).subscribe(answer => {
           tmp.objects = tmp.objects.concat(answer.list);
@@ -143,7 +198,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
     }
   }
 
-  private updateOptionsInDelay(): void {
+  public updateOptionsInDelay(): void {
     let delayMs: number = this.dataList instanceof Array ? 10 : this.waitTime;
 
     // executing after user stopped typing
@@ -159,7 +214,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
     scrollActiveOption(list, targetLi);
   }
 
-  private keyDown(event: KeyboardEvent): void {
+  public keyDown(event: KeyboardEvent): void {
     let totalNumItem: number = this.Options.length;
     switch (event.keyCode) {
       case 27: // ESC, hide auto complete
@@ -200,7 +255,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
 
     if (this.dataListSub) this.dataListSub.unsubscribe();
 
-    let params: {} = {};
+    let params: any = {};
     params[this.searchProperty] = this.query;
 
     this.dataListSub = (<Observable<IDataResponse>>this.dataList(params, tmp.currentPage + 1)).subscribe(answer => {
@@ -387,7 +442,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
       dataList = this.dataList;
     } else if (this.dataList instanceof Function) {
       if (newValue && newValue.length && this.firstLoad) {
-        let params: {} = {};
+        let params: any = {};
         this.firstLoad = false;
         if (!this.preloadProperty) {
           this.output = newValue;
@@ -435,7 +490,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
     });
   }
 
-  get CurrentCache(): CacheInfo {
+  get CurrentCache(): CacheInfo | undefined{
     if (this.dataList instanceof Function) {
       return <CacheInfo>this.cacheLazyData[this.query];
     }
@@ -445,10 +500,10 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
   // CACHE
 
 
-  private cacheLazyData: Object = {};
+  private cacheLazyData: any = {};
 }
 
-interface CacheInfo {
+export interface CacheInfo {
   countElement: number;
   countPages: number;
   currentPage: number;

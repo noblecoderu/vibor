@@ -1,15 +1,15 @@
 export interface IDataResponse {
     data: Object;
     list: Array<Object>;
-    headers: {};
+    headers: any;
 }
 
-export function fetchFromObject(object: Object, prop: string): any {
+export function fetchFromObject(object: any, prop: string): any {
     if (object === undefined || prop === undefined) {
         return object;
     }
 
-    let _index: number = prop.indexOf(".");
+    let _index: number = prop.indexOf('.');
     if (_index > -1) {
         return this.fetchFromObject(object[prop.substring(0, _index)], prop.substr(_index + 1));
     }
@@ -18,25 +18,25 @@ export function fetchFromObject(object: Object, prop: string): any {
 }
 
 export function defaultFormatter(data: any, valuePropertyName: string): string {
-    let html = "";
-    html += fetchFromObject(data, valuePropertyName) ? `<b>${fetchFromObject(data, valuePropertyName)}</b>` : "";
+    let html = '';
+    html += fetchFromObject(data, valuePropertyName) ? `<b>${fetchFromObject(data, valuePropertyName)}</b>` : '';
     return html;
 }
 
 
 // Used for matching numbers
 let core_pnum: string = /[+-]?(?:\d*\.|)\d+(?:[eE][+-]?\d+|)/.source;
-let rnumnonpx: RegExp = new RegExp("^(" + core_pnum + ")(?!px)[a-z%]+$", "i");
+let rnumnonpx: RegExp = new RegExp('^(' + core_pnum + ')(?!px)[a-z%]+$', 'i');
 
 function augmentWidthOrHeight(name: string, extra: any, isBorderBox: any, styles: any): number {
-    let i: number = extra === (isBorderBox ? "border" : "content") ?
+    let i: number = extra === (isBorderBox ? 'border' : 'content') ?
             // If we already have the right measurement, avoid augmentation
             4 :
             // Otherwise initialize for horizontal or vertical properties
-            name === "width" ? 1 : 0,
+            name === 'width' ? 1 : 0,
 
         val: number = 0,
-        cssExpand: string[] = ["Top", "Right", "Bottom", "Left"];
+        cssExpand: string[] = ['Top', 'Right', 'Bottom', 'Left'];
 
     // TODO Use angular.element.css instead of getStyleValue after
     // https://github.com/caitp/angular.js/commit/92bbb5e225253ebddd38ef5735d66ffef76b6a14 will be applied
@@ -46,26 +46,26 @@ function augmentWidthOrHeight(name: string, extra: any, isBorderBox: any, styles
 
     for (; i < 4; i += 2) {
         // both box models exclude margin, so add it if we want it
-        if (extra === "margin") {
+        if (extra === 'margin') {
             val += getStyleValue(extra + cssExpand[i]);
         }
 
         if (isBorderBox) {
             // border-box includes padding, so remove it if we want content
-            if (extra === "content") {
-                val -= getStyleValue("padding" + cssExpand[i]);
+            if (extra === 'content') {
+                val -= getStyleValue('padding' + cssExpand[i]);
             }
 
-            // at this point, extra isn"t border nor margin, so remove border
-            if (extra !== "margin") {
-                val -= getStyleValue("border" + cssExpand[i] + "Width");
+            // at this point, extra isn't border nor margin, so remove border
+            if (extra !== 'margin') {
+                val -= getStyleValue('border' + cssExpand[i] + 'Width');
             }
         } else {
-            val += getStyleValue("padding" + cssExpand[i]);
+            val += getStyleValue('padding' + cssExpand[i]);
 
-            // at this point, extra isn"t content nor padding, so add border
-            if (extra !== "padding") {
-                val += getStyleValue("border" + cssExpand[i] + "Width");
+            // at this point, extra isn't content nor padding, so add border
+            if (extra !== 'padding') {
+                val += getStyleValue('border' + cssExpand[i] + 'Width');
             }
         }
     }
@@ -100,7 +100,7 @@ export function scrollActiveOption(list: HTMLElement, item: HTMLElement): void {
 
     if (item) {
         height_menu = list.offsetHeight;
-        height_item = getWidthOrHeight(item, "height", "margin"); // outerHeight(true);
+        height_item = getWidthOrHeight(item, 'height', 'margin'); // outerHeight(true);
         scroll = list.scrollTop || 0;
         y = getOffset(item).top - getOffset(list).top + scroll;
         scroll_top = y;
@@ -119,11 +119,11 @@ function getWidthOrHeight(elem: any, name: any, extra: any): any {
 
     // Start with offset property, which is equivalent to the border-box value
     let valueIsBorderBox: boolean = true,
-        val: any = name === "width" ? elem.offsetWidth : elem.offsetHeight,
+        val: any = name === 'width' ? elem.offsetWidth : elem.offsetHeight,
         styles: any = window.getComputedStyle(elem, null),
 
     // TODO Make isBorderBox after https://github.com/caitp/angular.js/commit/92bbb5e225253ebddd38ef5735d66ffef76b6a14 will be applied
-        isBorderBox: boolean = false; // jQuery.support.boxSizing && jQuery.css( elem, "boxSizing", false, styles ) === "border-box";
+        isBorderBox: boolean = false; // jQuery.support.boxSizing && jQuery.css( elem, 'boxSizing', false, styles ) === 'border-box';
 
     // some non-html elements return undefined for offsetWidth, so check for null/undefined
     // svg - https://bugzilla.mozilla.org/show_bug.cgi?id=649285
@@ -145,10 +145,10 @@ function getWidthOrHeight(elem: any, name: any, extra: any): any {
         // for getComputedStyle silently falls back to the reliable elem.style
         // valueIsBorderBox = isBorderBox && ( jQuery.support.boxSizingReliable || val === elem.style[ name ] );
 
-        // Normalize "", auto, and prepare for extra
+        // Normalize '', auto, and prepare for extra
         val = parseFloat(val) || 0;
     }
 
     // use the active box-sizing model to add/subtract irrelevant styles
-    return val + augmentWidthOrHeight(name, extra || ( isBorderBox ? "border" : "content" ), valueIsBorderBox, styles);
+    return val + augmentWidthOrHeight(name, extra || ( isBorderBox ? 'border' : 'content' ), valueIsBorderBox, styles);
 }

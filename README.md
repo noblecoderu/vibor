@@ -1,27 +1,72 @@
-# ViborCli
+# vibor
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-rc.1.
+## Installation
 
-## Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+To install this library, run:
 
-## Code scaffolding
+```bash
+$ npm install vibor --save
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
+## Consuming your library
 
-## Build
+Once you have published your library to npm, you can import your library in any Angular application by running:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+```bash
+$ npm install vibor
+```
 
-## Running unit tests
+and then from your Angular `AppModule`:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```typescript
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
-## Running end-to-end tests
+import { AppComponent } from './app.component';
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+// Import your library
+import { SampleModule } from 'vibor';
 
-## Further help
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+    // Specify your library as an import
+    LibraryModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
+
+Once your library is imported, you can use its components, directives and pipes in your Angular application:
+
+```xml
+<!-- You can now use your library component in app.component.html -->
+<h1>
+  {{title}}
+</h1>
+<sampleComponent></sampleComponent>
+```
+
+## Development
+
+To generate all `*.js`, `*.js.map` and `*.d.ts` files:
+
+```bash
+$ npm run tsc
+```
+
+To lint all `*.ts` files:
+
+```bash
+$ npm run lint
+```
+
+## License
+
+MIT © [Aleksey Nikitin](mailto:aleksey@noblecode.ru)

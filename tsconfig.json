@@ -1,13 +1,15 @@
 {
-  "compileOnSave": false,
   "compilerOptions": {
-    "outDir": "./lib",
-    "sourceMap": true,
-    "declaration": false,
-    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "target": "es5",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "es5",
+    "allowUnusedLabels": false,
+    "noImplicitReturns": true,
+    "sourceMap": true,
+    "declaration": true,
+    "outDir": "./dist",
     "lib": [
       "es2016",
       "dom"
@@ -22,8 +24,9 @@
   "exclude": [
     "node_modules",
     "dist",
-    "**/*.spec.ts",
-    "**/*.e2e-spec.ts",
-    "**/test.ts"
-  ]
+    "**/*.spec.ts"
+  ],
+  "angularCompilerOptions": {
+    "strictMetadataEmit": true
+  }
 }
