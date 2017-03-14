@@ -405,10 +405,12 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
 
     // Model
     this._model = value;
-    this._ngChange.emit(value);
 
     // Forms
     this.onChange(this._model);
+
+    // Event
+    this._ngChange.emit(value);
   }
 
   get Model(): any {
