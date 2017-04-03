@@ -7,7 +7,6 @@ export declare class ViborComponent implements OnInit, OnChanges, ControlValueAc
     private firstLoad;
     private options;
     output: Array<any>;
-    private showLoader;
     isOpen: boolean;
     private oldQuery;
     query: string;
@@ -15,9 +14,8 @@ export declare class ViborComponent implements OnInit, OnChanges, ControlValueAc
     private waitTime;
     private el;
     private inputEl;
-    private ulEl;
-    multiple: Boolean;
-    canClean: Boolean;
+    multiple: boolean;
+    canClean: boolean;
     multipleLimit: number;
     placeholder: string;
     required: boolean;
@@ -45,10 +43,10 @@ export declare class ViborComponent implements OnInit, OnChanges, ControlValueAc
     updateOptionsInDelay(): void;
     private focusSelectedOption();
     keyDown(event: KeyboardEvent): void;
-    private nextPage($event);
+    nextPage($event: Event): void;
     private clearProperty();
-    private selectOne($event, data);
-    private removeOne(index);
+    selectOne($event: MouseEvent | KeyboardEvent, data: any): void;
+    removeOne(index: number): void;
     getListFormatted(data: any): string;
     getDropdownFormatted(data: any): string;
     ngOnInit(): void;

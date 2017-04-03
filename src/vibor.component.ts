@@ -20,64 +20,65 @@ import {
 
 const deepEqual = require('deep-equal');
 
-const template =  '   <div class="select-search">  '  + 
- '       <ul class="select-search-list">  '  + 
- '           <li class="select-search-list-item select-search-list-item_selection"  '  + 
- '               *ngFor="let item of output; let $index=index; let $last=last; trackBy: TrackByFn;"  '  + 
- '               [class.focused]="backspaceFocus && last"  '  + 
- '               (click)="!disabled && removeOne($index)"  '  + 
- '               [innerHTML]="getListFormatted(item)">  '  + 
- '           </li>  '  + 
- '           <li class="select-search-list-item select-search-list-item_input"  '  + 
- '               [class.select-search-list-item_hide]="InputHide">  '  + 
- '               <input autocomplete="off"  '  + 
- '                      [disabled]="disabled"  '  + 
- '                      [required]="required"  '  + 
- '                      [(ngModel)]="query"  '  + 
- '                      [placeholder]="output.length == 0 ? placeholder : \'\'"  '  + 
- '                      (input)="updateOptionsInDelay()"  '  + 
- '                      (blur)="hideDropdownList()"  '  + 
- '                      (focus)="showDropdownList()"  '  + 
- '                      (keydown)="keyDown($event)"/>  '  + 
- '           </li>  '  + 
- '           <li class="select-search-list-item" [hidden]="!dataListSub || dataListSub.closed">  '  + 
- '               <div class="select-search-list-item_loader"></div>  '  + 
- '           </li>  '  + 
- '     '  + 
- '       </ul>  '  + 
- '   </div>  '  + 
- '   <div class="select-dropdown" *ngIf="isOpen">  '  + 
- '       <ul class="select-dropdown-optgroup">  '  + 
- '           <li class="select-dropdown-optgroup-option"  '  + 
- '               *ngFor="let option of Options; let i=index"  '  + 
- '               (mousedown)="selectOne($event, option)"  '  + 
- '               [class.active]="i === selectorPosition"  '  + 
- '               [innerHTML]="getDropdownFormatted(option)">  '  + 
- '           </li>  '  + 
- '           <li class="select-dropdown-optgroup-option loader" *ngIf="dataListSub && !dataListSub.closed">  '  + 
- '               Загрузка  '  + 
- '           </li>  '  + 
- '           <li class="select-dropdown-optgroup-option loader"  '  + 
- '               (mousedown)="selectOne($event, CreateNew(query));"  '  + 
- '               *ngIf="newMessage && (!dataListSub || dataListSub.closed) && Options.length == 0">  '  + 
- '               {{ newMessage }}  '  + 
- '           </li>  '  + 
- '       </ul>  '  + 
- '       <div class="select-dropdown-pager" *ngIf="CurrentCache && CurrentCache.countPages > 1">  '  + 
- '           <p class="select-dropdown-pager-page">  '  + 
- '               {{ CurrentCache.currentPage | number }} / {{ CurrentCache.countPages | number }}  '  + 
- '           </p>  '  + 
- '           <button  '  + 
- '               class="select-dropdown-pager-loadmore"  '  + 
- '                   *ngIf="CurrentCache.countPages > 1 && CurrentCache.currentPage < CurrentCache.countPages"  '  + 
- '                   (mousedown)="nextPage($event)">  '  + 
- '               Загрузить ещё  '  + 
- '           </button>  '  + 
- '       </div>  '  + 
- '   </div>  '  + 
- '    ' ; 
+const template =  '   <div class="select-search">  '  +
+ '       <ul class="select-search-list">  '  +
+ '           <li class="select-search-list-item select-search-list-item_selection"  '  +
+ '               *ngFor="let item of output; let $index=index; let $last=last; trackBy: TrackByFn;"  '  +
+ '               [class.focused]="backspaceFocus && last"  '  +
+ '               (click)="!disabled && removeOne($index)"  '  +
+ '               [innerHTML]="getListFormatted(item)">  '  +
+ '           </li>  '  +
+ '           <li class="select-search-list-item select-search-list-item_input"  '  +
+ '               [class.select-search-list-item_hide]="InputHide">  '  +
+ '               <input autocomplete="off"  '  +
+ '                      [disabled]="disabled"  '  +
+ '                      [required]="required"  '  +
+ '                      [(ngModel)]="query"  '  +
+ '                      [placeholder]="output.length == 0 ? placeholder : \'\'"  '  +
+ '                      (input)="updateOptionsInDelay()"  '  +
+ '                      (blur)="hideDropdownList()"  '  +
+ '                      (focus)="showDropdownList()"  '  +
+ '                      (keydown)="keyDown($event)"/>  '  +
+ '           </li>  '  +
+ '           <li class="select-search-list-item" [hidden]="!dataListSub || dataListSub.closed">  '  +
+ '               <div class="select-search-list-item_loader"></div>  '  +
+ '           </li>  '  +
+ '     '  +
+ '       </ul>  '  +
+ '   </div>  '  +
+ '   <div class="select-dropdown" *ngIf="isOpen">  '  +
+ '       <ul class="select-dropdown-optgroup">  '  +
+ '           <li class="select-dropdown-optgroup-option"  '  +
+ '               *ngFor="let option of Options; let i=index"  '  +
+ '               (mousedown)="selectOne($event, option)"  '  +
+ '               [class.active]="i === selectorPosition"  '  +
+ '               [innerHTML]="getDropdownFormatted(option)">  '  +
+ '           </li>  '  +
+ '           <li class="select-dropdown-optgroup-option loader" *ngIf="dataListSub && !dataListSub.closed">  '  +
+ '               Загрузка  '  +
+ '           </li>  '  +
+ '           <li class="select-dropdown-optgroup-option loader"  '  +
+ '               (mousedown)="selectOne($event, CreateNew(query));"  '  +
+ '               *ngIf="newMessage && (!dataListSub || dataListSub.closed) && Options.length == 0">  '  +
+ '               {{ newMessage }}  '  +
+ '           </li>  '  +
+ '       </ul>  '  +
+ '       <div class="select-dropdown-pager" *ngIf="CurrentCache && CurrentCache.countPages > 1">  '  +
+ '           <p class="select-dropdown-pager-page">  '  +
+ '               {{ CurrentCache.currentPage | number }} / {{ CurrentCache.countPages | number }}  '  +
+ '           </p>  '  +
+ '           <button  '  +
+ '               class="select-dropdown-pager-loadmore"  '  +
+ '                   *ngIf="CurrentCache.countPages > 1 && CurrentCache.currentPage < CurrentCache.countPages"  '  +
+ '                   (mousedown)="nextPage($event)">  '  +
+ '               Загрузить ещё  '  +
+ '           </button>  '  +
+ '       </div>  '  +
+ '   </div>  '  +
+ '    ' ;
 
 @Component({
+     // tslint:disable-next-line:component-selector
      selector: 'vibor',
      template: template,
      providers: [{
@@ -89,44 +90,44 @@ const template =  '   <div class="select-search">  '  +
 export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
 
   // Local Variable
-  private firstLoad: boolean = false;
+  private firstLoad = false;
   private options: Array<any>;
   public output: Array<any>;
 
-  private showLoader: boolean;
   public isOpen: boolean;
 
-  private oldQuery: string = '';
-  public query: string = '';
+  private oldQuery = '';
+  public query = '';
 
-  private selectorPosition: number = 0;
-  private waitTime: number = 500;
+  private selectorPosition = 0;
+  private waitTime = 500;
 
   private el: HTMLElement;           // this component  element `<vibor>`
   private inputEl: HTMLInputElement; // `<input>` element in `<vibor>` for auto complete
-  private ulEl: HTMLUListElement; // `<ul>` element in `<vibor>` for auto complete
 
   // Inputs & Outputs
-  @Input() public multiple: Boolean = false;
-  @Input() public canClean: Boolean = false;
-  @Input() public multipleLimit: number = 5;
+  @Input() public multiple = false;
+  @Input() public canClean = false;
+  @Input() public multipleLimit = 5;
 
-  @Input() public placeholder: string = 'Vibor';
-  @Input() public required: boolean = false;
-  @Input() public disabled: boolean = false;
+  @Input() public placeholder = 'Vibor';
+  @Input() public required = false;
+  @Input() public disabled = false;
 
   @Input() public listFormatter: (arg: any, value: string) => string;
   @Input() public dropdownFormatter: (arg: any, value: string) => string;
-  @Input() public viewProperty: string = 'Name';  // Поле для дефолтного отображения
+  @Input() public viewProperty = 'Name';  // Поле для дефолтного отображения
 
-  @Input() public modelProperty: string = 'id';  // То, что записывается в Модель
-  @Input() public preloadProperty: string = 'ids'; // Ключ запроса к серверу для предзагрузки, если undefined записывается весь объект
+  @Input() public modelProperty = 'id';  // То, что записывается в Модель
+  @Input() public preloadProperty = 'ids'; // Ключ запроса к серверу для предзагрузки, если undefined записывается весь объект
   @Input() public preloadField: string = undefined; // Значение поля, которе необходимо отправить в запрос.
-  @Input() public searchProperty: string = 'query';
+  @Input() public searchProperty = 'query';
 
   @Input() public dataList: ((param: Object, page: number) => Observable<IDataResponse>) | Array<any>;
   @Input() public onlyEmitter: boolean;
+  // tslint:disable-next-line:no-input-rename
   @Input('ngModel') public _model: any;
+  // tslint:disable-next-line:no-output-rename
   @Output('ngChange') public _ngChange: EventEmitter<any> = new EventEmitter();
   @Output('changeFullModel') public changeFullModel: EventEmitter<any> = new EventEmitter();
 
@@ -162,7 +163,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
   }
 
   private delay: Function = (function (): Function {
-    var timer: number = 0;
+    let timer = 0;
     return function (callback: any, ms: number): void {
       clearTimeout(timer);
       timer = setTimeout(callback, ms);
@@ -173,13 +174,17 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
     this.isOpen = true;
     if (this.dataList instanceof Array) {
       this.options = this.dataList.filter(data => {
-        if (!this.query || this.query.length === 0) return true;
+        if (!this.query || this.query.length === 0) {
+          return true;
+        }
         let f: any = fetchFromObject(data, this.searchProperty);
-        if (f === undefined) return false;
+        if (f === undefined) {
+          return false;
+        }
         return JSON.stringify(f).indexOf(this.query) >= 0;
       });
     } else if (this.dataList instanceof Function) {
-      if (this.dataListSub) this.dataListSub.unsubscribe();
+      if (this.dataListSub) { this.dataListSub.unsubscribe(); }
       if (!this.CurrentCache) {
         this.cacheLazyData[this.query] = {
           countElement: 0,
@@ -244,16 +249,20 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
     this.focusSelectedOption();
   }
 
-  private nextPage($event: Event): void {
+  public nextPage($event: Event): void {
     $event.preventDefault();
     let tmp: CacheInfo = this.CurrentCache;
 
     // Validators
-    if (!(this.dataList instanceof Function)) throw new Error('Data List mast be Function');
-    if (!tmp) throw new Error('For next page need cache for first Page');
-    if (tmp.currentPage >= tmp.countPages) throw new Error('Max Page Limit');
+    if (!(this.dataList instanceof Function)) {
+      throw new Error('Data List mast be Function');
+    }
+    if (!tmp) {
+      throw new Error('For next page need cache for first Page');
+    }
+    if (tmp.currentPage >= tmp.countPages) { throw new Error('Max Page Limit'); }
 
-    if (this.dataListSub) this.dataListSub.unsubscribe();
+    if (this.dataListSub) { this.dataListSub.unsubscribe(); }
 
     let params: any = {};
     params[this.searchProperty] = this.query;
@@ -274,9 +283,9 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
     this.query = '';
   }
 
-  private selectOne($event: MouseEvent | KeyboardEvent, data: any): void {
+  public selectOne($event: MouseEvent | KeyboardEvent, data: any): void {
     // Фильтр ненужных событий
-    if ($event instanceof MouseEvent && $event.button !== 0) return;
+    if ($event instanceof MouseEvent && $event.button !== 0) { return; }
 
     if (this.multiple) {
       this.output.push(data);
@@ -290,9 +299,10 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
     $event.preventDefault();
   };
 
-  private removeOne(index: number): void {
+  public removeOne(index: number): void {
     this.output.splice(index, 1);
     this.Model = this.ValueFromOutput;
+    this.onTouched();
   }
 
   // FORMATTING
@@ -335,7 +345,9 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
       }
     }
     if (inputs['multiple']) {
-      if (!('_model' in inputs)) setTimeout(() => this.Model = undefined, 10); // Костыль, надо бы исправить
+      if (!('_model' in inputs)) {
+        setTimeout(() => this.Model = undefined, 10); // Костыль, надо бы исправить
+      }
       if (inputs['multiple'].currentValue) {
         this.el.classList.add('multiple');
       } else {
@@ -459,7 +471,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
       }
       return;
     } else {
-      if (this.dataList === undefined) return;
+      if (this.dataList === undefined) { return; }
       throw new Error('dataList value Error');
     }
     let newOutput: Array<any> = [];

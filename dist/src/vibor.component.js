@@ -89,6 +89,7 @@ var ViborComponent = ViborComponent_1 = (function () {
         this.preloadProperty = 'ids'; // Ключ запроса к серверу для предзагрузки, если undefined записывается весь объект
         this.preloadField = undefined; // Значение поля, которе необходимо отправить в запрос.
         this.searchProperty = 'query';
+        // tslint:disable-next-line:no-output-rename
         this._ngChange = new core_1.EventEmitter();
         this.changeFullModel = new core_1.EventEmitter();
         this.newMessage = undefined;
@@ -132,17 +133,20 @@ var ViborComponent = ViborComponent_1 = (function () {
         this.isOpen = true;
         if (this.dataList instanceof Array) {
             this.options = this.dataList.filter(function (data) {
-                if (!_this.query || _this.query.length === 0)
+                if (!_this.query || _this.query.length === 0) {
                     return true;
+                }
                 var f = helpers_1.fetchFromObject(data, _this.searchProperty);
-                if (f === undefined)
+                if (f === undefined) {
                     return false;
+                }
                 return JSON.stringify(f).indexOf(_this.query) >= 0;
             });
         }
         else if (this.dataList instanceof Function) {
-            if (this.dataListSub)
+            if (this.dataListSub) {
                 this.dataListSub.unsubscribe();
+            }
             if (!this.CurrentCache) {
                 this.cacheLazyData[this.query] = {
                     countElement: 0,
@@ -205,14 +209,18 @@ var ViborComponent = ViborComponent_1 = (function () {
         $event.preventDefault();
         var tmp = this.CurrentCache;
         // Validators
-        if (!(this.dataList instanceof Function))
+        if (!(this.dataList instanceof Function)) {
             throw new Error('Data List mast be Function');
-        if (!tmp)
+        }
+        if (!tmp) {
             throw new Error('For next page need cache for first Page');
-        if (tmp.currentPage >= tmp.countPages)
+        }
+        if (tmp.currentPage >= tmp.countPages) {
             throw new Error('Max Page Limit');
-        if (this.dataListSub)
+        }
+        if (this.dataListSub) {
             this.dataListSub.unsubscribe();
+        }
         var params = {};
         params[this.searchProperty] = this.query;
         this.dataListSub = this.dataList(params, tmp.currentPage + 1).subscribe(function (answer) {
@@ -231,8 +239,9 @@ var ViborComponent = ViborComponent_1 = (function () {
     };
     ViborComponent.prototype.selectOne = function ($event, data) {
         // Фильтр ненужных событий
-        if ($event instanceof MouseEvent && $event.button !== 0)
+        if ($event instanceof MouseEvent && $event.button !== 0) {
             return;
+        }
         if (this.multiple) {
             this.output.push(data);
         }
@@ -249,6 +258,7 @@ var ViborComponent = ViborComponent_1 = (function () {
     ViborComponent.prototype.removeOne = function (index) {
         this.output.splice(index, 1);
         this.Model = this.ValueFromOutput;
+        this.onTouched();
     };
     // FORMATTING
     ViborComponent.prototype.getListFormatted = function (data) {
@@ -291,8 +301,9 @@ var ViborComponent = ViborComponent_1 = (function () {
             }
         }
         if (inputs['multiple']) {
-            if (!('_model' in inputs))
+            if (!('_model' in inputs)) {
                 setTimeout(function () { return _this.Model = undefined; }, 10); // Костыль, надо бы исправить
+            }
             if (inputs['multiple'].currentValue) {
                 this.el.classList.add('multiple');
             }
@@ -357,9 +368,10 @@ var ViborComponent = ViborComponent_1 = (function () {
             }
             // Model
             this._model = value;
-            this._ngChange.emit(value);
             // Forms
             this.onChange(this._model);
+            // Event
+            this._ngChange.emit(value);
         },
         enumerable: true,
         configurable: true
@@ -420,8 +432,9 @@ var ViborComponent = ViborComponent_1 = (function () {
                 return;
             }
             else {
-                if (this.dataList === undefined)
+                if (this.dataList === undefined) {
                     return;
+                }
                 throw new Error('dataList value Error');
             }
             var newOutput = [];
@@ -478,27 +491,27 @@ var ViborComponent = ViborComponent_1 = (function () {
 }());
 __decorate([
     core_1.Input(),
-    __metadata("design:type", Boolean)
+    __metadata("design:type", Object)
 ], ViborComponent.prototype, "multiple", void 0);
 __decorate([
     core_1.Input(),
-    __metadata("design:type", Boolean)
+    __metadata("design:type", Object)
 ], ViborComponent.prototype, "canClean", void 0);
 __decorate([
     core_1.Input(),
-    __metadata("design:type", Number)
+    __metadata("design:type", Object)
 ], ViborComponent.prototype, "multipleLimit", void 0);
 __decorate([
     core_1.Input(),
-    __metadata("design:type", String)
+    __metadata("design:type", Object)
 ], ViborComponent.prototype, "placeholder", void 0);
 __decorate([
     core_1.Input(),
-    __metadata("design:type", Boolean)
+    __metadata("design:type", Object)
 ], ViborComponent.prototype, "required", void 0);
 __decorate([
     core_1.Input(),
-    __metadata("design:type", Boolean)
+    __metadata("design:type", Object)
 ], ViborComponent.prototype, "disabled", void 0);
 __decorate([
     core_1.Input(),
@@ -510,15 +523,15 @@ __decorate([
 ], ViborComponent.prototype, "dropdownFormatter", void 0);
 __decorate([
     core_1.Input(),
-    __metadata("design:type", String)
+    __metadata("design:type", Object)
 ], ViborComponent.prototype, "viewProperty", void 0);
 __decorate([
     core_1.Input(),
-    __metadata("design:type", String)
+    __metadata("design:type", Object)
 ], ViborComponent.prototype, "modelProperty", void 0);
 __decorate([
     core_1.Input(),
-    __metadata("design:type", String)
+    __metadata("design:type", Object)
 ], ViborComponent.prototype, "preloadProperty", void 0);
 __decorate([
     core_1.Input(),
@@ -526,7 +539,7 @@ __decorate([
 ], ViborComponent.prototype, "preloadField", void 0);
 __decorate([
     core_1.Input(),
-    __metadata("design:type", String)
+    __metadata("design:type", Object)
 ], ViborComponent.prototype, "searchProperty", void 0);
 __decorate([
     core_1.Input(),
@@ -558,6 +571,7 @@ __decorate([
 ], ViborComponent.prototype, "CreateNew", void 0);
 ViborComponent = ViborComponent_1 = __decorate([
     core_1.Component({
+        // tslint:disable-next-line:component-selector
         selector: 'vibor',
         template: template,
         providers: [{

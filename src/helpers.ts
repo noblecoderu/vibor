@@ -35,7 +35,7 @@ function augmentWidthOrHeight(name: string, extra: any, isBorderBox: any, styles
             // Otherwise initialize for horizontal or vertical properties
             name === 'width' ? 1 : 0,
 
-        val: number = 0,
+        val = 0,
         cssExpand: string[] = ['Top', 'Right', 'Bottom', 'Left'];
 
     // TODO Use angular.element.css instead of getStyleValue after
@@ -118,12 +118,12 @@ export function scrollActiveOption(list: HTMLElement, item: HTMLElement): void {
 function getWidthOrHeight(elem: any, name: any, extra: any): any {
 
     // Start with offset property, which is equivalent to the border-box value
-    let valueIsBorderBox: boolean = true,
+    let valueIsBorderBox = true,
         val: any = name === 'width' ? elem.offsetWidth : elem.offsetHeight,
         styles: any = window.getComputedStyle(elem, null),
 
     // TODO Make isBorderBox after https://github.com/caitp/angular.js/commit/92bbb5e225253ebddd38ef5735d66ffef76b6a14 will be applied
-        isBorderBox: boolean = false; // jQuery.support.boxSizing && jQuery.css( elem, 'boxSizing', false, styles ) === 'border-box';
+        isBorderBox = false; // jQuery.support.boxSizing && jQuery.css( elem, 'boxSizing', false, styles ) === 'border-box';
 
     // some non-html elements return undefined for offsetWidth, so check for null/undefined
     // svg - https://bugzilla.mozilla.org/show_bug.cgi?id=649285
