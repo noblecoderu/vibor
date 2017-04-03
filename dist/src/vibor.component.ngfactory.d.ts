@@ -10,11 +10,12 @@ import * as import8 from '@angular/core/src/linker/component_factory';
 import * as import11 from '@angular/core/src/linker/view_container';
 import * as import13 from '../node_modules/@angular/common/src/directives/ng_if.ngfactory';
 import * as import16 from '../node_modules/@angular/common/src/directives/ng_for.ngfactory';
-import * as import19 from '../node_modules/@angular/forms/src/directives/default_value_accessor.ngfactory';
-import * as import20 from '../node_modules/@angular/forms/src/directives/validators.ngfactory';
-import * as import21 from '../node_modules/@angular/forms/src/directives/ng_model.ngfactory';
-import * as import22 from '../node_modules/@angular/forms/src/directives/ng_control_status.ngfactory';
-import * as import23 from '@angular/common/src/pipes/number_pipe';
+import * as import19 from '@angular/core/src/linker/query_list';
+import * as import20 from '../node_modules/@angular/forms/src/directives/default_value_accessor.ngfactory';
+import * as import21 from '../node_modules/@angular/forms/src/directives/validators.ngfactory';
+import * as import22 from '../node_modules/@angular/forms/src/directives/ng_model.ngfactory';
+import * as import23 from '../node_modules/@angular/forms/src/directives/ng_control_status.ngfactory';
+import * as import24 from '@angular/common/src/pipes/number_pipe';
 export declare class Wrapper_ViborComponent {
     _eventHandler: Function;
     context: import0.ViborComponent;
@@ -70,6 +71,7 @@ export declare class Wrapper_ViborComponent {
 }
 export declare const ViborComponentNgFactory: import8.ComponentFactory<import0.ViborComponent>;
 export declare class View_ViborComponent0 extends import2.AppView<import0.ViborComponent> {
+    _viewQuery_inputControl_0: import19.QueryList<any>;
     _text_0: any;
     _el_1: any;
     _text_2: any;
@@ -83,13 +85,13 @@ export declare class View_ViborComponent0 extends import2.AppView<import0.ViborC
     _el_7: any;
     _text_8: any;
     _el_9: any;
-    _DefaultValueAccessor_9_3: import19.Wrapper_DefaultValueAccessor;
-    _RequiredValidator_9_4: import20.Wrapper_RequiredValidator;
+    _DefaultValueAccessor_9_3: import20.Wrapper_DefaultValueAccessor;
+    _RequiredValidator_9_4: import21.Wrapper_RequiredValidator;
     _NG_VALIDATORS_9_5: any[];
     _NG_VALUE_ACCESSOR_9_6: any[];
-    _NgModel_9_7: import21.Wrapper_NgModel;
+    _NgModel_9_7: import22.Wrapper_NgModel;
     _NgControl_9_8: any;
-    _NgControlStatus_9_9: import22.Wrapper_NgControlStatus;
+    _NgControlStatus_9_9: import23.Wrapper_NgControlStatus;
     _text_10: any;
     _text_11: any;
     _el_12: any;
@@ -104,10 +106,10 @@ export declare class View_ViborComponent0 extends import2.AppView<import0.ViborC
     _TemplateRef_19_5: any;
     _NgIf_19_6: import13.Wrapper_NgIf;
     _text_20: any;
-    _expr_34: any;
     _expr_35: any;
     _expr_36: any;
-    _pipe_number_0: import23.DecimalPipe;
+    _expr_37: any;
+    _pipe_number_0: import24.DecimalPipe;
     constructor(viewUtils: import3.ViewUtils, parentView: import2.AppView<any>, parentIndex: number, parentElement: any);
     createInternal(rootSelector: string): import8.ComponentRef<any>;
     injectorGetInternal(token: any, requestNodeIndex: number, notFoundResult: any): any;

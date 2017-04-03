@@ -34,18 +34,19 @@ var import15 = require("@angular/common/src/directives/ng_if");
 var import16 = require("../node_modules/@angular/common/src/directives/ng_for.ngfactory");
 var import17 = require("@angular/core/src/change_detection/differs/iterable_differs");
 var import18 = require("@angular/common/src/directives/ng_for");
-var import19 = require("../node_modules/@angular/forms/src/directives/default_value_accessor.ngfactory");
-var import20 = require("../node_modules/@angular/forms/src/directives/validators.ngfactory");
-var import21 = require("../node_modules/@angular/forms/src/directives/ng_model.ngfactory");
-var import22 = require("../node_modules/@angular/forms/src/directives/ng_control_status.ngfactory");
-var import23 = require("@angular/common/src/pipes/number_pipe");
-var import24 = require("@angular/core/src/i18n/tokens");
-var import25 = require("@angular/forms/src/directives/default_value_accessor");
-var import26 = require("@angular/forms/src/directives/validators");
-var import27 = require("@angular/forms/src/validators");
-var import28 = require("@angular/forms/src/directives/ng_model");
-var import29 = require("@angular/forms/src/directives/ng_control");
-var import30 = require("@angular/forms/src/directives/ng_control_status");
+var import19 = require("@angular/core/src/linker/query_list");
+var import20 = require("../node_modules/@angular/forms/src/directives/default_value_accessor.ngfactory");
+var import21 = require("../node_modules/@angular/forms/src/directives/validators.ngfactory");
+var import22 = require("../node_modules/@angular/forms/src/directives/ng_model.ngfactory");
+var import23 = require("../node_modules/@angular/forms/src/directives/ng_control_status.ngfactory");
+var import24 = require("@angular/common/src/pipes/number_pipe");
+var import25 = require("@angular/core/src/i18n/tokens");
+var import26 = require("@angular/forms/src/directives/default_value_accessor");
+var import27 = require("@angular/forms/src/directives/validators");
+var import28 = require("@angular/forms/src/validators");
+var import29 = require("@angular/forms/src/directives/ng_model");
+var import30 = require("@angular/forms/src/directives/ng_control");
+var import31 = require("@angular/forms/src/directives/ng_control_status");
 var Wrapper_ViborComponent = (function () {
     function Wrapper_ViborComponent(p0) {
         this._changed = false;
@@ -665,13 +666,14 @@ var View_ViborComponent0 = (function (_super) {
     __extends(View_ViborComponent0, _super);
     function View_ViborComponent0(viewUtils, parentView, parentIndex, parentElement) {
         var _this = _super.call(this, View_ViborComponent0, renderType_ViborComponent, import6.ViewType.COMPONENT, viewUtils, parentView, parentIndex, parentElement, import7.ChangeDetectorStatus.CheckAlways) || this;
-        _this._expr_34 = import1.UNINITIALIZED;
         _this._expr_35 = import1.UNINITIALIZED;
         _this._expr_36 = import1.UNINITIALIZED;
+        _this._expr_37 = import1.UNINITIALIZED;
         return _this;
     }
     View_ViborComponent0.prototype.createInternal = function (rootSelector) {
         var parentRenderNode = this.renderer.createViewRoot(this.parentElement);
+        this._viewQuery_inputControl_0 = new import19.QueryList();
         this._text_0 = this.renderer.createText(parentRenderNode, '   ', null);
         this._el_1 = import3.createRenderElement(this.renderer, parentRenderNode, 'div', new import3.InlineArray2(2, 'class', 'select-search'), null);
         this._text_2 = this.renderer.createText(this._el_1, '         ', null);
@@ -685,13 +687,13 @@ var View_ViborComponent0 = (function (_super) {
         this._el_7 = import3.createRenderElement(this.renderer, this._el_3, 'li', new import3.InlineArray2(2, 'class', 'select-search-list-item select-search-list-item_input'), null);
         this._text_8 = this.renderer.createText(this._el_7, '                 ', null);
         this._el_9 = import3.createRenderElement(this.renderer, this._el_7, 'input', new import3.InlineArray2(2, 'autocomplete', 'off'), null);
-        this._DefaultValueAccessor_9_3 = new import19.Wrapper_DefaultValueAccessor(this.renderer, new import9.ElementRef(this._el_9));
-        this._RequiredValidator_9_4 = new import20.Wrapper_RequiredValidator();
+        this._DefaultValueAccessor_9_3 = new import20.Wrapper_DefaultValueAccessor(this.renderer, new import9.ElementRef(this._el_9));
+        this._RequiredValidator_9_4 = new import21.Wrapper_RequiredValidator();
         this._NG_VALIDATORS_9_5 = [this._RequiredValidator_9_4.context];
         this._NG_VALUE_ACCESSOR_9_6 = [this._DefaultValueAccessor_9_3.context];
-        this._NgModel_9_7 = new import21.Wrapper_NgModel(null, this._NG_VALIDATORS_9_5, null, this._NG_VALUE_ACCESSOR_9_6);
+        this._NgModel_9_7 = new import22.Wrapper_NgModel(null, this._NG_VALIDATORS_9_5, null, this._NG_VALUE_ACCESSOR_9_6);
         this._NgControl_9_8 = this._NgModel_9_7.context;
-        this._NgControlStatus_9_9 = new import22.Wrapper_NgControlStatus(this._NgControl_9_8);
+        this._NgControlStatus_9_9 = new import23.Wrapper_NgControlStatus(this._NgControl_9_8);
         this._text_10 = this.renderer.createText(this._el_7, '             ', null);
         this._text_11 = this.renderer.createText(this._el_3, '             ', null);
         this._el_12 = import3.createRenderElement(this.renderer, this._el_3, 'li', new import3.InlineArray2(2, 'class', 'select-search-list-item'), null);
@@ -708,7 +710,9 @@ var View_ViborComponent0 = (function (_super) {
         this._text_20 = this.renderer.createText(parentRenderNode, '      ', null);
         var disposable_0 = import3.subscribeToRenderElement(this, this._el_9, new import3.InlineArray16(10, 'ngModelChange', null, 'input', null, 'blur', null, 'focus', null, 'keydown', null), this.eventHandler(this.handleEvent_9));
         this._NgModel_9_7.subscribe(this, this.eventHandler(this.handleEvent_9), true);
-        this._pipe_number_0 = new import23.DecimalPipe(this.parentView.injectorGet(import24.LOCALE_ID, this.parentIndex));
+        this._pipe_number_0 = new import24.DecimalPipe(this.parentView.injectorGet(import25.LOCALE_ID, this.parentIndex));
+        this._viewQuery_inputControl_0.reset([this._NgModel_9_7.context]);
+        this.context.inputControl = this._viewQuery_inputControl_0.first;
         this.init(null, (this.renderer.directRenderer ? null : [
             this._text_0,
             this._el_1,
@@ -741,25 +745,25 @@ var View_ViborComponent0 = (function (_super) {
         if (((token === import18.NgFor) && (5 === requestNodeIndex))) {
             return this._NgFor_5_6.context;
         }
-        if (((token === import25.DefaultValueAccessor) && (9 === requestNodeIndex))) {
+        if (((token === import26.DefaultValueAccessor) && (9 === requestNodeIndex))) {
             return this._DefaultValueAccessor_9_3.context;
         }
-        if (((token === import26.RequiredValidator) && (9 === requestNodeIndex))) {
+        if (((token === import27.RequiredValidator) && (9 === requestNodeIndex))) {
             return this._RequiredValidator_9_4.context;
         }
-        if (((token === import27.NG_VALIDATORS) && (9 === requestNodeIndex))) {
+        if (((token === import28.NG_VALIDATORS) && (9 === requestNodeIndex))) {
             return this._NG_VALIDATORS_9_5;
         }
         if (((token === import10.NG_VALUE_ACCESSOR) && (9 === requestNodeIndex))) {
             return this._NG_VALUE_ACCESSOR_9_6;
         }
-        if (((token === import28.NgModel) && (9 === requestNodeIndex))) {
+        if (((token === import29.NgModel) && (9 === requestNodeIndex))) {
             return this._NgModel_9_7.context;
         }
-        if (((token === import29.NgControl) && (9 === requestNodeIndex))) {
+        if (((token === import30.NgControl) && (9 === requestNodeIndex))) {
             return this._NgControl_9_8;
         }
-        if (((token === import30.NgControlStatus) && (9 === requestNodeIndex))) {
+        if (((token === import31.NgControlStatus) && (9 === requestNodeIndex))) {
             return this._NgControlStatus_9_9.context;
         }
         if (((token === import14.TemplateRef) && (19 === requestNodeIndex))) {
@@ -791,22 +795,22 @@ var View_ViborComponent0 = (function (_super) {
         this._NgIf_19_6.ngDoCheck(this, this._anchor_19, throwOnChange);
         this._vc_5.detectChangesInNestedViews(throwOnChange);
         this._vc_19.detectChangesInNestedViews(throwOnChange);
-        var currVal_34 = this.context.InputHide;
-        if (import3.checkBinding(throwOnChange, this._expr_34, currVal_34)) {
-            this.renderer.setElementClass(this._el_7, 'select-search-list-item_hide', currVal_34);
-            this._expr_34 = currVal_34;
-        }
-        var currVal_35 = ((this.context.output.length == 0) ? this.context.placeholder : '');
+        var currVal_35 = this.context.InputHide;
         if (import3.checkBinding(throwOnChange, this._expr_35, currVal_35)) {
-            this.renderer.setElementProperty(this._el_9, 'placeholder', currVal_35);
+            this.renderer.setElementClass(this._el_7, 'select-search-list-item_hide', currVal_35);
             this._expr_35 = currVal_35;
+        }
+        var currVal_36 = ((this.context.output.length == 0) ? this.context.placeholder : '');
+        if (import3.checkBinding(throwOnChange, this._expr_36, currVal_36)) {
+            this.renderer.setElementProperty(this._el_9, 'placeholder', currVal_36);
+            this._expr_36 = currVal_36;
         }
         this._RequiredValidator_9_4.checkHost(this, this, this._el_9, throwOnChange);
         this._NgControlStatus_9_9.checkHost(this, this, this._el_9, throwOnChange);
-        var currVal_36 = (!this.context.dataListSub || this.context.dataListSub.closed);
-        if (import3.checkBinding(throwOnChange, this._expr_36, currVal_36)) {
-            this.renderer.setElementProperty(this._el_12, 'hidden', currVal_36);
-            this._expr_36 = currVal_36;
+        var currVal_37 = (!this.context.dataListSub || this.context.dataListSub.closed);
+        if (import3.checkBinding(throwOnChange, this._expr_37, currVal_37)) {
+            this.renderer.setElementProperty(this._el_12, 'hidden', currVal_37);
+            this._expr_37 = currVal_37;
         }
     };
     View_ViborComponent0.prototype.destroyInternal = function () {

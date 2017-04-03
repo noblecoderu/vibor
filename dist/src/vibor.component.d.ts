@@ -1,5 +1,5 @@
 import { OnInit, OnChanges, EventEmitter, ElementRef, SimpleChanges } from '@angular/core';
-import { ControlValueAccessor } from '@angular/forms';
+import { ControlValueAccessor, NgModel } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 import { IDataResponse } from './helpers';
@@ -14,6 +14,7 @@ export declare class ViborComponent implements OnInit, OnChanges, ControlValueAc
     private waitTime;
     private el;
     private inputEl;
+    inputControl: NgModel;
     multiple: boolean;
     canClean: boolean;
     multipleLimit: number;

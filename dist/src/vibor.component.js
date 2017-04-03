@@ -24,6 +24,7 @@ var template = '   <div class="select-search">  ' +
     '           <li class="select-search-list-item select-search-list-item_input"  ' +
     '               [class.select-search-list-item_hide]="InputHide">  ' +
     '               <input autocomplete="off"  ' +
+    '                      #inputControl="ngModel"   ' +
     '                      [disabled]="disabled"  ' +
     '                      [required]="required"  ' +
     '                      [(ngModel)]="query"  ' +
@@ -259,6 +260,7 @@ var ViborComponent = ViborComponent_1 = (function () {
         this.output.splice(index, 1);
         this.Model = this.ValueFromOutput;
         this.onTouched();
+        this.inputControl.control.markAsTouched();
     };
     // FORMATTING
     ViborComponent.prototype.getListFormatted = function (data) {
@@ -489,6 +491,10 @@ var ViborComponent = ViborComponent_1 = (function () {
     });
     return ViborComponent;
 }());
+__decorate([
+    core_1.ViewChild("inputControl"),
+    __metadata("design:type", forms_1.NgModel)
+], ViborComponent.prototype, "inputControl", void 0);
 __decorate([
     core_1.Input(),
     __metadata("design:type", Object)

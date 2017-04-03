@@ -2,10 +2,11 @@ import {
   Component, OnInit, OnChanges,
   Input, Output, forwardRef,
   EventEmitter, ElementRef,
+  ViewChild,
   SimpleChanges
 } from '@angular/core';
 
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, NgModel } from '@angular/forms';
 
 
 import { Subscription } from 'rxjs/Subscription';
@@ -31,6 +32,7 @@ const template =  '   <div class="select-search">  '  +
  '           <li class="select-search-list-item select-search-list-item_input"  '  +
  '               [class.select-search-list-item_hide]="InputHide">  '  +
  '               <input autocomplete="off"  '  +
+ '                      #inputControl="ngModel"   '  +
  '                      [disabled]="disabled"  '  +
  '                      [required]="required"  '  +
  '                      [(ngModel)]="query"  '  +
@@ -104,6 +106,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
 
   private el: HTMLElement;           // this component  element `<vibor>`
   private inputEl: HTMLInputElement; // `<input>` element in `<vibor>` for auto complete
+  @ViewChild("inputControl") public inputControl: NgModel; 
 
   // Inputs & Outputs
   @Input() public multiple = false;
@@ -303,6 +306,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
     this.output.splice(index, 1);
     this.Model = this.ValueFromOutput;
     this.onTouched();
+    this.inputControl.control.markAsTouched();
   }
 
   // FORMATTING
