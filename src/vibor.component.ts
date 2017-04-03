@@ -305,8 +305,15 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
   public removeOne(index: number): void {
     this.output.splice(index, 1);
     this.Model = this.ValueFromOutput;
+    
+    // set class
     this.onTouched();
     this.inputControl.control.markAsTouched();
+
+    // open dropdown
+    if (this.required) {
+      this.showDropdownList();
+    }
   }
 
   // FORMATTING

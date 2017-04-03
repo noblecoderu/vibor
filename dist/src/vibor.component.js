@@ -259,8 +259,13 @@ var ViborComponent = ViborComponent_1 = (function () {
     ViborComponent.prototype.removeOne = function (index) {
         this.output.splice(index, 1);
         this.Model = this.ValueFromOutput;
+        // set class
         this.onTouched();
         this.inputControl.control.markAsTouched();
+        // open dropdown
+        if (this.required) {
+            this.showDropdownList();
+        }
     };
     // FORMATTING
     ViborComponent.prototype.getListFormatted = function (data) {
