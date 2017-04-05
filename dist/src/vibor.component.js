@@ -436,6 +436,9 @@ var ViborComponent = ViborComponent_1 = (function () {
                         }, function () { });
                     }
                 }
+                else {
+                    this.changeFullModel.emit(this.output);
+                }
                 return;
             }
             else {
