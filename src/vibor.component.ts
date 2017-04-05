@@ -479,6 +479,8 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
             this.changeFullModel.emit(this.output);
           }, () => { });
         }
+      } else {
+        this.changeFullModel.emit(this.output);
       }
       return;
     } else {
