@@ -25,6 +25,7 @@ var template = '   <div class="select-search">  ' +
     '               [class.select-search-list-item_hide]="InputHide">  ' +
     '               <input autocomplete="off"  ' +
     '                      #inputControl="ngModel"   ' +
+    '                      [name]="name"  ' +
     '                      [disabled]="disabled"  ' +
     '                      [required]="required"  ' +
     '                      [(ngModel)]="query"  ' +
@@ -519,6 +520,10 @@ __decorate([
     core_1.Input(),
     __metadata("design:type", Object)
 ], ViborComponent.prototype, "placeholder", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", String)
+], ViborComponent.prototype, "name", void 0);
 __decorate([
     core_1.Input(),
     __metadata("design:type", Object)

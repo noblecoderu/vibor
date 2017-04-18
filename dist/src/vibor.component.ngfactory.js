@@ -70,6 +70,7 @@ var Wrapper_ViborComponent = (function () {
         this._expr_15 = import1.UNINITIALIZED;
         this._expr_16 = import1.UNINITIALIZED;
         this._expr_17 = import1.UNINITIALIZED;
+        this._expr_18 = import1.UNINITIALIZED;
     }
     Wrapper_ViborComponent.prototype.ngOnDetach = function (view, componentView, el) {
     };
@@ -109,116 +110,124 @@ var Wrapper_ViborComponent = (function () {
             this._expr_3 = currValue;
         }
     };
-    Wrapper_ViborComponent.prototype.check_required = function (currValue, throwOnChange, forceUpdate) {
+    Wrapper_ViborComponent.prototype.check_name = function (currValue, throwOnChange, forceUpdate) {
         if ((forceUpdate || import3.checkBinding(throwOnChange, this._expr_4, currValue))) {
             this._changed = true;
-            this.context.required = currValue;
-            this._changes['required'] = new import1.SimpleChange(this._expr_4, currValue);
+            this.context.name = currValue;
+            this._changes['name'] = new import1.SimpleChange(this._expr_4, currValue);
             this._expr_4 = currValue;
         }
     };
-    Wrapper_ViborComponent.prototype.check_disabled = function (currValue, throwOnChange, forceUpdate) {
+    Wrapper_ViborComponent.prototype.check_required = function (currValue, throwOnChange, forceUpdate) {
         if ((forceUpdate || import3.checkBinding(throwOnChange, this._expr_5, currValue))) {
             this._changed = true;
-            this.context.disabled = currValue;
-            this._changes['disabled'] = new import1.SimpleChange(this._expr_5, currValue);
+            this.context.required = currValue;
+            this._changes['required'] = new import1.SimpleChange(this._expr_5, currValue);
             this._expr_5 = currValue;
         }
     };
-    Wrapper_ViborComponent.prototype.check_listFormatter = function (currValue, throwOnChange, forceUpdate) {
+    Wrapper_ViborComponent.prototype.check_disabled = function (currValue, throwOnChange, forceUpdate) {
         if ((forceUpdate || import3.checkBinding(throwOnChange, this._expr_6, currValue))) {
             this._changed = true;
-            this.context.listFormatter = currValue;
-            this._changes['listFormatter'] = new import1.SimpleChange(this._expr_6, currValue);
+            this.context.disabled = currValue;
+            this._changes['disabled'] = new import1.SimpleChange(this._expr_6, currValue);
             this._expr_6 = currValue;
         }
     };
-    Wrapper_ViborComponent.prototype.check_dropdownFormatter = function (currValue, throwOnChange, forceUpdate) {
+    Wrapper_ViborComponent.prototype.check_listFormatter = function (currValue, throwOnChange, forceUpdate) {
         if ((forceUpdate || import3.checkBinding(throwOnChange, this._expr_7, currValue))) {
             this._changed = true;
-            this.context.dropdownFormatter = currValue;
-            this._changes['dropdownFormatter'] = new import1.SimpleChange(this._expr_7, currValue);
+            this.context.listFormatter = currValue;
+            this._changes['listFormatter'] = new import1.SimpleChange(this._expr_7, currValue);
             this._expr_7 = currValue;
         }
     };
-    Wrapper_ViborComponent.prototype.check_viewProperty = function (currValue, throwOnChange, forceUpdate) {
+    Wrapper_ViborComponent.prototype.check_dropdownFormatter = function (currValue, throwOnChange, forceUpdate) {
         if ((forceUpdate || import3.checkBinding(throwOnChange, this._expr_8, currValue))) {
             this._changed = true;
-            this.context.viewProperty = currValue;
-            this._changes['viewProperty'] = new import1.SimpleChange(this._expr_8, currValue);
+            this.context.dropdownFormatter = currValue;
+            this._changes['dropdownFormatter'] = new import1.SimpleChange(this._expr_8, currValue);
             this._expr_8 = currValue;
         }
     };
-    Wrapper_ViborComponent.prototype.check_modelProperty = function (currValue, throwOnChange, forceUpdate) {
+    Wrapper_ViborComponent.prototype.check_viewProperty = function (currValue, throwOnChange, forceUpdate) {
         if ((forceUpdate || import3.checkBinding(throwOnChange, this._expr_9, currValue))) {
             this._changed = true;
-            this.context.modelProperty = currValue;
-            this._changes['modelProperty'] = new import1.SimpleChange(this._expr_9, currValue);
+            this.context.viewProperty = currValue;
+            this._changes['viewProperty'] = new import1.SimpleChange(this._expr_9, currValue);
             this._expr_9 = currValue;
         }
     };
-    Wrapper_ViborComponent.prototype.check_preloadProperty = function (currValue, throwOnChange, forceUpdate) {
+    Wrapper_ViborComponent.prototype.check_modelProperty = function (currValue, throwOnChange, forceUpdate) {
         if ((forceUpdate || import3.checkBinding(throwOnChange, this._expr_10, currValue))) {
             this._changed = true;
-            this.context.preloadProperty = currValue;
-            this._changes['preloadProperty'] = new import1.SimpleChange(this._expr_10, currValue);
+            this.context.modelProperty = currValue;
+            this._changes['modelProperty'] = new import1.SimpleChange(this._expr_10, currValue);
             this._expr_10 = currValue;
         }
     };
-    Wrapper_ViborComponent.prototype.check_preloadField = function (currValue, throwOnChange, forceUpdate) {
+    Wrapper_ViborComponent.prototype.check_preloadProperty = function (currValue, throwOnChange, forceUpdate) {
         if ((forceUpdate || import3.checkBinding(throwOnChange, this._expr_11, currValue))) {
             this._changed = true;
-            this.context.preloadField = currValue;
-            this._changes['preloadField'] = new import1.SimpleChange(this._expr_11, currValue);
+            this.context.preloadProperty = currValue;
+            this._changes['preloadProperty'] = new import1.SimpleChange(this._expr_11, currValue);
             this._expr_11 = currValue;
         }
     };
-    Wrapper_ViborComponent.prototype.check_searchProperty = function (currValue, throwOnChange, forceUpdate) {
+    Wrapper_ViborComponent.prototype.check_preloadField = function (currValue, throwOnChange, forceUpdate) {
         if ((forceUpdate || import3.checkBinding(throwOnChange, this._expr_12, currValue))) {
             this._changed = true;
-            this.context.searchProperty = currValue;
-            this._changes['searchProperty'] = new import1.SimpleChange(this._expr_12, currValue);
+            this.context.preloadField = currValue;
+            this._changes['preloadField'] = new import1.SimpleChange(this._expr_12, currValue);
             this._expr_12 = currValue;
         }
     };
-    Wrapper_ViborComponent.prototype.check_dataList = function (currValue, throwOnChange, forceUpdate) {
+    Wrapper_ViborComponent.prototype.check_searchProperty = function (currValue, throwOnChange, forceUpdate) {
         if ((forceUpdate || import3.checkBinding(throwOnChange, this._expr_13, currValue))) {
             this._changed = true;
-            this.context.dataList = currValue;
-            this._changes['dataList'] = new import1.SimpleChange(this._expr_13, currValue);
+            this.context.searchProperty = currValue;
+            this._changes['searchProperty'] = new import1.SimpleChange(this._expr_13, currValue);
             this._expr_13 = currValue;
         }
     };
-    Wrapper_ViborComponent.prototype.check_onlyEmitter = function (currValue, throwOnChange, forceUpdate) {
+    Wrapper_ViborComponent.prototype.check_dataList = function (currValue, throwOnChange, forceUpdate) {
         if ((forceUpdate || import3.checkBinding(throwOnChange, this._expr_14, currValue))) {
             this._changed = true;
-            this.context.onlyEmitter = currValue;
-            this._changes['onlyEmitter'] = new import1.SimpleChange(this._expr_14, currValue);
+            this.context.dataList = currValue;
+            this._changes['dataList'] = new import1.SimpleChange(this._expr_14, currValue);
             this._expr_14 = currValue;
         }
     };
-    Wrapper_ViborComponent.prototype.check__model = function (currValue, throwOnChange, forceUpdate) {
+    Wrapper_ViborComponent.prototype.check_onlyEmitter = function (currValue, throwOnChange, forceUpdate) {
         if ((forceUpdate || import3.checkBinding(throwOnChange, this._expr_15, currValue))) {
             this._changed = true;
-            this.context._model = currValue;
-            this._changes['_model'] = new import1.SimpleChange(this._expr_15, currValue);
+            this.context.onlyEmitter = currValue;
+            this._changes['onlyEmitter'] = new import1.SimpleChange(this._expr_15, currValue);
             this._expr_15 = currValue;
         }
     };
-    Wrapper_ViborComponent.prototype.check_newMessage = function (currValue, throwOnChange, forceUpdate) {
+    Wrapper_ViborComponent.prototype.check__model = function (currValue, throwOnChange, forceUpdate) {
         if ((forceUpdate || import3.checkBinding(throwOnChange, this._expr_16, currValue))) {
             this._changed = true;
-            this.context.newMessage = currValue;
-            this._changes['newMessage'] = new import1.SimpleChange(this._expr_16, currValue);
+            this.context._model = currValue;
+            this._changes['_model'] = new import1.SimpleChange(this._expr_16, currValue);
             this._expr_16 = currValue;
         }
     };
-    Wrapper_ViborComponent.prototype.check_CreateNew = function (currValue, throwOnChange, forceUpdate) {
+    Wrapper_ViborComponent.prototype.check_newMessage = function (currValue, throwOnChange, forceUpdate) {
         if ((forceUpdate || import3.checkBinding(throwOnChange, this._expr_17, currValue))) {
             this._changed = true;
-            this.context.CreateNew = currValue;
-            this._changes['CreateNew'] = new import1.SimpleChange(this._expr_17, currValue);
+            this.context.newMessage = currValue;
+            this._changes['newMessage'] = new import1.SimpleChange(this._expr_17, currValue);
             this._expr_17 = currValue;
+        }
+    };
+    Wrapper_ViborComponent.prototype.check_CreateNew = function (currValue, throwOnChange, forceUpdate) {
+        if ((forceUpdate || import3.checkBinding(throwOnChange, this._expr_18, currValue))) {
+            this._changed = true;
+            this.context.CreateNew = currValue;
+            this._changes['CreateNew'] = new import1.SimpleChange(this._expr_18, currValue);
+            this._expr_18 = currValue;
         }
     };
     Wrapper_ViborComponent.prototype.ngDoCheck = function (view, el, throwOnChange) {
@@ -784,10 +793,12 @@ var View_ViborComponent0 = (function (_super) {
         var currVal_9_1_0 = this.context.required;
         this._RequiredValidator_9_4.check_required(currVal_9_1_0, throwOnChange, false);
         this._RequiredValidator_9_4.ngDoCheck(this, this._el_9, throwOnChange);
-        var currVal_9_2_0 = this.context.disabled;
-        this._NgModel_9_7.check_isDisabled(currVal_9_2_0, throwOnChange, false);
-        var currVal_9_2_1 = this.context.query;
-        this._NgModel_9_7.check_model(currVal_9_2_1, throwOnChange, false);
+        var currVal_9_2_0 = this.context.name;
+        this._NgModel_9_7.check_name(currVal_9_2_0, throwOnChange, false);
+        var currVal_9_2_1 = this.context.disabled;
+        this._NgModel_9_7.check_isDisabled(currVal_9_2_1, throwOnChange, false);
+        var currVal_9_2_2 = this.context.query;
+        this._NgModel_9_7.check_model(currVal_9_2_2, throwOnChange, false);
         this._NgModel_9_7.ngDoCheck(this, this._el_9, throwOnChange);
         this._NgControlStatus_9_9.ngDoCheck(this, this._el_9, throwOnChange);
         var currVal_19_0_0 = this.context.isOpen;

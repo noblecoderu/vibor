@@ -33,6 +33,7 @@ const template =  '   <div class="select-search">  '  +
  '               [class.select-search-list-item_hide]="InputHide">  '  +
  '               <input autocomplete="off"  '  +
  '                      #inputControl="ngModel"   '  +
+ '                      [name]="name"  '  +
  '                      [disabled]="disabled"  '  +
  '                      [required]="required"  '  +
  '                      [(ngModel)]="query"  '  +
@@ -114,6 +115,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
   @Input() public multipleLimit = 5;
 
   @Input() public placeholder = 'Vibor';
+  @Input() public name: string;
   @Input() public required = false;
   @Input() public disabled = false;
 

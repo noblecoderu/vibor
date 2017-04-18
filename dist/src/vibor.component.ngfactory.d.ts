@@ -41,6 +41,7 @@ export declare class Wrapper_ViborComponent {
     _expr_15: any;
     _expr_16: any;
     _expr_17: any;
+    _expr_18: any;
     subscription0: any;
     subscription1: any;
     constructor(p0: any);
@@ -50,6 +51,7 @@ export declare class Wrapper_ViborComponent {
     check_canClean(currValue: any, throwOnChange: boolean, forceUpdate: boolean): void;
     check_multipleLimit(currValue: any, throwOnChange: boolean, forceUpdate: boolean): void;
     check_placeholder(currValue: any, throwOnChange: boolean, forceUpdate: boolean): void;
+    check_name(currValue: any, throwOnChange: boolean, forceUpdate: boolean): void;
     check_required(currValue: any, throwOnChange: boolean, forceUpdate: boolean): void;
     check_disabled(currValue: any, throwOnChange: boolean, forceUpdate: boolean): void;
     check_listFormatter(currValue: any, throwOnChange: boolean, forceUpdate: boolean): void;

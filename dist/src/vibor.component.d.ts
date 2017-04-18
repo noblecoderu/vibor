@@ -19,6 +19,7 @@ export declare class ViborComponent implements OnInit, OnChanges, ControlValueAc
     canClean: boolean;
     multipleLimit: number;
     placeholder: string;
+    name: string;
     required: boolean;
     disabled: boolean;
     listFormatter: (arg: any, value: string) => string;
