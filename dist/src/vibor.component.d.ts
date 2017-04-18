@@ -32,7 +32,6 @@ export declare class ViborComponent implements OnInit, OnChanges, ControlValueAc
     dataList: ((param: Object, page: number) => Observable<IDataResponse>) | Array<any>;
     onlyEmitter: boolean;
     _model: any;
-    _ngChange: EventEmitter<any>;
     changeFullModel: EventEmitter<any>;
     newMessage: string;
     CreateNew: (query: string) => any;
@@ -59,6 +58,7 @@ export declare class ViborComponent implements OnInit, OnChanges, ControlValueAc
     onTouched: any;
     registerOnChange(fn: Function): void;
     registerOnTouched(fn: Function): void;
+    setDisabledState(isDisabled: boolean): void;
     Model: any;
     readonly InputHide: boolean;
     readonly ValueFromOutput: any;

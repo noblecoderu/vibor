@@ -92,7 +92,6 @@ var ViborComponent = ViborComponent_1 = (function () {
         this.preloadField = undefined; // Значение поля, которе необходимо отправить в запрос.
         this.searchProperty = 'query';
         // tslint:disable-next-line:no-output-rename
-        this._ngChange = new core_1.EventEmitter();
         this.changeFullModel = new core_1.EventEmitter();
         this.newMessage = undefined;
         this.CreateNew = function (query) {
@@ -353,6 +352,15 @@ var ViborComponent = ViborComponent_1 = (function () {
     ViborComponent.prototype.registerOnTouched = function (fn) {
         this.onTouched = fn;
     };
+    ViborComponent.prototype.setDisabledState = function (isDisabled) {
+        if (isDisabled) {
+            this.el.setAttribute('disabled', 'disabled');
+        }
+        else {
+            this.el.removeAttribute('disabled');
+        }
+        // disable other components here
+    };
     Object.defineProperty(ViborComponent.prototype, "Model", {
         get: function () {
             return this._model;
@@ -360,7 +368,7 @@ var ViborComponent = ViborComponent_1 = (function () {
         set: function (value) {
             if (this.onlyEmitter) {
                 this.output = [];
-                this._ngChange.emit(value);
+                this.onChange(value);
                 return;
             }
             // Output
@@ -378,8 +386,6 @@ var ViborComponent = ViborComponent_1 = (function () {
             this._model = value;
             // Forms
             this.onChange(this._model);
-            // Event
-            this._ngChange.emit(value);
         },
         enumerable: true,
         configurable: true
@@ -568,14 +574,6 @@ __decorate([
     core_1.Input(),
     __metadata("design:type", Boolean)
 ], ViborComponent.prototype, "onlyEmitter", void 0);
-__decorate([
-    core_1.Input('ngModel'),
-    __metadata("design:type", Object)
-], ViborComponent.prototype, "_model", void 0);
-__decorate([
-    core_1.Output('ngChange'),
-    __metadata("design:type", core_1.EventEmitter)
-], ViborComponent.prototype, "_ngChange", void 0);
 __decorate([
     core_1.Output('changeFullModel'),
     __metadata("design:type", core_1.EventEmitter)

@@ -41,9 +41,7 @@ export declare class Wrapper_ViborComponent {
     _expr_15: any;
     _expr_16: any;
     _expr_17: any;
-    _expr_18: any;
     subscription0: any;
-    subscription1: any;
     constructor(p0: any);
     ngOnDetach(view: import2.AppView<any>, componentView: import2.AppView<any>, el: any): void;
     ngOnDestroy(): void;
@@ -63,13 +61,12 @@ export declare class Wrapper_ViborComponent {
     check_searchProperty(currValue: any, throwOnChange: boolean, forceUpdate: boolean): void;
     check_dataList(currValue: any, throwOnChange: boolean, forceUpdate: boolean): void;
     check_onlyEmitter(currValue: any, throwOnChange: boolean, forceUpdate: boolean): void;
-    check__model(currValue: any, throwOnChange: boolean, forceUpdate: boolean): void;
     check_newMessage(currValue: any, throwOnChange: boolean, forceUpdate: boolean): void;
     check_CreateNew(currValue: any, throwOnChange: boolean, forceUpdate: boolean): void;
     ngDoCheck(view: import2.AppView<any>, el: any, throwOnChange: boolean): boolean;
     checkHost(view: import2.AppView<any>, componentView: import2.AppView<any>, el: any, throwOnChange: boolean): void;
     handleEvent(eventName: string, $event: any): boolean;
-    subscribe(view: import2.AppView<any>, _eventHandler: any, emit0: boolean, emit1: boolean): void;
+    subscribe(view: import2.AppView<any>, _eventHandler: any, emit0: boolean): void;
 }
 export declare const ViborComponentNgFactory: import8.ComponentFactory<import0.ViborComponent>;
 export declare class View_ViborComponent0 extends import2.AppView<import0.ViborComponent> {

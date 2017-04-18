@@ -70,13 +70,11 @@ var Wrapper_ViborComponent = (function () {
         this._expr_15 = import1.UNINITIALIZED;
         this._expr_16 = import1.UNINITIALIZED;
         this._expr_17 = import1.UNINITIALIZED;
-        this._expr_18 = import1.UNINITIALIZED;
     }
     Wrapper_ViborComponent.prototype.ngOnDetach = function (view, componentView, el) {
     };
     Wrapper_ViborComponent.prototype.ngOnDestroy = function () {
         (this.subscription0 && this.subscription0.unsubscribe());
-        (this.subscription1 && this.subscription1.unsubscribe());
     };
     Wrapper_ViborComponent.prototype.check_multiple = function (currValue, throwOnChange, forceUpdate) {
         if ((forceUpdate || import3.checkBinding(throwOnChange, this._expr_0, currValue))) {
@@ -206,28 +204,20 @@ var Wrapper_ViborComponent = (function () {
             this._expr_15 = currValue;
         }
     };
-    Wrapper_ViborComponent.prototype.check__model = function (currValue, throwOnChange, forceUpdate) {
+    Wrapper_ViborComponent.prototype.check_newMessage = function (currValue, throwOnChange, forceUpdate) {
         if ((forceUpdate || import3.checkBinding(throwOnChange, this._expr_16, currValue))) {
             this._changed = true;
-            this.context._model = currValue;
-            this._changes['_model'] = new import1.SimpleChange(this._expr_16, currValue);
+            this.context.newMessage = currValue;
+            this._changes['newMessage'] = new import1.SimpleChange(this._expr_16, currValue);
             this._expr_16 = currValue;
         }
     };
-    Wrapper_ViborComponent.prototype.check_newMessage = function (currValue, throwOnChange, forceUpdate) {
+    Wrapper_ViborComponent.prototype.check_CreateNew = function (currValue, throwOnChange, forceUpdate) {
         if ((forceUpdate || import3.checkBinding(throwOnChange, this._expr_17, currValue))) {
             this._changed = true;
-            this.context.newMessage = currValue;
-            this._changes['newMessage'] = new import1.SimpleChange(this._expr_17, currValue);
-            this._expr_17 = currValue;
-        }
-    };
-    Wrapper_ViborComponent.prototype.check_CreateNew = function (currValue, throwOnChange, forceUpdate) {
-        if ((forceUpdate || import3.checkBinding(throwOnChange, this._expr_18, currValue))) {
-            this._changed = true;
             this.context.CreateNew = currValue;
-            this._changes['CreateNew'] = new import1.SimpleChange(this._expr_18, currValue);
-            this._expr_18 = currValue;
+            this._changes['CreateNew'] = new import1.SimpleChange(this._expr_17, currValue);
+            this._expr_17 = currValue;
         }
     };
     Wrapper_ViborComponent.prototype.ngDoCheck = function (view, el, throwOnChange) {
@@ -250,13 +240,10 @@ var Wrapper_ViborComponent = (function () {
         var result = true;
         return result;
     };
-    Wrapper_ViborComponent.prototype.subscribe = function (view, _eventHandler, emit0, emit1) {
+    Wrapper_ViborComponent.prototype.subscribe = function (view, _eventHandler, emit0) {
         this._eventHandler = _eventHandler;
         if (emit0) {
-            (this.subscription0 = this.context._ngChange.subscribe(_eventHandler.bind(view, 'ngChange')));
-        }
-        if (emit1) {
-            (this.subscription1 = this.context.changeFullModel.subscribe(_eventHandler.bind(view, 'changeFullModel')));
+            (this.subscription0 = this.context.changeFullModel.subscribe(_eventHandler.bind(view, 'changeFullModel')));
         }
     };
     return Wrapper_ViborComponent;

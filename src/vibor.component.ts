@@ -131,9 +131,8 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
   @Input() public dataList: ((param: Object, page: number) => Observable<IDataResponse>) | Array<any>;
   @Input() public onlyEmitter: boolean;
   // tslint:disable-next-line:no-input-rename
-  @Input('ngModel') public _model: any;
+  public _model: any;
   // tslint:disable-next-line:no-output-rename
-  @Output('ngChange') public _ngChange: EventEmitter<any> = new EventEmitter();
   @Output('changeFullModel') public changeFullModel: EventEmitter<any> = new EventEmitter();
 
 
@@ -411,10 +410,19 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
     this.onTouched = fn;
   }
 
+  public setDisabledState(isDisabled: boolean) {
+      if (isDisabled) {
+        this.el.setAttribute('disabled', 'disabled');
+      } else {
+        this.el.removeAttribute('disabled');
+      }
+      // disable other components here
+  }
+
   set Model(value: any) {
     if (this.onlyEmitter) {
       this.output = [];
-      this._ngChange.emit(value);
+      this.onChange(value);
       return;
     }
 
@@ -433,9 +441,6 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
 
     // Forms
     this.onChange(this._model);
-
-    // Event
-    this._ngChange.emit(value);
   }
 
   get Model(): any {
