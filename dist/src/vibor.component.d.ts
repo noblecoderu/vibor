@@ -1,9 +1,10 @@
-import { OnInit, OnChanges, EventEmitter, ElementRef, SimpleChanges } from '@angular/core';
+import { OnInit, OnChanges, AfterContentInit, EventEmitter, ElementRef, TemplateRef, QueryList, SimpleChanges } from '@angular/core';
 import { ControlValueAccessor, NgModel } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 import { IDataResponse } from './helpers';
-export declare class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
+export declare class ViborComponent implements OnInit, OnChanges, ControlValueAccessor, AfterContentInit {
+    _model: any;
     private firstLoad;
     private options;
     output: Array<any>;
@@ -22,6 +23,7 @@ export declare class ViborComponent implements OnInit, OnChanges, ControlValueAc
     name: string;
     required: boolean;
     disabled: boolean;
+    templates: QueryList<TemplateRef<any>>;
     listFormatter: (arg: any, value: string) => string;
     dropdownFormatter: (arg: any, value: string) => string;
     viewProperty: string;
@@ -31,7 +33,6 @@ export declare class ViborComponent implements OnInit, OnChanges, ControlValueAc
     searchProperty: string;
     dataList: ((param: Object, page: number) => Observable<IDataResponse>) | Array<any>;
     onlyEmitter: boolean;
-    _model: any;
     changeFullModel: EventEmitter<any>;
     newMessage: string;
     CreateNew: (query: string) => any;
@@ -51,6 +52,7 @@ export declare class ViborComponent implements OnInit, OnChanges, ControlValueAc
     getListFormatted(data: any): string;
     getDropdownFormatted(data: any): string;
     ngOnInit(): void;
+    ngAfterContentInit(): void;
     ngOnChanges(inputs: SimpleChanges): void;
     constructor(elementRef: ElementRef);
     writeValue(value: any): void;

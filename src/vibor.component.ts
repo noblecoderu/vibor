@@ -1,8 +1,8 @@
 import {
-  Component, OnInit, OnChanges,
+  Component, OnInit, OnChanges, AfterContentInit,
   Input, Output, forwardRef,
   EventEmitter, ElementRef,
-  ViewChild,
+  TemplateRef, ContentChildren, QueryList, ViewChild,
   SimpleChanges
 } from '@angular/core';
 
@@ -21,64 +21,89 @@ import {
 
 const deepEqual = require('deep-equal');
 
-const template =  '   <div class="select-search">  '  +
- '       <ul class="select-search-list">  '  +
- '           <li class="select-search-list-item select-search-list-item_selection"  '  +
- '               *ngFor="let item of output; let $index=index; let $last=last; trackBy: TrackByFn;"  '  +
- '               [class.focused]="backspaceFocus && last"  '  +
- '               (click)="!disabled && removeOne($index)"  '  +
- '               [innerHTML]="getListFormatted(item)">  '  +
- '           </li>  '  +
- '           <li class="select-search-list-item select-search-list-item_input"  '  +
- '               [class.select-search-list-item_hide]="InputHide">  '  +
- '               <input autocomplete="off"  '  +
- '                      #inputControl="ngModel"   '  +
- '                      [name]="name"  '  +
- '                      [disabled]="disabled"  '  +
- '                      [required]="required"  '  +
- '                      [(ngModel)]="query"  '  +
- '                      [placeholder]="output.length == 0 ? placeholder : \'\'"  '  +
- '                      (input)="updateOptionsInDelay()"  '  +
- '                      (blur)="hideDropdownList()"  '  +
- '                      (focus)="showDropdownList()"  '  +
- '                      (keydown)="keyDown($event)"/>  '  +
- '           </li>  '  +
- '           <li class="select-search-list-item" [hidden]="!dataListSub || dataListSub.closed">  '  +
- '               <div class="select-search-list-item_loader"></div>  '  +
- '           </li>  '  +
- '     '  +
- '       </ul>  '  +
- '   </div>  '  +
- '   <div class="select-dropdown" *ngIf="isOpen">  '  +
- '       <ul class="select-dropdown-optgroup">  '  +
- '           <li class="select-dropdown-optgroup-option"  '  +
- '               *ngFor="let option of Options; let i=index"  '  +
- '               (mousedown)="selectOne($event, option)"  '  +
- '               [class.active]="i === selectorPosition"  '  +
- '               [innerHTML]="getDropdownFormatted(option)">  '  +
- '           </li>  '  +
- '           <li class="select-dropdown-optgroup-option loader" *ngIf="dataListSub && !dataListSub.closed">  '  +
- '               Загрузка  '  +
- '           </li>  '  +
- '           <li class="select-dropdown-optgroup-option loader"  '  +
- '               (mousedown)="selectOne($event, CreateNew(query));"  '  +
- '               *ngIf="newMessage && (!dataListSub || dataListSub.closed) && Options.length == 0">  '  +
- '               {{ newMessage }}  '  +
- '           </li>  '  +
- '       </ul>  '  +
- '       <div class="select-dropdown-pager" *ngIf="CurrentCache && CurrentCache.countPages > 1">  '  +
- '           <p class="select-dropdown-pager-page">  '  +
- '               {{ CurrentCache.currentPage | number }} / {{ CurrentCache.countPages | number }}  '  +
- '           </p>  '  +
- '           <button  '  +
- '               class="select-dropdown-pager-loadmore"  '  +
- '                   *ngIf="CurrentCache.countPages > 1 && CurrentCache.currentPage < CurrentCache.countPages"  '  +
- '                   (mousedown)="nextPage($event)">  '  +
- '               Загрузить ещё  '  +
- '           </button>  '  +
- '       </div>  '  +
- '   </div>  '  +
- '    ' ;
+const template =  `
+  
+  <div class="select-search"> 
+      <ul class="select-search-list"> 
+            <ng-container *ngIf="!templates.first">
+                <li class="select-search-list-item select-search-list-item_selection"
+                    *ngFor="let item of output; let $index=index; let $last=last; trackBy: TrackByFn;"
+                    [class.focused]="backspaceFocus && last"
+                    (click)="!disabled && removeOne($index)"
+                    [innerHTML]="getListFormatted(item)">
+                </li>
+            </ng-container>
+
+            <ng-container *ngIf="templates.first">
+                <li class="select-search-list-item select-search-list-item_selection"
+                    *ngFor="let item of output; let $index=index; let $last=last; trackBy: TrackByFn;"
+                    [class.focused]="backspaceFocus && last"
+                    (click)="!disabled && removeOne($index)">
+                    <ng-container *ngTemplateOutlet="BothTemplat; context: item"></ng-container>
+                </li>
+            </ng-container>
+
+            <li class="select-search-list-item select-search-list-item_input"
+                [class.select-search-list-item_hide]="InputHide">
+                <input autocomplete="off"
+                       #inputControl="ngModel" 
+                       [name]="name"
+                       [disabled]="disabled"
+                       [required]="required"
+                       [(ngModel)]="query"
+                       [placeholder]="output.length == 0 ? placeholder : \'\'"
+                       (input)="updateOptionsInDelay()"
+                       (blur)="hideDropdownList()"
+                       (focus)="showDropdownList()"
+                       (keydown)="keyDown($event)"/>
+            </li>
+            <li class="select-search-list-item" [hidden]="!dataListSub || dataListSub.closed">
+                <div class="select-search-list-item_loader"></div>
+            </li>
+    
+        </ul>
+    </div>
+    <div class="select-dropdown" *ngIf="isOpen">
+        <ul class="select-dropdown-optgroup">
+            <ng-container *ngIf="!templates.first">
+                <li class="select-dropdown-optgroup-option"
+                    *ngFor="let option of Options; let i=index"
+                    (mousedown)="selectOne($event, option)"
+                    [class.active]="i === selectorPosition"
+                    [innerHTML]="getDropdownFormatted(option)">
+                </li>
+            </ng-container>
+
+            <ng-container *ngIf="templates.first">
+                <li class="select-dropdown-optgroup-option"
+                    *ngFor="let option of Options; let i=index"
+                    (mousedown)="selectOne($event, option)"
+                    [class.active]="i === selectorPosition">
+                    <ng-container *ngTemplateOutlet="BothTemplat; context: option"></ng-container>
+                </li>
+            </ng-container>
+
+            <li class="select-dropdown-optgroup-option loader" *ngIf="dataListSub && !dataListSub.closed">
+                Загрузка
+            </li>
+            <li class="select-dropdown-optgroup-option loader"
+                (mousedown)="selectOne($event, CreateNew(query));"
+                *ngIf="newMessage && (!dataListSub || dataListSub.closed) && Options.length == 0">
+                {{ newMessage }}
+            </li>
+        </ul>
+        <div class="select-dropdown-pager" *ngIf="CurrentCache && CurrentCache.countPages > 1">
+            <p class="select-dropdown-pager-page">
+                {{ CurrentCache.currentPage | number }} / {{ CurrentCache.countPages | number }}
+            </p>
+            <button
+                class="select-dropdown-pager-loadmore"
+                    *ngIf="CurrentCache.countPages > 1 && CurrentCache.currentPage < CurrentCache.countPages"
+                    (mousedown)="nextPage($event)">
+                Загрузить ещё
+            </button>
+        </div>
+    </div>`;
 
 @Component({
      // tslint:disable-next-line:component-selector
@@ -90,9 +115,11 @@ const template =  '   <div class="select-search">  '  +
        multi: true
      }]
  })
-export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
+export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor, AfterContentInit {
 
   // Local Variable
+  public _model: any;
+
   private firstLoad = false;
   private options: Array<any>;
   public output: Array<any>;
@@ -107,7 +134,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
 
   private el: HTMLElement;           // this component  element `<vibor>`
   private inputEl: HTMLInputElement; // `<input>` element in `<vibor>` for auto complete
-  @ViewChild("inputControl") public inputControl: NgModel; 
+  @ViewChild('inputControl') public inputControl: NgModel;
 
   // Inputs & Outputs
   @Input() public multiple = false;
@@ -119,6 +146,8 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
   @Input() public required = false;
   @Input() public disabled = false;
 
+  // Отображение списков
+  @ContentChildren(TemplateRef, {descendants: true}) public templates: QueryList<TemplateRef<any>>;
   @Input() public listFormatter: (arg: any, value: string) => string;
   @Input() public dropdownFormatter: (arg: any, value: string) => string;
   @Input() public viewProperty = 'Name';  // Поле для дефолтного отображения
@@ -130,9 +159,6 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
 
   @Input() public dataList: ((param: Object, page: number) => Observable<IDataResponse>) | Array<any>;
   @Input() public onlyEmitter: boolean;
-  // tslint:disable-next-line:no-input-rename
-  public _model: any;
-  // tslint:disable-next-line:no-output-rename
   @Output('changeFullModel') public changeFullModel: EventEmitter<any> = new EventEmitter();
 
 
@@ -143,6 +169,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
       Name: query
     };
   }
+
 
   // Subscription
   public dataListSub: Subscription;
@@ -306,7 +333,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
   public removeOne(index: number): void {
     this.output.splice(index, 1);
     this.Model = this.ValueFromOutput;
-    
+
     // set class
     this.onTouched();
     this.inputControl.control.markAsTouched();
@@ -332,6 +359,10 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
   public ngOnInit(): void {
     // this.Model = this.ValueFromOutput; Это вроде тут тоже уже не надо.
     this.inputEl = <HTMLInputElement>(this.el.querySelector('input'));
+  }
+
+  public ngAfterContentInit() {
+      console.log(this.templates);
   }
 
   public ngOnChanges(inputs: SimpleChanges): void {
