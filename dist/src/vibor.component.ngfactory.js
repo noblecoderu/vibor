@@ -86,7 +86,7 @@ function View_ViborComponent_5(l) {
 }
 function View_ViborComponent_4(l) {
     return import0.ɵvid(0, [
-        (l()(), import0.ɵeld(0, null, null, 4, 'li', [[
+        (l()(), import0.ɵeld(0, null, null, 5, 'li', [[
                 'class',
                 'select-search-list-item select-search-list-item_selection'
             ]
@@ -109,7 +109,7 @@ function View_ViborComponent_4(l) {
             return ad;
         }, null, null)),
         (l()(), import0.ɵted(null, ['\n                    '])),
-        (l()(), import0.ɵand(8388608, null, null, 1, null, View_ViborComponent_5)),
+        (l()(), import0.ɵand(8388608, null, null, 2, null, View_ViborComponent_5)),
         import0.ɵdid(270336, null, 0, import1.NgTemplateOutlet, [import0.ViewContainerRef], {
             ngTemplateOutletContext: [
                 0,
@@ -120,11 +120,12 @@ function View_ViborComponent_4(l) {
                 'ngTemplateOutlet'
             ]
         }, null),
+        import0.ɵpod(['item']),
         (l()(), import0.ɵted(null, ['\n                ']))
     ], function (ck, v) {
         var co = v.component;
-        var currVal_1 = v.context.$implicit;
-        var currVal_2 = co.BothTemplat;
+        var currVal_1 = ck(v, 4, 0, v.context.$implicit);
+        var currVal_2 = co.SelectedTemplate;
         ck(v, 3, 0, currVal_1, currVal_2);
     }, function (ck, v) {
         var co = v.component;
@@ -223,7 +224,7 @@ function View_ViborComponent_11(l) {
 }
 function View_ViborComponent_10(l) {
     return import0.ɵvid(0, [
-        (l()(), import0.ɵeld(0, null, null, 4, 'li', [[
+        (l()(), import0.ɵeld(0, null, null, 5, 'li', [[
                 'class',
                 'select-dropdown-optgroup-option'
             ]
@@ -246,7 +247,7 @@ function View_ViborComponent_10(l) {
             return ad;
         }, null, null)),
         (l()(), import0.ɵted(null, ['\n                    '])),
-        (l()(), import0.ɵand(8388608, null, null, 1, null, View_ViborComponent_11)),
+        (l()(), import0.ɵand(8388608, null, null, 2, null, View_ViborComponent_11)),
         import0.ɵdid(270336, null, 0, import1.NgTemplateOutlet, [import0.ViewContainerRef], {
             ngTemplateOutletContext: [
                 0,
@@ -257,11 +258,12 @@ function View_ViborComponent_10(l) {
                 'ngTemplateOutlet'
             ]
         }, null),
+        import0.ɵpod(['item']),
         (l()(), import0.ɵted(null, ['\n                ']))
     ], function (ck, v) {
         var co = v.component;
-        var currVal_1 = v.context.$implicit;
-        var currVal_2 = co.BothTemplat;
+        var currVal_1 = ck(v, 4, 0, v.context.$implicit);
+        var currVal_2 = co.DropdownTemplate;
         ck(v, 3, 0, currVal_1, currVal_2);
     }, function (ck, v) {
         var co = v.component;
@@ -460,9 +462,9 @@ function View_ViborComponent_6(l) {
         (l()(), import0.ɵted(null, ['\n    ']))
     ], function (ck, v) {
         var co = v.component;
-        var currVal_0 = !co.templates.first;
+        var currVal_0 = !co.DropdownTemplate;
         ck(v, 5, 0, currVal_0);
-        var currVal_1 = co.templates.first;
+        var currVal_1 = co.DropdownTemplate;
         ck(v, 8, 0, currVal_1);
         var currVal_2 = (co.dataListSub && !co.dataListSub.closed);
         ck(v, 11, 0, currVal_2);
@@ -478,19 +480,19 @@ function View_ViborComponent_0(l) {
         import0.ɵqud(201326592, 1, { inputControl: 0 }),
         (l()(), import0.ɵted(null, ['\n  '])),
         import0.ɵncd(null, 0),
-        (l()(), import0.ɵted(null, ['   \n  '])),
+        (l()(), import0.ɵted(null, ['\n\n  '])),
         (l()(), import0.ɵeld(0, null, null, 27, 'div', [[
                 'class',
                 'select-search'
             ]
         ], null, null, null, null, null)),
-        (l()(), import0.ɵted(null, [' \n      '])),
+        (l()(), import0.ɵted(null, ['\n      '])),
         (l()(), import0.ɵeld(0, null, null, 24, 'ul', [[
                 'class',
                 'select-search-list'
             ]
         ], null, null, null, null, null)),
-        (l()(), import0.ɵted(null, [' \n            '])),
+        (l()(), import0.ɵted(null, ['\n            '])),
         (l()(), import0.ɵand(8388608, null, null, 1, null, View_ViborComponent_1)),
         import0.ɵdid(8192, null, 0, import1.NgIf, [
             import0.ViewContainerRef,
@@ -722,7 +724,7 @@ function View_ViborComponent_0(l) {
             ]
         ], null, null, null, null, null)),
         (l()(), import0.ɵted(null, ['\n            '])),
-        (l()(), import0.ɵted(null, ['\n    \n        '])),
+        (l()(), import0.ɵted(null, ['\n\n        '])),
         (l()(), import0.ɵted(null, ['\n    '])),
         (l()(), import0.ɵted(null, ['\n    '])),
         (l()(), import0.ɵand(8388608, null, null, 1, null, View_ViborComponent_6)),
@@ -736,9 +738,9 @@ function View_ViborComponent_0(l) {
         }, null)
     ], function (ck, v) {
         var co = v.component;
-        var currVal_0 = !co.templates.first;
+        var currVal_0 = !co.SelectedTemplate;
         ck(v, 10, 0, currVal_0);
-        var currVal_1 = co.templates.first;
+        var currVal_1 = co.SelectedTemplate;
         ck(v, 13, 0, currVal_1);
         var currVal_12 = co.required;
         ck(v, 19, 0, currVal_12);
@@ -769,9 +771,11 @@ function View_ViborComponent_0(l) {
 exports.View_ViborComponent_0 = View_ViborComponent_0;
 function View_ViborComponent_Host_0(l) {
     return import0.ɵvid(0, [
-        (l()(), import0.ɵeld(0, null, null, 3, 'vibor', [], null, null, null, View_ViborComponent_0, exports.RenderType_ViborComponent)),
-        import0.ɵdid(843776, null, 1, import2.ViborComponent, [import0.ElementRef], null, null),
-        import0.ɵqud(301989888, 1, { templates: 1 }),
+        (l()(), import0.ɵeld(0, null, null, 5, 'vibor', [], null, null, null, View_ViborComponent_0, exports.RenderType_ViborComponent)),
+        import0.ɵdid(319488, null, 3, import2.ViborComponent, [import0.ElementRef], null, null),
+        import0.ɵqud(167772160, 1, { bothTemplate: 0 }),
+        import0.ɵqud(167772160, 2, { dropdownTemplate: 0 }),
+        import0.ɵqud(167772160, 3, { selectedTemplate: 0 }),
         import0.ɵprd(2560, null, import3.NG_VALUE_ACCESSOR, function (p0_0) {
             return [p0_0];
         }, [import2.ViborComponent])

@@ -1,9 +1,10 @@
-import { OnInit, OnChanges, AfterContentInit, EventEmitter, ElementRef, TemplateRef, QueryList, SimpleChanges } from '@angular/core';
+import { OnInit, OnChanges, EventEmitter, ElementRef, TemplateRef, SimpleChanges } from '@angular/core';
 import { ControlValueAccessor, NgModel } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
+import { ViborBothDirective, ViborDropdownDirective, ViborSelectedDirective } from './vibor.template.directive';
 import { IDataResponse } from './helpers';
-export declare class ViborComponent implements OnInit, OnChanges, ControlValueAccessor, AfterContentInit {
+export declare class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
     _model: any;
     private firstLoad;
     private options;
@@ -23,7 +24,9 @@ export declare class ViborComponent implements OnInit, OnChanges, ControlValueAc
     name: string;
     required: boolean;
     disabled: boolean;
-    templates: QueryList<TemplateRef<any>>;
+    bothTemplate: ViborBothDirective;
+    dropdownTemplate: ViborDropdownDirective;
+    selectedTemplate: ViborSelectedDirective;
     listFormatter: (arg: any, value: string) => string;
     dropdownFormatter: (arg: any, value: string) => string;
     viewProperty: string;
@@ -49,10 +52,11 @@ export declare class ViborComponent implements OnInit, OnChanges, ControlValueAc
     private clearProperty();
     selectOne($event: MouseEvent | KeyboardEvent, data: any): void;
     removeOne(index: number): void;
+    readonly SelectedTemplate: TemplateRef<any>;
+    readonly DropdownTemplate: TemplateRef<any>;
     getListFormatted(data: any): string;
     getDropdownFormatted(data: any): string;
     ngOnInit(): void;
-    ngAfterContentInit(): void;
     ngOnChanges(inputs: SimpleChanges): void;
     constructor(elementRef: ElementRef);
     writeValue(value: any): void;

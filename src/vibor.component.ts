@@ -1,8 +1,8 @@
 import {
-  Component, OnInit, OnChanges, AfterContentInit,
+  Component, OnInit, OnChanges,
   Input, Output, forwardRef,
   EventEmitter, ElementRef,
-  TemplateRef, ContentChildren, QueryList, ViewChild,
+  TemplateRef, ContentChild, ViewChild,
   SimpleChanges
 } from '@angular/core';
 
@@ -12,20 +12,23 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, NgModel } from '@angular/forms
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 
-import {
-  IDataResponse,
-  defaultFormatter,
-  fetchFromObject,
-  scrollActiveOption
-} from './helpers';
+import { ViborBothDirective,
+         ViborDropdownDirective,
+         ViborSelectedDirective } from './vibor.template.directive';
+
+import { IDataResponse,
+         defaultFormatter,
+         fetchFromObject,
+         scrollActiveOption } from './helpers';
 
 const deepEqual = require('deep-equal');
 
 const template =  `
-  
-  <div class="select-search"> 
-      <ul class="select-search-list"> 
-            <ng-container *ngIf="!templates.first">
+  <ng-content></ng-content>
+
+  <div class="select-search">
+      <ul class="select-search-list">
+            <ng-container *ngIf="!SelectedTemplate">
                 <li class="select-search-list-item select-search-list-item_selection"
                     *ngFor="let item of output; let $index=index; let $last=last; trackBy: TrackByFn;"
                     [class.focused]="backspaceFocus && last"
@@ -34,19 +37,19 @@ const template =  `
                 </li>
             </ng-container>
 
-            <ng-container *ngIf="templates.first">
+            <ng-container *ngIf="SelectedTemplate">
                 <li class="select-search-list-item select-search-list-item_selection"
                     *ngFor="let item of output; let $index=index; let $last=last; trackBy: TrackByFn;"
                     [class.focused]="backspaceFocus && last"
                     (click)="!disabled && removeOne($index)">
-                    <ng-container *ngTemplateOutlet="BothTemplat; context: item"></ng-container>
+                    <ng-container *ngTemplateOutlet="SelectedTemplate; context: {item: item}"></ng-container>
                 </li>
             </ng-container>
 
             <li class="select-search-list-item select-search-list-item_input"
                 [class.select-search-list-item_hide]="InputHide">
                 <input autocomplete="off"
-                       #inputControl="ngModel" 
+                       #inputControl="ngModel"
                        [name]="name"
                        [disabled]="disabled"
                        [required]="required"
@@ -60,12 +63,12 @@ const template =  `
             <li class="select-search-list-item" [hidden]="!dataListSub || dataListSub.closed">
                 <div class="select-search-list-item_loader"></div>
             </li>
-    
+
         </ul>
     </div>
     <div class="select-dropdown" *ngIf="isOpen">
         <ul class="select-dropdown-optgroup">
-            <ng-container *ngIf="!templates.first">
+            <ng-container *ngIf="!DropdownTemplate">
                 <li class="select-dropdown-optgroup-option"
                     *ngFor="let option of Options; let i=index"
                     (mousedown)="selectOne($event, option)"
@@ -74,12 +77,12 @@ const template =  `
                 </li>
             </ng-container>
 
-            <ng-container *ngIf="templates.first">
+            <ng-container *ngIf="DropdownTemplate">
                 <li class="select-dropdown-optgroup-option"
                     *ngFor="let option of Options; let i=index"
                     (mousedown)="selectOne($event, option)"
                     [class.active]="i === selectorPosition">
-                    <ng-container *ngTemplateOutlet="BothTemplat; context: option"></ng-container>
+                    <ng-container *ngTemplateOutlet="DropdownTemplate; context: {item: option}"></ng-container>
                 </li>
             </ng-container>
 
@@ -106,7 +109,6 @@ const template =  `
     </div>`;
 
 @Component({
-     // tslint:disable-next-line:component-selector
      selector: 'vibor',
      template: template,
      providers: [{
@@ -115,7 +117,7 @@ const template =  `
        multi: true
      }]
  })
-export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor, AfterContentInit {
+export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
 
   // Local Variable
   public _model: any;
@@ -147,7 +149,9 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor, 
   @Input() public disabled = false;
 
   // Отображение списков
-  @ContentChildren(TemplateRef, {descendants: true}) public templates: QueryList<TemplateRef<any>>;
+  @ContentChild(ViborBothDirective) public bothTemplate: ViborBothDirective;
+  @ContentChild(ViborDropdownDirective) public dropdownTemplate: ViborDropdownDirective;
+  @ContentChild(ViborSelectedDirective) public selectedTemplate: ViborSelectedDirective;
   @Input() public listFormatter: (arg: any, value: string) => string;
   @Input() public dropdownFormatter: (arg: any, value: string) => string;
   @Input() public viewProperty = 'Name';  // Поле для дефолтного отображения
@@ -345,6 +349,25 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor, 
   }
 
   // FORMATTING
+
+  public get SelectedTemplate(): TemplateRef<any> {
+    if (this.selectedTemplate) {
+        return this.selectedTemplate.templateRef;
+    } else if (this.bothTemplate) {
+        return this.bothTemplate.templateRef;
+    }
+    return undefined;
+  }
+
+  public get DropdownTemplate(): TemplateRef<any> {
+    if (this.dropdownTemplate) {
+        return this.dropdownTemplate.templateRef;
+    } else if (this.bothTemplate) {
+        return this.bothTemplate.templateRef;
+    }
+    return undefined;
+  }
+
   public getListFormatted(data: any): string {
     let formatter: any = this.listFormatter || defaultFormatter;
     return formatter.apply(this, [data, this.viewProperty]);
@@ -359,10 +382,6 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor, 
   public ngOnInit(): void {
     // this.Model = this.ValueFromOutput; Это вроде тут тоже уже не надо.
     this.inputEl = <HTMLInputElement>(this.el.querySelector('input'));
-  }
-
-  public ngAfterContentInit() {
-      console.log(this.templates);
   }
 
   public ngOnChanges(inputs: SimpleChanges): void {
