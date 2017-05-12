@@ -545,10 +545,14 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
     }
     let newOutput: Array<any> = [];
     for (let v of newValue) {
-      for (let d of dataList) {
-        if (deepEqual(fetchFromObject(d, this.modelProperty), v)) {
-          newOutput.push(d);
+      if (dataList.length) {
+        for (let d of dataList) {
+          if (deepEqual(fetchFromObject(d, this.modelProperty), v)) {
+            newOutput.push(d);
+          }
         }
+      } else {
+        newOutput.push(v);
       }
     }
     this.output = newOutput;

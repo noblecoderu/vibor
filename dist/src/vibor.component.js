@@ -416,11 +416,16 @@ var ViborComponent = (function () {
             var newOutput = [];
             for (var _i = 0, newValue_1 = newValue; _i < newValue_1.length; _i++) {
                 var v = newValue_1[_i];
-                for (var _a = 0, dataList_1 = dataList; _a < dataList_1.length; _a++) {
-                    var d = dataList_1[_a];
-                    if (deepEqual(helpers_1.fetchFromObject(d, this.modelProperty), v)) {
-                        newOutput.push(d);
+                if (dataList.length) {
+                    for (var _a = 0, dataList_1 = dataList; _a < dataList_1.length; _a++) {
+                        var d = dataList_1[_a];
+                        if (deepEqual(helpers_1.fetchFromObject(d, this.modelProperty), v)) {
+                            newOutput.push(d);
+                        }
                     }
+                }
+                else {
+                    newOutput.push(v);
                 }
             }
             this.output = newOutput;
