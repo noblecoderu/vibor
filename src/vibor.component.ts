@@ -52,7 +52,6 @@ const template =  `
                        #inputControl="ngModel"
                        [name]="name"
                        [disabled]="disabled"
-                       [required]="required"
                        [(ngModel)]="query"
                        [placeholder]="output.length == 0 ? placeholder : \'\'"
                        (input)="updateOptionsInDelay()"
