@@ -89,8 +89,8 @@ const template =  `
                 Загрузка
             </li>
             <li class="select-dropdown-optgroup-option loader"
-                (mousedown)="selectOne($event, CreateNew(query));"
-                *ngIf="newMessage && (!dataListSub || dataListSub.closed) && Options.length == 0">
+                (mousedown)="AddNewObject(CreateNew(query));"
+                *ngIf="ShowNew">
                 {{ newMessage }}
             </li>
         </ul>
@@ -273,8 +273,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
         if (totalNumItem > 0) {
           this.selectOne(event, this.Options[this.selectorPosition]);
         } else if (this.newMessage && (!this.dataListSub || this.dataListSub.closed)) {
-          let value: any = this.CreateNew(this.query);
-          this.selectOne(event, value);
+          this.AddNewObject(this.CreateNew(this.query));
         }
         break;
 
@@ -565,6 +564,28 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
       return <CacheInfo>this.cacheLazyData[this.query];
     }
     return undefined;
+  }
+
+  // CreateNew
+
+  private AddNewObject(value: any): void {
+      if (this.dataList instanceof Array) {
+        this.dataList.push(value);
+      } else if (this.dataList instanceof Function) {
+        // TODO: Добавить во все кеши
+        this.CurrentCache.countElement++;
+        this.CurrentCache.objects.push(value);
+      }
+
+      this.selectOne(new MouseEvent('click'), value);
+  }
+
+  get ShowNew(): boolean {
+    let t = this.newMessage && (!this.dataListSub || this.dataListSub.closed);
+    // TODO: Check this
+    return t && this.Options.findIndex(o => {
+        return deepEqual(fetchFromObject(o, this.modelProperty), this.query);
+      }) === -1;
   }
 
 

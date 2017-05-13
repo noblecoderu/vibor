@@ -316,7 +316,7 @@ function View_ViborComponent_13(l) {
             var ad = true;
             var co = v.component;
             if (('mousedown' === en)) {
-                var pd_0 = (co.selectOne($event, co.CreateNew(co.query)) !== false);
+                var pd_0 = (co.AddNewObject(co.CreateNew(co.query)) !== false);
                 ad = (pd_0 && ad);
             }
             return ad;
@@ -468,7 +468,7 @@ function View_ViborComponent_6(l) {
         ck(v, 8, 0, currVal_1);
         var currVal_2 = (co.dataListSub && !co.dataListSub.closed);
         ck(v, 11, 0, currVal_2);
-        var currVal_3 = ((co.newMessage && (!co.dataListSub || co.dataListSub.closed)) && (co.Options.length == 0));
+        var currVal_3 = co.ShowNew;
         ck(v, 14, 0, currVal_3);
         var currVal_4 = (co.CurrentCache && (co.CurrentCache.countPages > 1));
         ck(v, 18, 0, currVal_4);
