@@ -241,10 +241,6 @@ var ViborComponent = (function () {
         this.inputEl = (this.el.querySelector('input'));
     };
     ViborComponent.prototype.ngOnChanges = function (inputs) {
-        var _this = this;
-        if (inputs['_model'] && inputs['_model'].currentValue === undefined) {
-            this.Model = undefined;
-        }
         if (inputs['canClean']) {
             if (inputs['canClean'].currentValue) {
                 this.el.classList.add('cleanMode');
@@ -267,30 +263,11 @@ var ViborComponent = (function () {
             }
         }
         if (inputs['multiple']) {
-            if (!('_model' in inputs)) {
-                setTimeout(function () { return _this.Model = undefined; }, 10); // Костыль, надо бы исправить
-            }
             if (inputs['multiple'].currentValue) {
                 this.el.classList.add('multiple');
             }
             else {
                 this.el.classList.remove('multiple');
-            }
-        }
-        if (inputs['disabled']) {
-            if (inputs['disabled'].currentValue) {
-                this.el.setAttribute('disabled', 'disabled');
-            }
-            else {
-                this.el.removeAttribute('disabled');
-            }
-        }
-        if (inputs['required']) {
-            if (inputs['required'].currentValue) {
-                this.el.setAttribute('required', 'required');
-            }
-            else {
-                this.el.removeAttribute('required');
             }
         }
     };
@@ -312,6 +289,7 @@ var ViborComponent = (function () {
         this.onTouched = fn;
     };
     ViborComponent.prototype.setDisabledState = function (isDisabled) {
+        this.disabled = isDisabled;
         if (isDisabled) {
             this.el.setAttribute('disabled', 'disabled');
         }
@@ -493,7 +471,6 @@ ViborComponent.propDecorators = {
     'placeholder': [{ type: core_1.Input },],
     'name': [{ type: core_1.Input },],
     'required': [{ type: core_1.Input },],
-    'disabled': [{ type: core_1.Input },],
     'bothTemplate': [{ type: core_1.ContentChild, args: [vibor_template_directive_1.ViborBothDirective,] },],
     'dropdownTemplate': [{ type: core_1.ContentChild, args: [vibor_template_directive_1.ViborDropdownDirective,] },],
     'selectedTemplate': [{ type: core_1.ContentChild, args: [vibor_template_directive_1.ViborSelectedDirective,] },],

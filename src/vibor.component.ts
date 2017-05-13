@@ -145,7 +145,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
   @Input() public placeholder = 'Vibor';
   @Input() public name: string;
   @Input() public required = false;
-  @Input() public disabled = false;
+  public disabled = false;
 
   // Отображение списков
   @ContentChild(ViborBothDirective) public bothTemplate: ViborBothDirective;
@@ -384,9 +384,6 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
   }
 
   public ngOnChanges(inputs: SimpleChanges): void {
-    if (inputs['_model'] && inputs['_model'].currentValue === undefined) {
-      this.Model = undefined;
-    }
     if (inputs['canClean']) {
       if (inputs['canClean'].currentValue) {
         this.el.classList.add('cleanMode');
@@ -394,6 +391,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
         this.el.classList.remove('cleanMode');
       }
     }
+
     if (inputs['dataList'] && inputs['dataList'].currentValue) {
       // Output
       if (this.Model === undefined || this.Model == null) {
@@ -405,28 +403,12 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
         this.Output = [this.Model];
       }
     }
+
     if (inputs['multiple']) {
-      if (!('_model' in inputs)) {
-        setTimeout(() => this.Model = undefined, 10); // Костыль, надо бы исправить
-      }
       if (inputs['multiple'].currentValue) {
         this.el.classList.add('multiple');
       } else {
         this.el.classList.remove('multiple');
-      }
-    }
-    if (inputs['disabled']) {
-      if (inputs['disabled'].currentValue) {
-        this.el.setAttribute('disabled', 'disabled');
-      } else {
-        this.el.removeAttribute('disabled');
-      }
-    }
-    if (inputs['required']) {
-      if (inputs['required'].currentValue) {
-        this.el.setAttribute('required', 'required');
-      } else {
-        this.el.removeAttribute('required');
       }
     }
   }
@@ -460,6 +442,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
   }
 
   public setDisabledState(isDisabled: boolean) {
+      this.disabled = isDisabled;
       if (isDisabled) {
         this.el.setAttribute('disabled', 'disabled');
       } else {
@@ -584,9 +567,8 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
     return undefined;
   }
 
+
   // CACHE
-
-
   private cacheLazyData: any = {};
 }
 
