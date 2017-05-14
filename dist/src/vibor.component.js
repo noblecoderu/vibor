@@ -460,11 +460,12 @@ var ViborComponent = (function () {
     Object.defineProperty(ViborComponent.prototype, "ShowNew", {
         get: function () {
             var _this = this;
-            var t = this.newMessage && (!this.dataListSub || this.dataListSub.closed);
+            var a = this.newMessage && (!this.dataListSub || this.dataListSub.closed);
             // TODO: Check this
-            return t && this.Options.findIndex(function (o) {
-                return deepEqual(helpers_1.fetchFromObject(o, _this.modelProperty), _this.query);
+            var b = this.Options.length === 0 || this.Options.findIndex(function (o) {
+                return deepEqual(helpers_1.fetchFromObject(o, _this.viewProperty), _this.query);
             }) === -1;
+            return a && b;
         },
         enumerable: true,
         configurable: true

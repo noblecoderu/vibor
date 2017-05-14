@@ -581,11 +581,14 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
   }
 
   get ShowNew(): boolean {
-    let t = this.newMessage && (!this.dataListSub || this.dataListSub.closed);
+    let a = this.newMessage && (!this.dataListSub || this.dataListSub.closed);
     // TODO: Check this
-    return t && this.Options.findIndex(o => {
-        return deepEqual(fetchFromObject(o, this.modelProperty), this.query);
-      }) === -1;
+
+    let b = this.Options.length === 0 || this.Options.findIndex(o => {
+      return deepEqual(fetchFromObject(o, this.viewProperty), this.query);
+    }) === -1;
+
+    return a && b;
   }
 
 
