@@ -129,7 +129,7 @@ var ViborComponent = (function () {
                 if (totalNumItem > 0) {
                     this.selectOne(event, this.Options[this.selectorPosition]);
                 }
-                else if (this.newMessage && (!this.dataListSub || this.dataListSub.closed)) {
+                else if (this.ShowNew) {
                     this.AddNewObject(this.CreateNew(this.query));
                 }
                 break;
