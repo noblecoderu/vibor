@@ -393,16 +393,11 @@ var ViborComponent = (function () {
             var newOutput = [];
             for (var _i = 0, newValue_1 = newValue; _i < newValue_1.length; _i++) {
                 var v = newValue_1[_i];
-                if (dataList.length) {
-                    for (var _a = 0, dataList_1 = dataList; _a < dataList_1.length; _a++) {
-                        var d = dataList_1[_a];
-                        if (deepEqual(helpers_1.fetchFromObject(d, this.modelProperty), v)) {
-                            newOutput.push(d);
-                        }
+                for (var _a = 0, dataList_1 = dataList; _a < dataList_1.length; _a++) {
+                    var d = dataList_1[_a];
+                    if (deepEqual(helpers_1.fetchFromObject(d, this.modelProperty), v)) {
+                        newOutput.push(d);
                     }
-                }
-                else {
-                    newOutput.push(v);
                 }
             }
             this.output = newOutput;
@@ -428,7 +423,7 @@ var ViborComponent = (function () {
             }
             return options.filter(function (op) {
                 return _this.output.findIndex(function (o) {
-                    return deepEqual(helpers_1.fetchFromObject(o, _this.modelProperty), helpers_1.fetchFromObject(op, _this.modelProperty));
+                    return deepEqual(helpers_1.fetchFromObject(o, _this.modelProperty).valueOf(), helpers_1.fetchFromObject(op, _this.modelProperty).valueOf());
                 }) === -1;
             });
         },
@@ -451,18 +446,22 @@ var ViborComponent = (function () {
             this.dataList.push(value);
         }
         else if (this.dataList instanceof Function) {
-            // TODO: Добавить во все кеши
-            this.CurrentCache.countElement++;
-            this.CurrentCache.objects.push(value);
+            for (var cacheKey in this.cacheLazyData) {
+                if (this.query.includes(cacheKey)) {
+                    this.cacheLazyData[cacheKey].countElement++;
+                    this.cacheLazyData[cacheKey].objects.push(value);
+                }
+            }
         }
         this.selectOne(new MouseEvent('click'), value);
     };
     Object.defineProperty(ViborComponent.prototype, "ShowNew", {
         get: function () {
             var _this = this;
-            var a = this.newMessage && (!this.dataListSub || this.dataListSub.closed);
-            // TODO: Check this
-            var b = this.Options.length === 0 || this.Options.findIndex(function (o) {
+            var a = this.query && this.newMessage && (!this.dataListSub || this.dataListSub.closed);
+            var b = this.Options.findIndex(function (o) {
+                return deepEqual(helpers_1.fetchFromObject(o, _this.viewProperty), _this.query);
+            }) === -1 && this.output.findIndex(function (o) {
                 return deepEqual(helpers_1.fetchFromObject(o, _this.viewProperty), _this.query);
             }) === -1;
             return a && b;

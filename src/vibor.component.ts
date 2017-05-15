@@ -272,7 +272,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
       case 13: // ENTER, choose it!!
         if (totalNumItem > 0) {
           this.selectOne(event, this.Options[this.selectorPosition]);
-        } else if (this.newMessage && (!this.dataListSub || this.dataListSub.closed)) {
+        } else if (this.ShowNew) {
           this.AddNewObject(this.CreateNew(this.query));
         }
         break;
@@ -527,14 +527,10 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
     }
     let newOutput: Array<any> = [];
     for (let v of newValue) {
-      if (dataList.length) {
-        for (let d of dataList) {
-          if (deepEqual(fetchFromObject(d, this.modelProperty), v)) {
-            newOutput.push(d);
-          }
+      for (let d of dataList) {
+        if (deepEqual(fetchFromObject(d, this.modelProperty), v)) {
+          newOutput.push(d);
         }
-      } else {
-        newOutput.push(v);
       }
     }
     this.output = newOutput;
@@ -554,7 +550,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
     }
     return options.filter(op => {
       return this.output.findIndex(o => {
-        return deepEqual(fetchFromObject(o, this.modelProperty), fetchFromObject(op, this.modelProperty));
+        return deepEqual(fetchFromObject(o, this.modelProperty).valueOf(), fetchFromObject(op, this.modelProperty).valueOf());
       }) === -1;
     });
   }
@@ -572,19 +568,23 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
       if (this.dataList instanceof Array) {
         this.dataList.push(value);
       } else if (this.dataList instanceof Function) {
-        // TODO: Добавить во все кеши
-        this.CurrentCache.countElement++;
-        this.CurrentCache.objects.push(value);
+        for (let cacheKey in this.cacheLazyData) {
+          if (this.query.includes(cacheKey)) {
+            this.cacheLazyData[cacheKey].countElement++;
+            this.cacheLazyData[cacheKey].objects.push(value);
+          }
+        }
       }
 
       this.selectOne(new MouseEvent('click'), value);
   }
 
   get ShowNew(): boolean {
-    let a = this.newMessage && (!this.dataListSub || this.dataListSub.closed);
-    // TODO: Check this
+    let a = this.query && this.newMessage && (!this.dataListSub || this.dataListSub.closed);
 
-    let b = this.Options.length === 0 || this.Options.findIndex(o => {
+    let b = this.Options.findIndex(o => {
+      return deepEqual(fetchFromObject(o, this.viewProperty), this.query);
+    }) === -1 && this.output.findIndex(o => {
       return deepEqual(fetchFromObject(o, this.viewProperty), this.query);
     }) === -1;
 
@@ -593,7 +593,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
 
 
   // CACHE
-  private cacheLazyData: any = {};
+  private cacheLazyData: {[key: string]: CacheInfo} = {};
 }
 
 export interface CacheInfo {
