@@ -11,3 +11,7 @@ export declare class ViborBothDirective {
     templateRef: TemplateRef<any>;
     constructor(templateRef: TemplateRef<any>);
 }
+export declare class ViborCreateDirective {
+    templateRef: TemplateRef<any>;
+    constructor(templateRef: TemplateRef<any>);
+}

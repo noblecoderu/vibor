@@ -2,7 +2,7 @@ import { OnInit, OnChanges, EventEmitter, ElementRef, TemplateRef, SimpleChanges
 import { ControlValueAccessor, NgModel } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
-import { ViborBothDirective, ViborDropdownDirective, ViborSelectedDirective } from './vibor.template.directive';
+import { ViborBothDirective, ViborCreateDirective, ViborDropdownDirective, ViborSelectedDirective } from './vibor.template.directive';
 import { IDataResponse } from './helpers';
 export declare class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
     _model: any;
@@ -27,6 +27,7 @@ export declare class ViborComponent implements OnInit, OnChanges, ControlValueAc
     bothTemplate: ViborBothDirective;
     dropdownTemplate: ViborDropdownDirective;
     selectedTemplate: ViborSelectedDirective;
+    createTemplate: ViborCreateDirective;
     listFormatter: (arg: any, value: string) => string;
     dropdownFormatter: (arg: any, value: string) => string;
     viewProperty: string;

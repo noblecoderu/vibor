@@ -13,6 +13,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 
 import { ViborBothDirective,
+         ViborCreateDirective,
          ViborDropdownDirective,
          ViborSelectedDirective } from './vibor.template.directive';
 
@@ -91,6 +92,14 @@ const template =  `
             <li class="select-dropdown-optgroup-option loader"
                 (mousedown)="AddNewObject(CreateNew(query));"
                 *ngIf="ShowNew">
+
+                <ng-container *ngIf="createTemplate; else templateWithMessage">
+                    <ng-container *ngTemplateOutlet="createTemplate; context: {query: query}"></ng-container>
+                </ng-container>
+
+                <ng-template #templateWithMessage>
+                </ng-template>
+
                 {{ newMessage }}
             </li>
         </ul>
@@ -151,6 +160,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
   @ContentChild(ViborBothDirective) public bothTemplate: ViborBothDirective;
   @ContentChild(ViborDropdownDirective) public dropdownTemplate: ViborDropdownDirective;
   @ContentChild(ViborSelectedDirective) public selectedTemplate: ViborSelectedDirective;
+  @ContentChild(ViborCreateDirective) public createTemplate: ViborCreateDirective;
   @Input() public listFormatter: (arg: any, value: string) => string;
   @Input() public dropdownFormatter: (arg: any, value: string) => string;
   @Input() public viewProperty = 'Name';  // Поле для дефолтного отображения

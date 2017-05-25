@@ -20,10 +20,10 @@ ViborModule.decorators = [
                     common_1.CommonModule, forms_1.FormsModule
                 ],
                 declarations: [
-                    vibor_component_1.ViborComponent, vibor_template_directive_1.ViborBothDirective, vibor_template_directive_1.ViborDropdownDirective, vibor_template_directive_1.ViborSelectedDirective
+                    vibor_component_1.ViborComponent, vibor_template_directive_1.ViborBothDirective, vibor_template_directive_1.ViborDropdownDirective, vibor_template_directive_1.ViborSelectedDirective, vibor_template_directive_1.ViborCreateDirective
                 ],
                 exports: [
-                    vibor_component_1.ViborComponent, vibor_template_directive_1.ViborBothDirective, vibor_template_directive_1.ViborDropdownDirective, vibor_template_directive_1.ViborSelectedDirective
+                    vibor_component_1.ViborComponent, vibor_template_directive_1.ViborBothDirective, vibor_template_directive_1.ViborDropdownDirective, vibor_template_directive_1.ViborSelectedDirective, vibor_template_directive_1.ViborCreateDirective
                 ]
             },] },
 ];

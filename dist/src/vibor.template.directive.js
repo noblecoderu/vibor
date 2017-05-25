@@ -43,4 +43,18 @@ ViborBothDirective.ctorParameters = function () { return [
     { type: core_1.TemplateRef, },
 ]; };
 exports.ViborBothDirective = ViborBothDirective;
+var ViborCreateDirective = (function () {
+    function ViborCreateDirective(templateRef) {
+        this.templateRef = templateRef;
+    }
+    return ViborCreateDirective;
+}());
+ViborCreateDirective.decorators = [
+    { type: core_1.Directive, args: [{ selector: '[vibor-create]' },] },
+];
+/** @nocollapse */
+ViborCreateDirective.ctorParameters = function () { return [
+    { type: core_1.TemplateRef, },
+]; };
+exports.ViborCreateDirective = ViborCreateDirective;
 //# sourceMappingURL=vibor.template.directive.js.map
