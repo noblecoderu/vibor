@@ -94,13 +94,13 @@ const template =  `
                 *ngIf="ShowNew">
 
                 <ng-container *ngIf="createTemplate; else templateWithMessage">
-                    <ng-container *ngTemplateOutlet="createTemplate; context: {query: query}"></ng-container>
+                    <ng-container *ngTemplateOutlet="createTemplate.templateRef; context: {query: query}"></ng-container>
                 </ng-container>
 
                 <ng-template #templateWithMessage>
+                    {{ newMessage }}
                 </ng-template>
 
-                {{ newMessage }}
             </li>
         </ul>
         <div class="select-dropdown-pager" *ngIf="CurrentCache && CurrentCache.countPages > 1">

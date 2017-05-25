@@ -325,12 +325,19 @@ function View_ViborComponent_14(l) {
     ], function (ck, v) {
         var co = v.component;
         var currVal_0 = ck(v, 4, 0, co.query);
-        var currVal_1 = co.createTemplate;
+        var currVal_1 = co.createTemplate.templateRef;
         ck(v, 3, 0, currVal_0, currVal_1);
     }, null);
 }
 function View_ViborComponent_16(l) {
-    return import0.ɵvid(0, [(l()(), import0.ɵted(null, ['\n                ']))], null, null);
+    return import0.ɵvid(0, [(l()(), import0.ɵted(null, [
+            '\n                    ',
+            '\n                '
+        ]))], null, function (ck, v) {
+        var co = v.component;
+        var currVal_0 = co.newMessage;
+        ck(v, 0, 0, currVal_0);
+    });
 }
 function View_ViborComponent_13(l) {
     return import0.ɵvid(0, [
@@ -372,20 +379,13 @@ function View_ViborComponent_13(l) {
                 2
             ]
         ], null, 0, null, View_ViborComponent_16)),
-        (l()(), import0.ɵted(null, [
-            '\n\n                ',
-            '\n            '
-        ]))
+        (l()(), import0.ɵted(null, ['\n\n            ']))
     ], function (ck, v) {
         var co = v.component;
         var currVal_0 = co.createTemplate;
         var currVal_1 = import0.ɵnov(v, 5);
         ck(v, 3, 0, currVal_0, currVal_1);
-    }, function (ck, v) {
-        var co = v.component;
-        var currVal_2 = co.newMessage;
-        ck(v, 6, 0, currVal_2);
-    });
+    }, null);
 }
 function View_ViborComponent_18(l) {
     return import0.ɵvid(0, [
