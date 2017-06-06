@@ -28,10 +28,7 @@ var ViborComponent = (function () {
         this.changeFullModel = new core_1.EventEmitter();
         this.newMessage = undefined;
         this.CreateNew = function (query) {
-            return {
-                id: query,
-                Name: query
-            };
+            return query;
         };
         this.delay = (function () {
             var timer = 0;

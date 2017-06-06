@@ -177,10 +177,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
 
   @Input() public newMessage: string = undefined;
   @Input() public CreateNew: (query: string) => any = (query: string) => {
-    return {
-      id: query,
-      Name: query
-    };
+    return query
   }
 
 
