@@ -27,25 +27,25 @@ const deepEqual = require('deep-equal');
 const template =  `
   <ng-content></ng-content>
 
-  <div class="select-search">
+  <div class="select-search" (click)="showDropdownList();">
       <ul class="select-search-list">
-            <ng-container *ngIf="!SelectedTemplate">
+            <ng-container *ngIf="!SelectedTemplate; else selectedT">
                 <li class="select-search-list-item select-search-list-item_selection"
                     *ngFor="let item of output; let $index=index; let $last=last; trackBy: TrackByFn;"
-                    [class.focused]="backspaceFocus && last"
-                    (click)="!disabled && removeOne($index)"
-                    [innerHTML]="getListFormatted(item)">
+                    [class.focused]="backspaceFocus && last">
+                    <div [innerHTML]="getListFormatted(item)"></div>
+                    <a class="select-search-list-item_remove" (click)="!disabled && removeOne($index)">✕</a>
                 </li>
             </ng-container>
 
-            <ng-container *ngIf="SelectedTemplate">
+            <ng-template #selectedT>
                 <li class="select-search-list-item select-search-list-item_selection"
                     *ngFor="let item of output; let $index=index; let $last=last; trackBy: TrackByFn;"
-                    [class.focused]="backspaceFocus && last"
-                    (click)="!disabled && removeOne($index)">
+                    [class.focused]="backspaceFocus && last">
                     <ng-container *ngTemplateOutlet="SelectedTemplate; context: {item: item}"></ng-container>
+                    <a class="select-search-list-item_remove" (click)="!disabled && removeOne($index)">✕</a>
                 </li>
-            </ng-container>
+            </ng-template>
 
             <li class="select-search-list-item select-search-list-item_input"
                 [class.select-search-list-item_hide]="InputHide">
@@ -66,9 +66,10 @@ const template =  `
 
         </ul>
     </div>
+
     <div class="select-dropdown" *ngIf="isOpen">
         <ul class="select-dropdown-optgroup">
-            <ng-container *ngIf="!DropdownTemplate">
+            <ng-container *ngIf="!DropdownTemplate; else dropdownT">
                 <li class="select-dropdown-optgroup-option"
                     *ngFor="let option of Options; let i=index"
                     (mousedown)="selectOne($event, option)"
@@ -77,14 +78,14 @@ const template =  `
                 </li>
             </ng-container>
 
-            <ng-container *ngIf="DropdownTemplate">
+            <ng-template #dropdownT>
                 <li class="select-dropdown-optgroup-option"
                     *ngFor="let option of Options; let i=index"
                     (mousedown)="selectOne($event, option)"
                     [class.active]="i === selectorPosition">
                     <ng-container *ngTemplateOutlet="DropdownTemplate; context: {item: option}"></ng-container>
                 </li>
-            </ng-container>
+            </ng-template>
 
             <li class="select-dropdown-optgroup-option loader" *ngIf="dataListSub && !dataListSub.closed">
                 Загрузка
@@ -148,7 +149,6 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
 
   // Inputs & Outputs
   @Input() public multiple = false;
-  @Input() public canClean = false;
   @Input() public multipleLimit = 5;
 
   @Input() public placeholder = 'Vibor';
@@ -390,14 +390,6 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
   }
 
   public ngOnChanges(inputs: SimpleChanges): void {
-    if (inputs['canClean']) {
-      if (inputs['canClean'].currentValue) {
-        this.el.classList.add('cleanMode');
-      } else {
-        this.el.classList.remove('cleanMode');
-      }
-    }
-
     if (inputs['dataList'] && inputs['dataList'].currentValue) {
       // Output
       if (this.Model === undefined || this.Model == null) {
