@@ -18,7 +18,6 @@ export declare class ViborComponent implements OnInit, OnChanges, ControlValueAc
     private inputEl;
     inputControl: NgModel;
     multiple: boolean;
-    canClean: boolean;
     multipleLimit: number;
     placeholder: string;
     name: string;
@@ -42,7 +41,7 @@ export declare class ViborComponent implements OnInit, OnChanges, ControlValueAc
     CreateNew: (query: string) => any;
     dataListSub: Subscription;
     TrackByFn(index: number): any;
-    showDropdownList(): void;
+    showDropdownList(event: FocusEvent | MouseEvent): void;
     hideDropdownList(): void;
     private delay;
     updateOptions(): void;
@@ -52,7 +51,7 @@ export declare class ViborComponent implements OnInit, OnChanges, ControlValueAc
     nextPage($event: Event): void;
     private clearProperty();
     selectOne($event: MouseEvent | KeyboardEvent, data: any): void;
-    removeOne(index: number): void;
+    removeOne(index: number, event: Event): void;
     readonly SelectedTemplate: TemplateRef<any>;
     readonly DropdownTemplate: TemplateRef<any>;
     getListFormatted(data: any): string;

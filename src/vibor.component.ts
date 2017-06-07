@@ -27,14 +27,14 @@ const deepEqual = require('deep-equal');
 const template =  `
   <ng-content></ng-content>
 
-  <div class="select-search" (click)="showDropdownList();">
+  <div class="select-search" (click)="showDropdownList($event);">
       <ul class="select-search-list">
             <ng-container *ngIf="!SelectedTemplate; else selectedT">
                 <li class="select-search-list-item select-search-list-item_selection"
                     *ngFor="let item of output; let $index=index; let $last=last; trackBy: TrackByFn;"
                     [class.focused]="backspaceFocus && last">
                     <div [innerHTML]="getListFormatted(item)"></div>
-                    <a class="select-search-list-item_remove" (click)="!disabled && removeOne($index)">✕</a>
+                    <a class="select-search-list-item_remove" (click)="!disabled && removeOne($index, $event)">✕</a>
                 </li>
             </ng-container>
 
@@ -43,7 +43,7 @@ const template =  `
                     *ngFor="let item of output; let $index=index; let $last=last; trackBy: TrackByFn;"
                     [class.focused]="backspaceFocus && last">
                     <ng-container *ngTemplateOutlet="SelectedTemplate; context: {item: item}"></ng-container>
-                    <a class="select-search-list-item_remove" (click)="!disabled && removeOne($index)">✕</a>
+                    <a class="select-search-list-item_remove" (click)="!disabled && removeOne($index, $event)">✕</a>
                 </li>
             </ng-template>
 
@@ -57,7 +57,6 @@ const template =  `
                        [placeholder]="output.length == 0 ? placeholder : \'\'"
                        (input)="updateOptionsInDelay()"
                        (blur)="hideDropdownList()"
-                       (focus)="showDropdownList()"
                        (keydown)="keyDown($event)"/>
             </li>
             <li class="select-search-list-item" [hidden]="!dataListSub || dataListSub.closed">
@@ -190,7 +189,12 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
     return index;
   }
 
-  public showDropdownList(): void {
+  public showDropdownList(event: FocusEvent | MouseEvent): void {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
     this.el.classList.add('open-vibor');
     this.inputEl.focus();
     this.updateOptions();
@@ -339,7 +343,12 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
     $event.preventDefault();
   };
 
-  public removeOne(index: number): void {
+  public removeOne(index: number, event: Event): void {
+    if (event) {
+      event.stopPropagation();
+    }
+
+
     this.output.splice(index, 1);
     this.Model = this.ValueFromOutput;
 
@@ -349,7 +358,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
 
     // open dropdown
     if (this.required) {
-      this.showDropdownList();
+      this.showDropdownList(undefined);
     }
   }
 

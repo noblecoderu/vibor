@@ -5,7 +5,7 @@ var forms_1 = require("@angular/forms");
 var vibor_template_directive_1 = require("./vibor.template.directive");
 var helpers_1 = require("./helpers");
 var deepEqual = require('deep-equal');
-var template = "\n  <ng-content></ng-content>\n\n  <div class=\"select-search\" (click)=\"showDropdownList();\">\n      <ul class=\"select-search-list\">\n            <ng-container *ngIf=\"!SelectedTemplate; else selectedT\">\n                <li class=\"select-search-list-item select-search-list-item_selection\"\n                    *ngFor=\"let item of output; let $index=index; let $last=last; trackBy: TrackByFn;\"\n                    [class.focused]=\"backspaceFocus && last\">\n                    <div [innerHTML]=\"getListFormatted(item)\"></div>\n                    <a class=\"select-search-list-item_remove\" (click)=\"!disabled && removeOne($index)\">\u2715</a>\n                </li>\n            </ng-container>\n\n            <ng-template #selectedT>\n                <li class=\"select-search-list-item select-search-list-item_selection\"\n                    *ngFor=\"let item of output; let $index=index; let $last=last; trackBy: TrackByFn;\"\n                    [class.focused]=\"backspaceFocus && last\">\n                    <ng-container *ngTemplateOutlet=\"SelectedTemplate; context: {item: item}\"></ng-container>\n                    <a class=\"select-search-list-item_remove\" (click)=\"!disabled && removeOne($index)\">\u2715</a>\n                </li>\n            </ng-template>\n\n            <li class=\"select-search-list-item select-search-list-item_input\"\n                [class.select-search-list-item_hide]=\"InputHide\">\n                <input autocomplete=\"off\"\n                       #inputControl=\"ngModel\"\n                       [name]=\"name\"\n                       [disabled]=\"disabled\"\n                       [(ngModel)]=\"query\"\n                       [placeholder]=\"output.length == 0 ? placeholder : ''\"\n                       (input)=\"updateOptionsInDelay()\"\n                       (blur)=\"hideDropdownList()\"\n                       (focus)=\"showDropdownList()\"\n                       (keydown)=\"keyDown($event)\"/>\n            </li>\n            <li class=\"select-search-list-item\" [hidden]=\"!dataListSub || dataListSub.closed\">\n                <div class=\"select-search-list-item_loader\"></div>\n            </li>\n\n        </ul>\n    </div>\n\n    <div class=\"select-dropdown\" *ngIf=\"isOpen\">\n        <ul class=\"select-dropdown-optgroup\">\n            <ng-container *ngIf=\"!DropdownTemplate; else dropdownT\">\n                <li class=\"select-dropdown-optgroup-option\"\n                    *ngFor=\"let option of Options; let i=index\"\n                    (mousedown)=\"selectOne($event, option)\"\n                    [class.active]=\"i === selectorPosition\"\n                    [innerHTML]=\"getDropdownFormatted(option)\">\n                </li>\n            </ng-container>\n\n            <ng-template #dropdownT>\n                <li class=\"select-dropdown-optgroup-option\"\n                    *ngFor=\"let option of Options; let i=index\"\n                    (mousedown)=\"selectOne($event, option)\"\n                    [class.active]=\"i === selectorPosition\">\n                    <ng-container *ngTemplateOutlet=\"DropdownTemplate; context: {item: option}\"></ng-container>\n                </li>\n            </ng-template>\n\n            <li class=\"select-dropdown-optgroup-option loader\" *ngIf=\"dataListSub && !dataListSub.closed\">\n                \u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430\n            </li>\n            <li class=\"select-dropdown-optgroup-option loader\"\n                (mousedown)=\"AddNewObject(CreateNew(query));\"\n                *ngIf=\"ShowNew\">\n\n                <ng-container *ngIf=\"createTemplate; else templateWithMessage\">\n                    <ng-container *ngTemplateOutlet=\"createTemplate.templateRef; context: {query: query}\"></ng-container>\n                </ng-container>\n\n                <ng-template #templateWithMessage>\n                    {{ newMessage }}\n                </ng-template>\n\n            </li>\n        </ul>\n        <div class=\"select-dropdown-pager\" *ngIf=\"CurrentCache && CurrentCache.countPages > 1\">\n            <p class=\"select-dropdown-pager-page\">\n                {{ CurrentCache.currentPage | number }} / {{ CurrentCache.countPages | number }}\n            </p>\n            <button\n                class=\"select-dropdown-pager-loadmore\"\n                    *ngIf=\"CurrentCache.countPages > 1 && CurrentCache.currentPage < CurrentCache.countPages\"\n                    (mousedown)=\"nextPage($event)\">\n                \u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044C \u0435\u0449\u0451\n            </button>\n        </div>\n    </div>";
+var template = "\n  <ng-content></ng-content>\n\n  <div class=\"select-search\" (click)=\"showDropdownList($event);\">\n      <ul class=\"select-search-list\">\n            <ng-container *ngIf=\"!SelectedTemplate; else selectedT\">\n                <li class=\"select-search-list-item select-search-list-item_selection\"\n                    *ngFor=\"let item of output; let $index=index; let $last=last; trackBy: TrackByFn;\"\n                    [class.focused]=\"backspaceFocus && last\">\n                    <div [innerHTML]=\"getListFormatted(item)\"></div>\n                    <a class=\"select-search-list-item_remove\" (click)=\"!disabled && removeOne($index, $event)\">\u2715</a>\n                </li>\n            </ng-container>\n\n            <ng-template #selectedT>\n                <li class=\"select-search-list-item select-search-list-item_selection\"\n                    *ngFor=\"let item of output; let $index=index; let $last=last; trackBy: TrackByFn;\"\n                    [class.focused]=\"backspaceFocus && last\">\n                    <ng-container *ngTemplateOutlet=\"SelectedTemplate; context: {item: item}\"></ng-container>\n                    <a class=\"select-search-list-item_remove\" (click)=\"!disabled && removeOne($index, $event)\">\u2715</a>\n                </li>\n            </ng-template>\n\n            <li class=\"select-search-list-item select-search-list-item_input\"\n                [class.select-search-list-item_hide]=\"InputHide\">\n                <input autocomplete=\"off\"\n                       #inputControl=\"ngModel\"\n                       [name]=\"name\"\n                       [disabled]=\"disabled\"\n                       [(ngModel)]=\"query\"\n                       [placeholder]=\"output.length == 0 ? placeholder : ''\"\n                       (input)=\"updateOptionsInDelay()\"\n                       (blur)=\"hideDropdownList()\"\n                       (keydown)=\"keyDown($event)\"/>\n            </li>\n            <li class=\"select-search-list-item\" [hidden]=\"!dataListSub || dataListSub.closed\">\n                <div class=\"select-search-list-item_loader\"></div>\n            </li>\n\n        </ul>\n    </div>\n\n    <div class=\"select-dropdown\" *ngIf=\"isOpen\">\n        <ul class=\"select-dropdown-optgroup\">\n            <ng-container *ngIf=\"!DropdownTemplate; else dropdownT\">\n                <li class=\"select-dropdown-optgroup-option\"\n                    *ngFor=\"let option of Options; let i=index\"\n                    (mousedown)=\"selectOne($event, option)\"\n                    [class.active]=\"i === selectorPosition\"\n                    [innerHTML]=\"getDropdownFormatted(option)\">\n                </li>\n            </ng-container>\n\n            <ng-template #dropdownT>\n                <li class=\"select-dropdown-optgroup-option\"\n                    *ngFor=\"let option of Options; let i=index\"\n                    (mousedown)=\"selectOne($event, option)\"\n                    [class.active]=\"i === selectorPosition\">\n                    <ng-container *ngTemplateOutlet=\"DropdownTemplate; context: {item: option}\"></ng-container>\n                </li>\n            </ng-template>\n\n            <li class=\"select-dropdown-optgroup-option loader\" *ngIf=\"dataListSub && !dataListSub.closed\">\n                \u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430\n            </li>\n            <li class=\"select-dropdown-optgroup-option loader\"\n                (mousedown)=\"AddNewObject(CreateNew(query));\"\n                *ngIf=\"ShowNew\">\n\n                <ng-container *ngIf=\"createTemplate; else templateWithMessage\">\n                    <ng-container *ngTemplateOutlet=\"createTemplate.templateRef; context: {query: query}\"></ng-container>\n                </ng-container>\n\n                <ng-template #templateWithMessage>\n                    {{ newMessage }}\n                </ng-template>\n\n            </li>\n        </ul>\n        <div class=\"select-dropdown-pager\" *ngIf=\"CurrentCache && CurrentCache.countPages > 1\">\n            <p class=\"select-dropdown-pager-page\">\n                {{ CurrentCache.currentPage | number }} / {{ CurrentCache.countPages | number }}\n            </p>\n            <button\n                class=\"select-dropdown-pager-loadmore\"\n                    *ngIf=\"CurrentCache.countPages > 1 && CurrentCache.currentPage < CurrentCache.countPages\"\n                    (mousedown)=\"nextPage($event)\">\n                \u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044C \u0435\u0449\u0451\n            </button>\n        </div>\n    </div>";
 var ViborComponent = (function () {
     function ViborComponent(elementRef) {
         this.firstLoad = false;
@@ -15,7 +15,6 @@ var ViborComponent = (function () {
         this.waitTime = 500;
         // Inputs & Outputs
         this.multiple = false;
-        this.canClean = false;
         this.multipleLimit = 5;
         this.placeholder = 'Vibor';
         this.required = false;
@@ -48,7 +47,11 @@ var ViborComponent = (function () {
     ViborComponent.prototype.TrackByFn = function (index) {
         return index;
     };
-    ViborComponent.prototype.showDropdownList = function () {
+    ViborComponent.prototype.showDropdownList = function (event) {
+        if (event) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
         this.el.classList.add('open-vibor');
         this.inputEl.focus();
         this.updateOptions();
@@ -185,7 +188,10 @@ var ViborComponent = (function () {
         $event.preventDefault();
     };
     ;
-    ViborComponent.prototype.removeOne = function (index) {
+    ViborComponent.prototype.removeOne = function (index, event) {
+        if (event) {
+            event.stopPropagation();
+        }
         this.output.splice(index, 1);
         this.Model = this.ValueFromOutput;
         // set class
@@ -193,7 +199,7 @@ var ViborComponent = (function () {
         this.inputControl.control.markAsTouched();
         // open dropdown
         if (this.required) {
-            this.showDropdownList();
+            this.showDropdownList(undefined);
         }
     };
     Object.defineProperty(ViborComponent.prototype, "SelectedTemplate", {
@@ -237,14 +243,6 @@ var ViborComponent = (function () {
         this.inputEl = (this.el.querySelector('input'));
     };
     ViborComponent.prototype.ngOnChanges = function (inputs) {
-        if (inputs['canClean']) {
-            if (inputs['canClean'].currentValue) {
-                this.el.classList.add('cleanMode');
-            }
-            else {
-                this.el.classList.remove('cleanMode');
-            }
-        }
         if (inputs['dataList'] && inputs['dataList'].currentValue) {
             // Output
             if (this.Model === undefined || this.Model == null) {
@@ -486,7 +484,6 @@ ViborComponent.ctorParameters = function () { return [
 ViborComponent.propDecorators = {
     'inputControl': [{ type: core_1.ViewChild, args: ['inputControl',] },],
     'multiple': [{ type: core_1.Input },],
-    'canClean': [{ type: core_1.Input },],
     'multipleLimit': [{ type: core_1.Input },],
     'placeholder': [{ type: core_1.Input },],
     'name': [{ type: core_1.Input },],
