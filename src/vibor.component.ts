@@ -91,6 +91,7 @@ const template =  `
             </li>
             <li class="select-dropdown-optgroup-option loader"
                 (mousedown)="AddNewObject(CreateNew(query));"
+                [class.active]="selectorPosition === Options.length"
                 *ngIf="ShowNew">
 
                 <ng-container *ngIf="createTemplate; else templateWithMessage">
@@ -266,6 +267,9 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
 
   public keyDown(event: KeyboardEvent): void {
     let totalNumItem: number = this.Options.length;
+
+    if (this.ShowNew) totalNumItem++;
+
     switch (event.keyCode) {
       case 27: // ESC, hide auto complete
         this.hideDropdownList();
@@ -282,7 +286,11 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
 
       case 13: // ENTER, choose it!!
         if (totalNumItem > 0) {
-          this.selectOne(event, this.Options[this.selectorPosition]);
+          if (this.selectorPosition === this.Options.length) {
+            this.AddNewObject(this.CreateNew(this.query));  
+          } else {
+            this.selectOne(event, this.Options[this.selectorPosition]);
+          }
         } else if (this.ShowNew) {
           this.AddNewObject(this.CreateNew(this.query));
         }

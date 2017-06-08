@@ -359,7 +359,12 @@ function View_ViborComponent_13(l) {
                 'class',
                 'select-dropdown-optgroup-option loader'
             ]
-        ], null, [[
+        ], [[
+                2,
+                'active',
+                null
+            ]
+        ], [[
                 null,
                 'mousedown'
             ]
@@ -396,10 +401,14 @@ function View_ViborComponent_13(l) {
         (l()(), import0.ɵted(null, ['\n\n            ']))
     ], function (ck, v) {
         var co = v.component;
-        var currVal_0 = co.createTemplate;
-        var currVal_1 = import0.ɵnov(v, 5);
-        ck(v, 3, 0, currVal_0, currVal_1);
-    }, null);
+        var currVal_1 = co.createTemplate;
+        var currVal_2 = import0.ɵnov(v, 5);
+        ck(v, 3, 0, currVal_1, currVal_2);
+    }, function (ck, v) {
+        var co = v.component;
+        var currVal_0 = (co.selectorPosition === co.Options.length);
+        ck(v, 0, 0, currVal_0);
+    });
 }
 function View_ViborComponent_18(l) {
     return import0.ɵvid(0, [
