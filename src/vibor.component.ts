@@ -29,23 +29,25 @@ const template =  `
 
   <div class="select-search" (click)="showDropdownList($event);">
       <ul class="select-search-list">
-            <ng-container *ngIf="!SelectedTemplate; else selectedT">
-                <li class="select-search-list-item select-search-list-item_selection"
-                    *ngFor="let item of output; let $index=index; let $last=last; trackBy: TrackByFn;"
-                    [class.focused]="backspaceFocus && last">
-                    <div [innerHTML]="getListFormatted(item)"></div>
-                    <a class="select-search-list-item_remove" (click)="!disabled && removeOne($index, $event)">✕</a>
-                </li>
-            </ng-container>
+            <ng-container *ngIf="multiple || !isOpen">
+              <ng-container *ngIf="!SelectedTemplate; else selectedT">
+                  <li class="select-search-list-item select-search-list-item_selection"
+                      *ngFor="let item of output; let $index=index; let $last=last; trackBy: TrackByFn;"
+                      [class.focused]="backspaceFocus && last">
+                      <div [innerHTML]="getListFormatted(item)"></div>
+                      <a class="select-search-list-item_remove" (click)="!disabled && removeOne($index, $event)">✕</a>
+                  </li>
+              </ng-container>
 
-            <ng-template #selectedT>
-                <li class="select-search-list-item select-search-list-item_selection"
-                    *ngFor="let item of output; let $index=index; let $last=last; trackBy: TrackByFn;"
-                    [class.focused]="backspaceFocus && last">
-                    <ng-container *ngTemplateOutlet="SelectedTemplate; context: {item: item}"></ng-container>
-                    <a class="select-search-list-item_remove" (click)="!disabled && removeOne($index, $event)">✕</a>
-                </li>
-            </ng-template>
+              <ng-template #selectedT>
+                  <li class="select-search-list-item select-search-list-item_selection"
+                      *ngFor="let item of output; let $index=index; let $last=last; trackBy: TrackByFn;"
+                      [class.focused]="backspaceFocus && last">
+                      <ng-container *ngTemplateOutlet="SelectedTemplate; context: {item: item}"></ng-container>
+                      <a class="select-search-list-item_remove" (click)="!disabled && removeOne($index, $event)">✕</a>
+                  </li>
+              </ng-template>
+            </ng-container>
 
             <li class="select-search-list-item select-search-list-item_input"
                 [class.select-search-list-item_hide]="InputHide">
@@ -499,7 +501,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
     if (this.multiple) {
       return this.output.length >= this.multipleLimit;
     } else {
-      return this.output.length === 1;
+      return this.output.length === 1 && !this.isOpen;
     }
   }
 
