@@ -56,7 +56,7 @@ const template =  `
                        [name]="name"
                        [disabled]="disabled"
                        [(ngModel)]="query"
-                       [placeholder]="output.length == 0 ? placeholder : \'\'"
+                       [placeholder]="output.length == 0 ? placeholder : ''"
                        (input)="updateOptionsInDelay()"
                        (blur)="hideDropdownList()"
                        (keydown)="keyDown($event)"/>
@@ -197,6 +197,8 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
       event.preventDefault();
       event.stopPropagation();
     }
+
+    if (this.multiple && this.output.length >= this.multipleLimit) return;
 
     this.el.classList.add('open-vibor');
     this.inputEl.focus();
@@ -341,9 +343,9 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
     // Фильтр ненужных событий
     if ($event instanceof MouseEvent && $event.button !== 0) { return; }
 
-    if (this.multiple) {
+    if (this.multiple && this.output.length < this.multipleLimit) {
       this.output.push(data);
-    } else {
+    } else if (!this.multiple) {
       this.output = [data];
     }
     this.changeFullModel.emit(this.output);

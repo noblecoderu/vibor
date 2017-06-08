@@ -52,6 +52,8 @@ var ViborComponent = (function () {
             event.preventDefault();
             event.stopPropagation();
         }
+        if (this.multiple && this.output.length >= this.multipleLimit)
+            return;
         this.el.classList.add('open-vibor');
         this.inputEl.focus();
         this.updateOptions();
@@ -182,10 +184,10 @@ var ViborComponent = (function () {
         if ($event instanceof MouseEvent && $event.button !== 0) {
             return;
         }
-        if (this.multiple) {
+        if (this.multiple && this.output.length < this.multipleLimit) {
             this.output.push(data);
         }
-        else {
+        else if (!this.multiple) {
             this.output = [data];
         }
         this.changeFullModel.emit(this.output);
