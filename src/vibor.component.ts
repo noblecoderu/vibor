@@ -58,13 +58,15 @@ const template =  `
                        [(ngModel)]="query"
                        [placeholder]="output.length == 0 ? placeholder : ''"
                        (input)="updateOptionsInDelay()"
-                       (blur)="hideDropdownList()"
+                       (blur)="hideDropdownListWithDelay()"
                        (keydown)="keyDown($event)"/>
             </li>
             <li class="select-search-list-item" [hidden]="!dataListSub || dataListSub.closed">
                 <div class="select-search-list-item_loader"></div>
             </li>
 
+            <span class="arrow" (click)="toggleDropdown($event)">
+            </span>
         </ul>
     </div>
 
@@ -179,7 +181,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
 
   @Input() public newMessage: string = undefined;
   @Input() public CreateNew: (query: string) => any = (query: string) => {
-    return query
+    return query;
   }
 
 
@@ -197,8 +199,11 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
       event.preventDefault();
       event.stopPropagation();
     }
+    console.log('Show', event);
 
-    if (this.multiple && this.output.length >= this.multipleLimit) return;
+    if (this.multiple && this.output.length >= this.multipleLimit) {
+      return;
+    }
 
     this.el.classList.add('open-vibor');
     this.inputEl.focus();
@@ -206,10 +211,29 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
     this.onTouched();
   }
 
-  public hideDropdownList(): void {
+  private hideDropdownList(): void {
     this.el.classList.remove('open-vibor');
     this.isOpen = false;
     this.inputEl.blur();
+  }
+
+  public hideDropdownListWithDelay(): void {
+    setTimeout(() => {
+      this.hideDropdownList();
+    }, 100);
+  }
+
+  public toggleDropdown(event: Event): void {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    if (this.isOpen) {
+      this.hideDropdownList();
+    } else {
+      this.showDropdownList(undefined);
+    }
   }
 
   private delay: Function = (function (): Function {
@@ -272,7 +296,9 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
   public keyDown(event: KeyboardEvent): void {
     let totalNumItem: number = this.Options.length;
 
-    if (this.ShowNew) totalNumItem++;
+    if (this.ShowNew) {
+      totalNumItem++;
+    }
 
     switch (event.keyCode) {
       case 27: // ESC, hide auto complete
@@ -291,7 +317,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
       case 13: // ENTER, choose it!!
         if (totalNumItem > 0) {
           if (this.selectorPosition === this.Options.length) {
-            this.AddNewObject(this.CreateNew(this.query));  
+            this.AddNewObject(this.CreateNew(this.query));
           } else {
             this.selectOne(event, this.Options[this.selectorPosition]);
           }

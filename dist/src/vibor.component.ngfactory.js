@@ -592,7 +592,7 @@ function View_ViborComponent_0(l) {
         (l()(), import0.ɵted(null, ['\n  '])),
         import0.ɵncd(null, 0),
         (l()(), import0.ɵted(null, ['\n\n  '])),
-        (l()(), import0.ɵeld(0, null, null, 22, 'div', [[
+        (l()(), import0.ɵeld(0, null, null, 25, 'div', [[
                 'class',
                 'select-search'
             ]
@@ -610,7 +610,7 @@ function View_ViborComponent_0(l) {
             return ad;
         }, null, null)),
         (l()(), import0.ɵted(null, ['\n      '])),
-        (l()(), import0.ɵeld(0, null, null, 19, 'ul', [[
+        (l()(), import0.ɵeld(0, null, null, 22, 'ul', [[
                 'class',
                 'select-search-list'
             ]
@@ -735,7 +735,7 @@ function View_ViborComponent_0(l) {
                 ad = (pd_5 && ad);
             }
             if (('blur' === en)) {
-                var pd_6 = (co.hideDropdownList() !== false);
+                var pd_6 = (co.hideDropdownListWithDelay() !== false);
                 ad = (pd_6 && ad);
             }
             if (('keydown' === en)) {
@@ -816,7 +816,26 @@ function View_ViborComponent_0(l) {
             ]
         ], null, null, null, null, null)),
         (l()(), import0.ɵted(null, ['\n            '])),
-        (l()(), import0.ɵted(null, ['\n\n        '])),
+        (l()(), import0.ɵted(null, ['\n\n            '])),
+        (l()(), import0.ɵeld(0, null, null, 1, 'span', [[
+                'class',
+                'arrow'
+            ]
+        ], null, [[
+                null,
+                'click'
+            ]
+        ], function (v, en, $event) {
+            var ad = true;
+            var co = v.component;
+            if (('click' === en)) {
+                var pd_0 = (co.toggleDropdown($event) !== false);
+                ad = (pd_0 && ad);
+            }
+            return ad;
+        }, null, null)),
+        (l()(), import0.ɵted(null, ['\n            '])),
+        (l()(), import0.ɵted(null, ['\n        '])),
         (l()(), import0.ɵted(null, ['\n    '])),
         (l()(), import0.ɵted(null, ['\n\n    '])),
         (l()(), import0.ɵand(16777216, null, null, 1, null, View_ViborComponent_7)),
@@ -837,7 +856,7 @@ function View_ViborComponent_0(l) {
         var currVal_12 = co.query;
         ck(v, 17, 0, currVal_10, currVal_11, currVal_12);
         var currVal_14 = co.isOpen;
-        ck(v, 30, 0, currVal_14);
+        ck(v, 33, 0, currVal_14);
     }, function (ck, v) {
         var co = v.component;
         var currVal_1 = co.InputHide;

@@ -42,7 +42,9 @@ export declare class ViborComponent implements OnInit, OnChanges, ControlValueAc
     dataListSub: Subscription;
     TrackByFn(index: number): any;
     showDropdownList(event: FocusEvent | MouseEvent): void;
-    hideDropdownList(): void;
+    private hideDropdownList();
+    hideDropdownListWithDelay(): void;
+    toggleDropdown(event: Event): void;
     private delay;
     updateOptions(): void;
     updateOptionsInDelay(): void;
