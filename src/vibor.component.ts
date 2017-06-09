@@ -180,7 +180,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
 
 
   @Input() public newMessage: string = undefined;
-  @Input() public CreateNew: (query: string) => any = (query: string) => {
+  @Input() public CreateNew: (query: string) => Observable<any> | any = (query: string) => {
     return query;
   }
 
@@ -610,19 +610,31 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
 
   // CreateNew
 
-  private AddNewObject(value: any): void {
-      if (this.dataList instanceof Array) {
-        this.dataList.push(value);
+  public AddNewObject(value: Observable<any> | any): void {
+    if (value instanceof Observable) {
+      value.subscribe(newObject => {
+        if (newObject !== undefined) {
+          this.SetNewObject(newObject);
+        }
+      });
+    } else {
+      this.SetNewObject(value);
+    }
+  }
+
+  private SetNewObject(newObject: any) {
+    if (this.dataList instanceof Array) {
+        this.dataList.push(newObject);
       } else if (this.dataList instanceof Function) {
         for (let cacheKey in this.cacheLazyData) {
           if (this.query.includes(cacheKey)) {
             this.cacheLazyData[cacheKey].countElement++;
-            this.cacheLazyData[cacheKey].objects.push(value);
+            this.cacheLazyData[cacheKey].objects.push(newObject);
           }
         }
       }
 
-      this.selectOne(new MouseEvent('click'), value);
+      this.selectOne(new MouseEvent('click'), newObject);
   }
 
   get ShowNew(): boolean {
