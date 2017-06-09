@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
+var Observable_1 = require("rxjs/Observable");
 var vibor_template_directive_1 = require("./vibor.template.directive");
 var helpers_1 = require("./helpers");
 var deepEqual = require('deep-equal');
@@ -467,18 +468,31 @@ var ViborComponent = (function () {
     });
     // CreateNew
     ViborComponent.prototype.AddNewObject = function (value) {
+        var _this = this;
+        if (value instanceof Observable_1.Observable) {
+            value.subscribe(function (newObject) {
+                if (newObject !== undefined) {
+                    _this.SetNewObject(newObject);
+                }
+            });
+        }
+        else {
+            this.SetNewObject(value);
+        }
+    };
+    ViborComponent.prototype.SetNewObject = function (newObject) {
         if (this.dataList instanceof Array) {
-            this.dataList.push(value);
+            this.dataList.push(newObject);
         }
         else if (this.dataList instanceof Function) {
             for (var cacheKey in this.cacheLazyData) {
                 if (this.query.includes(cacheKey)) {
                     this.cacheLazyData[cacheKey].countElement++;
-                    this.cacheLazyData[cacheKey].objects.push(value);
+                    this.cacheLazyData[cacheKey].objects.push(newObject);
                 }
             }
         }
-        this.selectOne(new MouseEvent('click'), value);
+        this.selectOne(new MouseEvent('click'), newObject);
     };
     Object.defineProperty(ViborComponent.prototype, "ShowNew", {
         get: function () {

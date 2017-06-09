@@ -38,7 +38,7 @@ export declare class ViborComponent implements OnInit, OnChanges, ControlValueAc
     onlyEmitter: boolean;
     changeFullModel: EventEmitter<any>;
     newMessage: string;
-    CreateNew: (query: string) => any;
+    CreateNew: (query: string) => Observable<any> | any;
     dataListSub: Subscription;
     TrackByFn(index: number): any;
     showDropdownList(event: FocusEvent | MouseEvent): void;
@@ -73,7 +73,8 @@ export declare class ViborComponent implements OnInit, OnChanges, ControlValueAc
     Output: Array<any>;
     readonly Options: Array<any>;
     readonly CurrentCache: CacheInfo | undefined;
-    private AddNewObject(value);
+    AddNewObject(value: Observable<any> | any): void;
+    private SetNewObject(newObject);
     readonly ShowNew: boolean;
     private cacheLazyData;
 }
