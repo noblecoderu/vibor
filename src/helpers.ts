@@ -11,7 +11,7 @@ export function fetchFromObject(object: any, prop: string): any {
 
     let _index: number = prop.indexOf('.');
     if (_index > -1) {
-        return fetchFromObject(object[prop.substring(0, _index)], prop.substr(_index + 1))
+        return fetchFromObject(object[prop.substring(0, _index)], prop.substr(_index + 1));
     }
 
     return object[prop];

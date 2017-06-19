@@ -44,7 +44,7 @@ const template =  `
                       *ngFor="let item of output; let $index=index; let $last=last; trackBy: TrackByFn;"
                       [class.focused]="backspaceFocus && last">
                       <ng-container *ngTemplateOutlet="SelectedTemplate; context: {item: item}"></ng-container>
-                      <a class="select-search-list-item_remove" (click)="!disabled && removeOne($index, $event)">✕</a>
+                      <a class="select-search-list-item_remove" *ngIf="!disabled" (click)="!disabled && removeOne($index, $event)">✕</a>
                   </li>
               </ng-template>
             </ng-container>
@@ -199,7 +199,6 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
       event.preventDefault();
       event.stopPropagation();
     }
-    console.log('Show', event);
 
     if (this.multiple && this.output.length >= this.multipleLimit) {
       return;
@@ -294,6 +293,11 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
   }
 
   public keyDown(event: KeyboardEvent): void {
+    if (!this.Options) {
+      this.showDropdownList(undefined);
+      return;
+    }
+
     let totalNumItem: number = this.Options.length;
 
     if (this.ShowNew) {
