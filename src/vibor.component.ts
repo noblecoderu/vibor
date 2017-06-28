@@ -35,7 +35,7 @@ const template =  `
                       *ngFor="let item of output; let $index=index; let $last=last; trackBy: TrackByFn;"
                       [class.focused]="backspaceFocus && last">
                       <div [innerHTML]="getListFormatted(item)"></div>
-                      <a class="select-search-list-item_remove" (click)="!disabled && removeOne($index, $event)">✕</a>
+                      <a class="select-search-list-item_remove" (click)="!disabled && removeOne($index, $event)"></a>
                   </li>
               </ng-container>
 
@@ -44,7 +44,7 @@ const template =  `
                       *ngFor="let item of output; let $index=index; let $last=last; trackBy: TrackByFn;"
                       [class.focused]="backspaceFocus && last">
                       <ng-container *ngTemplateOutlet="SelectedTemplate; context: {item: item}"></ng-container>
-                      <a class="select-search-list-item_remove" *ngIf="!disabled" (click)="!disabled && removeOne($index, $event)">✕</a>
+                      <a class="select-search-list-item_remove" *ngIf="!disabled" (click)="!disabled && removeOne($index, $event)"></a>
                   </li>
               </ng-template>
             </ng-container>
