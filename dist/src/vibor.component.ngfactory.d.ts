@@ -3,8 +3,9 @@
  * Do not edit.
  * @suppress {suspiciousCode,uselessCode,missingProperties,missingOverride}
  */
-import * as import0 from '@angular/core';
-import * as import2 from './vibor.component';
-export declare const RenderType_ViborComponent: import0.RendererType2;
-export declare function View_ViborComponent_0(l: any): import0.ɵViewDefinition;
-export declare const ViborComponentNgFactory: import0.ComponentFactory<import2.ViborComponent>;
+import * as i0 from '@angular/core';
+import * as i2 from './vibor.component';
+export declare const RenderType_ViborComponent: i0.RendererType2;
+export declare function View_ViborComponent_0(_l: any): i0.ɵViewDefinition;
+export declare function View_ViborComponent_Host_0(_l: any): i0.ɵViewDefinition;
+export declare const ViborComponentNgFactory: i0.ComponentFactory<i2.ViborComponent>;

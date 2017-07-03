@@ -3,6 +3,6 @@
  * Do not edit.
  * @suppress {suspiciousCode,uselessCode,missingProperties,missingOverride}
  */
-import * as import0 from '@angular/core';
-import * as import1 from './index';
-export declare const ViborModuleNgFactory: import0.NgModuleFactory<import1.ViborModule>;
+import * as i0 from '@angular/core';
+import * as i1 from './index';
+export declare const ViborModuleNgFactory: i0.NgModuleFactory<i1.ViborModule>;
