@@ -449,7 +449,7 @@ var ViborComponent = (function () {
                     options = this.CurrentCache.objects;
                 }
             }
-            return options.filter(function (op) {
+            return (options || []).filter(function (op) {
                 return _this.output.findIndex(function (o) {
                     return deepEqual(helpers_1.fetchFromObject(o, _this.modelProperty).valueOf(), helpers_1.fetchFromObject(op, _this.modelProperty).valueOf());
                 }) === -1;

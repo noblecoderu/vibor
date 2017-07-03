@@ -598,7 +598,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
         options = this.CurrentCache.objects;
       }
     }
-    return options.filter(op => {
+    return (options || []).filter(op => {
       return this.output.findIndex(o => {
         return deepEqual(fetchFromObject(o, this.modelProperty).valueOf(), fetchFromObject(op, this.modelProperty).valueOf());
       }) === -1;
