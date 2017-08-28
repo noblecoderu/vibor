@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 function fetchFromObject(object, prop) {
     if (object === undefined || prop === undefined) {
         return object;

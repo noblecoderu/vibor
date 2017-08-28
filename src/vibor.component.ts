@@ -154,6 +154,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
   // Inputs & Outputs
   @Input() public multiple = false;
   @Input() public multipleLimit = 5;
+  @Input() public countOnPage = 10;
 
   @Input() public placeholder = 'Vibor';
   @Input() public name: string;
@@ -174,7 +175,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
   @Input() public preloadField: string = undefined; // Значение поля, которе необходимо отправить в запрос.
   @Input() public searchProperty = 'query';
 
-  @Input() public dataList: ((param: Object, page: number) => Observable<IDataResponse>) | Array<any>;
+  @Input() public dataList: ((param: Object, page: number, countOnPage?: number) => Observable<IDataResponse>) | Array<any>;
   @Input() public onlyEmitter: boolean;
   @Output('changeFullModel') public changeFullModel: EventEmitter<any> = new EventEmitter();
 
@@ -267,10 +268,10 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
         };
         let tmp: CacheInfo = this.CurrentCache, params: any = {};
         params[this.searchProperty] = this.query;
-        this.dataListSub = (<Observable<IDataResponse>>this.dataList(params, 1)).subscribe(answer => {
+        this.dataListSub = (<Observable<IDataResponse>>this.dataList(params, 1, this.countOnPage)).subscribe(answer => {
           tmp.objects = tmp.objects.concat(answer.list);
           tmp.countElement = answer.headers['count'];
-          tmp.countPages = Math.ceil(tmp.countElement / 20);
+          tmp.countPages = Math.ceil(tmp.countElement / this.countOnPage);
         }, () => { });
       }
     }
@@ -353,12 +354,12 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
     let params: any = {};
     params[this.searchProperty] = this.query;
 
-    this.dataListSub = (<Observable<IDataResponse>>this.dataList(params, tmp.currentPage + 1)).subscribe(answer => {
+    this.dataListSub = (<Observable<IDataResponse>>this.dataList(params, tmp.currentPage + 1, this.countOnPage)).subscribe(answer => {
       tmp.currentPage++;
       tmp.countElement = answer.headers['count'];
-      tmp.countPages = Math.ceil(tmp.countElement / 20);
+      tmp.countPages = Math.ceil(tmp.countElement / this.countOnPage);
       tmp.objects = tmp.objects.concat(answer.list);
-      this.selectorPosition = (tmp.currentPage - 1) * 20 + 1;
+      this.selectorPosition = (tmp.currentPage - 1) * this.countOnPage + 1;
       this.focusSelectedOption();
     }, () => { });
   }
@@ -562,7 +563,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
           this.changeFullModel.emit(this.output);
         } else {
           params[this.preloadProperty] = newValue.map(val => fetchFromObject(val, this.preloadField));
-          this.dataListSub = (<Observable<IDataResponse>>this.dataList(params, 1)).subscribe(answer => {
+          this.dataListSub = (<Observable<IDataResponse>>this.dataList(params, 1, this.countOnPage)).subscribe(answer => {
             this.output = answer.list;
             this.changeFullModel.emit(this.output);
           }, () => { });
