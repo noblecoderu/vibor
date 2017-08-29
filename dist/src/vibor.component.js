@@ -145,17 +145,17 @@ var ViborComponent = (function () {
             totalNumItem++;
         }
         switch (event.keyCode) {
-            case 27:// ESC, hide auto complete
+            case 27:
                 this.hideDropdownList();
                 break;
-            case 38:// UP, select the previous li el
+            case 38:
                 this.selectorPosition = (totalNumItem + this.selectorPosition - 1) % totalNumItem;
                 break;
-            case 40:// DOWN, select the next li el or the first one
+            case 40:
                 this.isOpen = true;
                 this.selectorPosition = (totalNumItem + this.selectorPosition + 1) % totalNumItem;
                 break;
-            case 13:// ENTER, choose it!!
+            case 13:
                 if (totalNumItem > 0) {
                     if (this.selectorPosition === this.Options.length) {
                         this.AddNewObject(this.CreateNew(this.query));
@@ -512,47 +512,47 @@ var ViborComponent = (function () {
         enumerable: true,
         configurable: true
     });
-    ViborComponent.decorators = [
-        { type: core_1.Component, args: [{
-                    selector: 'vibor',
-                    template: template,
-                    providers: [{
-                            provide: forms_1.NG_VALUE_ACCESSOR,
-                            useExisting: core_1.forwardRef(function () { return ViborComponent; }),
-                            multi: true
-                        }]
-                },] },
-    ];
-    /** @nocollapse */
-    ViborComponent.ctorParameters = function () { return [
-        { type: core_1.ElementRef, },
-    ]; };
-    ViborComponent.propDecorators = {
-        'inputControl': [{ type: core_1.ViewChild, args: ['inputControl',] },],
-        'multiple': [{ type: core_1.Input },],
-        'multipleLimit': [{ type: core_1.Input },],
-        'countOnPage': [{ type: core_1.Input },],
-        'placeholder': [{ type: core_1.Input },],
-        'name': [{ type: core_1.Input },],
-        'required': [{ type: core_1.Input },],
-        'bothTemplate': [{ type: core_1.ContentChild, args: [vibor_template_directive_1.ViborBothDirective,] },],
-        'dropdownTemplate': [{ type: core_1.ContentChild, args: [vibor_template_directive_1.ViborDropdownDirective,] },],
-        'selectedTemplate': [{ type: core_1.ContentChild, args: [vibor_template_directive_1.ViborSelectedDirective,] },],
-        'createTemplate': [{ type: core_1.ContentChild, args: [vibor_template_directive_1.ViborCreateDirective,] },],
-        'listFormatter': [{ type: core_1.Input },],
-        'dropdownFormatter': [{ type: core_1.Input },],
-        'viewProperty': [{ type: core_1.Input },],
-        'modelProperty': [{ type: core_1.Input },],
-        'preloadProperty': [{ type: core_1.Input },],
-        'preloadField': [{ type: core_1.Input },],
-        'searchProperty': [{ type: core_1.Input },],
-        'dataList': [{ type: core_1.Input },],
-        'onlyEmitter': [{ type: core_1.Input },],
-        'changeFullModel': [{ type: core_1.Output, args: ['changeFullModel',] },],
-        'newMessage': [{ type: core_1.Input },],
-        'CreateNew': [{ type: core_1.Input },],
-    };
     return ViborComponent;
 }());
+ViborComponent.decorators = [
+    { type: core_1.Component, args: [{
+                selector: 'vibor',
+                template: template,
+                providers: [{
+                        provide: forms_1.NG_VALUE_ACCESSOR,
+                        useExisting: core_1.forwardRef(function () { return ViborComponent; }),
+                        multi: true
+                    }]
+            },] },
+];
+/** @nocollapse */
+ViborComponent.ctorParameters = function () { return [
+    { type: core_1.ElementRef, },
+]; };
+ViborComponent.propDecorators = {
+    'inputControl': [{ type: core_1.ViewChild, args: ['inputControl',] },],
+    'multiple': [{ type: core_1.Input },],
+    'multipleLimit': [{ type: core_1.Input },],
+    'countOnPage': [{ type: core_1.Input },],
+    'placeholder': [{ type: core_1.Input },],
+    'name': [{ type: core_1.Input },],
+    'required': [{ type: core_1.Input },],
+    'bothTemplate': [{ type: core_1.ContentChild, args: [vibor_template_directive_1.ViborBothDirective,] },],
+    'dropdownTemplate': [{ type: core_1.ContentChild, args: [vibor_template_directive_1.ViborDropdownDirective,] },],
+    'selectedTemplate': [{ type: core_1.ContentChild, args: [vibor_template_directive_1.ViborSelectedDirective,] },],
+    'createTemplate': [{ type: core_1.ContentChild, args: [vibor_template_directive_1.ViborCreateDirective,] },],
+    'listFormatter': [{ type: core_1.Input },],
+    'dropdownFormatter': [{ type: core_1.Input },],
+    'viewProperty': [{ type: core_1.Input },],
+    'modelProperty': [{ type: core_1.Input },],
+    'preloadProperty': [{ type: core_1.Input },],
+    'preloadField': [{ type: core_1.Input },],
+    'searchProperty': [{ type: core_1.Input },],
+    'dataList': [{ type: core_1.Input },],
+    'onlyEmitter': [{ type: core_1.Input },],
+    'changeFullModel': [{ type: core_1.Output, args: ['changeFullModel',] },],
+    'newMessage': [{ type: core_1.Input },],
+    'CreateNew': [{ type: core_1.Input },],
+};
 exports.ViborComponent = ViborComponent;
 //# sourceMappingURL=vibor.component.js.map

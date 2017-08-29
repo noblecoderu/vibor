@@ -12,22 +12,22 @@ var vibor_template_directive_1 = require("./src/vibor.template.directive");
 var ViborModule = (function () {
     function ViborModule() {
     }
-    ViborModule.decorators = [
-        { type: core_1.NgModule, args: [{
-                    imports: [
-                        common_1.CommonModule, forms_1.FormsModule
-                    ],
-                    declarations: [
-                        vibor_component_1.ViborComponent, vibor_template_directive_1.ViborBothDirective, vibor_template_directive_1.ViborDropdownDirective, vibor_template_directive_1.ViborSelectedDirective, vibor_template_directive_1.ViborCreateDirective
-                    ],
-                    exports: [
-                        vibor_component_1.ViborComponent, vibor_template_directive_1.ViborBothDirective, vibor_template_directive_1.ViborDropdownDirective, vibor_template_directive_1.ViborSelectedDirective, vibor_template_directive_1.ViborCreateDirective
-                    ]
-                },] },
-    ];
-    /** @nocollapse */
-    ViborModule.ctorParameters = function () { return []; };
     return ViborModule;
 }());
+ViborModule.decorators = [
+    { type: core_1.NgModule, args: [{
+                imports: [
+                    common_1.CommonModule, forms_1.FormsModule
+                ],
+                declarations: [
+                    vibor_component_1.ViborComponent, vibor_template_directive_1.ViborBothDirective, vibor_template_directive_1.ViborDropdownDirective, vibor_template_directive_1.ViborSelectedDirective, vibor_template_directive_1.ViborCreateDirective
+                ],
+                exports: [
+                    vibor_component_1.ViborComponent, vibor_template_directive_1.ViborBothDirective, vibor_template_directive_1.ViborDropdownDirective, vibor_template_directive_1.ViborSelectedDirective, vibor_template_directive_1.ViborCreateDirective
+                ]
+            },] },
+];
+/** @nocollapse */
+ViborModule.ctorParameters = function () { return []; };
 exports.ViborModule = ViborModule;
 //# sourceMappingURL=index.js.map
