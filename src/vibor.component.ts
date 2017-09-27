@@ -12,19 +12,23 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, NgModel } from '@angular/forms
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 
-import { ViborBothDirective,
-         ViborCreateDirective,
-         ViborDropdownDirective,
-         ViborSelectedDirective } from './vibor.template.directive';
+import {
+  ViborBothDirective,
+  ViborCreateDirective,
+  ViborDropdownDirective,
+  ViborSelectedDirective
+} from './vibor.template.directive';
 
-import { IDataResponse,
-         defaultFormatter,
-         fetchFromObject,
-         scrollActiveOption } from './helpers';
+import {
+  IDataResponse,
+  defaultFormatter,
+  fetchFromObject,
+  scrollActiveOption
+} from './helpers';
 
 const deepEqual = require('deep-equal');
 
-const template =  `
+const template = `
   <ng-content></ng-content>
 
   <div class="select-search" (click)="showDropdownList($event);">
@@ -122,14 +126,14 @@ const template =  `
     </div>`;
 
 @Component({
-     selector: 'vibor',
-     template: template,
-     providers: [{
-       provide: NG_VALUE_ACCESSOR,
-       useExisting: forwardRef(() => ViborComponent),
-       multi: true
-     }]
- })
+  selector: 'vibor',
+  template: template,
+  providers: [{
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(() => ViborComponent),
+    multi: true
+  }]
+})
 export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
 
   // Local Variable
@@ -409,18 +413,18 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
 
   public get SelectedTemplate(): TemplateRef<any> {
     if (this.selectedTemplate) {
-        return this.selectedTemplate.templateRef;
+      return this.selectedTemplate.templateRef;
     } else if (this.bothTemplate) {
-        return this.bothTemplate.templateRef;
+      return this.bothTemplate.templateRef;
     }
     return undefined;
   }
 
   public get DropdownTemplate(): TemplateRef<any> {
     if (this.dropdownTemplate) {
-        return this.dropdownTemplate.templateRef;
+      return this.dropdownTemplate.templateRef;
     } else if (this.bothTemplate) {
-        return this.bothTemplate.templateRef;
+      return this.bothTemplate.templateRef;
     }
     return undefined;
   }
@@ -492,13 +496,13 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
   }
 
   public setDisabledState(isDisabled: boolean) {
-      this.disabled = isDisabled;
-      if (isDisabled) {
-        this.el.setAttribute('disabled', 'disabled');
-      } else {
-        this.el.removeAttribute('disabled');
-      }
-      // disable other components here
+    this.disabled = isDisabled;
+    if (isDisabled) {
+      this.el.setAttribute('disabled', 'disabled');
+    } else {
+      this.el.removeAttribute('disabled');
+    }
+    // disable other components here
   }
 
   set Model(value: any) {
@@ -606,7 +610,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
     });
   }
 
-  get CurrentCache(): CacheInfo | undefined{
+  get CurrentCache(): CacheInfo | undefined {
     if (this.dataList instanceof Function) {
       return <CacheInfo>this.cacheLazyData[this.query];
     }
@@ -629,17 +633,17 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
 
   private SetNewObject(newObject: any) {
     if (this.dataList instanceof Array) {
-        this.dataList.push(newObject);
-      } else if (this.dataList instanceof Function) {
-        for (let cacheKey in this.cacheLazyData) {
-          if (this.query.includes(cacheKey)) {
-            this.cacheLazyData[cacheKey].countElement++;
-            this.cacheLazyData[cacheKey].objects.push(newObject);
-          }
+      this.dataList.push(newObject);
+    } else if (this.dataList instanceof Function) {
+      for (let cacheKey in this.cacheLazyData) {
+        if (this.query.includes(cacheKey)) {
+          this.cacheLazyData[cacheKey].countElement++;
+          this.cacheLazyData[cacheKey].objects.push(newObject);
         }
       }
+    }
 
-      this.selectOne(new MouseEvent('click'), newObject);
+    this.selectOne(new MouseEvent('click'), newObject);
   }
 
   get ShowNew(): boolean {
@@ -656,7 +660,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
 
 
   // CACHE
-  private cacheLazyData: {[key: string]: CacheInfo} = {};
+  private cacheLazyData: { [key: string]: CacheInfo } = {};
 }
 
 export interface CacheInfo {
