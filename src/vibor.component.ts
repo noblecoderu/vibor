@@ -583,7 +583,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
         let newOutput: Array<any> = [];
         for (let v of newValue) {
             for (let d of dataList) {
-                if (deepEqual(fetchFromObject(d, this.modelProperty), v)) {
+                if (deepEqual(fetchFromObject(d, this.modelProperty).valueOf(), v.valueOf())) {
                     newOutput.push(d);
                 }
             }
@@ -650,9 +650,9 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
         let a = this.query && this.newMessage && (!this.dataListSub || this.dataListSub.closed);
 
         let b = this.Options.findIndex(o => {
-            return deepEqual(fetchFromObject(o, this.viewProperty), this.query);
+            return deepEqual(fetchFromObject(o, this.viewProperty).valueOf(), this.query);
         }) === -1 && this.output.findIndex(o => {
-            return deepEqual(fetchFromObject(o, this.viewProperty), this.query);
+            return deepEqual(fetchFromObject(o, this.viewProperty).valueOf(), this.query);
         }) === -1;
 
         return a && b;

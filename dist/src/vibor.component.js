@@ -425,7 +425,7 @@ var ViborComponent = (function () {
                 var v = newValue_1[_i];
                 for (var _a = 0, dataList_1 = dataList; _a < dataList_1.length; _a++) {
                     var d = dataList_1[_a];
-                    if (deepEqual(helpers_1.fetchFromObject(d, this.modelProperty), v)) {
+                    if (deepEqual(helpers_1.fetchFromObject(d, this.modelProperty).valueOf(), v.valueOf())) {
                         newOutput.push(d);
                     }
                 }
@@ -503,9 +503,9 @@ var ViborComponent = (function () {
             var _this = this;
             var a = this.query && this.newMessage && (!this.dataListSub || this.dataListSub.closed);
             var b = this.Options.findIndex(function (o) {
-                return deepEqual(helpers_1.fetchFromObject(o, _this.viewProperty), _this.query);
+                return deepEqual(helpers_1.fetchFromObject(o, _this.viewProperty).valueOf(), _this.query);
             }) === -1 && this.output.findIndex(function (o) {
-                return deepEqual(helpers_1.fetchFromObject(o, _this.viewProperty), _this.query);
+                return deepEqual(helpers_1.fetchFromObject(o, _this.viewProperty).valueOf(), _this.query);
             }) === -1;
             return a && b;
         },
