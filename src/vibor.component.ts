@@ -583,7 +583,9 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
         let newOutput: Array<any> = [];
         for (let v of newValue) {
             for (let d of dataList) {
-                if (deepEqual(fetchFromObject(d, this.modelProperty).valueOf(), v.valueOf())) {
+                let a = fetchFromObject(d, this.modelProperty) ? fetchFromObject(d, this.modelProperty).valueOf() : undefined;
+                let b = v ? v.valueOf() : undefined;
+                if (deepEqual(a, b)) {
                     newOutput.push(d);
                 }
             }
@@ -605,7 +607,9 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
         }
         return (options || []).filter(op => {
             return this.output.findIndex(o => {
-                return deepEqual(fetchFromObject(o, this.modelProperty).valueOf(), fetchFromObject(op, this.modelProperty).valueOf());
+                let a = fetchFromObject(o, this.modelProperty) ? fetchFromObject(o, this.modelProperty).valueOf() : undefined;
+                let b = fetchFromObject(op, this.modelProperty) ? fetchFromObject(op, this.modelProperty).valueOf() : undefined;
+                return deepEqual(a, b);
             }) === -1;
         });
     }
@@ -650,9 +654,11 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
         let a = this.query && this.newMessage && (!this.dataListSub || this.dataListSub.closed);
 
         let b = this.Options.findIndex(o => {
-            return deepEqual(fetchFromObject(o, this.viewProperty).valueOf(), this.query);
+            let c = fetchFromObject(o, this.viewProperty) ? fetchFromObject(o, this.viewProperty).valueOf() : undefined;
+            return deepEqual(c, this.query);
         }) === -1 && this.output.findIndex(o => {
-            return deepEqual(fetchFromObject(o, this.viewProperty).valueOf(), this.query);
+            let c = fetchFromObject(o, this.viewProperty) ? fetchFromObject(o, this.viewProperty).valueOf() : undefined;
+            return deepEqual(c, this.query);
         }) === -1;
 
         return a && b;
