@@ -109,7 +109,9 @@ const template = `
                 <ng-template #templateWithMessage>
                     {{ newMessage }}
                 </ng-template>
-
+            </li>
+            <li class="select-dropdown-optgroup-option loader" *ngIf="ShowEmpty">
+                Пусто
             </li>
         </ul>
         <div class="select-dropdown-pager" *ngIf="CurrentCache && CurrentCache.countPages > 1">
@@ -662,6 +664,10 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
         }) === -1;
 
         return a && b;
+    }
+
+    get ShowEmpty(): boolean {
+        return this.Options.length === 0 && (!(this.dataList instanceof Function) || (this.dataListSub.closed));
     }
 
 

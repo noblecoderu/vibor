@@ -205,7 +205,7 @@ function View_ViborComponent_15(_l) {
         }, null, null)), (_l()(), i0.ɵted(null, ['\n\n                '])),
         (_l()(), i0.ɵand(16777216, null, null, 1, null, View_ViborComponent_16)),
         i0.ɵdid(16384, null, 0, i1.NgIf, [i0.ViewContainerRef, i0.TemplateRef], { ngIf: [0,
-                'ngIf'], ngIfElse: [1, 'ngIfElse'] }, null), (_l()(), i0.ɵted(null, ['\n\n                '])), (_l()(), i0.ɵand(0, [['templateWithMessage', 2]], null, 0, null, View_ViborComponent_18)), (_l()(), i0.ɵted(null, ['\n\n            ']))], function (_ck, _v) {
+                'ngIf'], ngIfElse: [1, 'ngIfElse'] }, null), (_l()(), i0.ɵted(null, ['\n\n                '])), (_l()(), i0.ɵand(0, [['templateWithMessage', 2]], null, 0, null, View_ViborComponent_18)), (_l()(), i0.ɵted(null, ['\n            ']))], function (_ck, _v) {
         var _co = _v.component;
         var currVal_1 = _co.createTemplate;
         var currVal_2 = i0.ɵnov(_v, 5);
@@ -216,7 +216,11 @@ function View_ViborComponent_15(_l) {
         _ck(_v, 0, 0, currVal_0);
     });
 }
-function View_ViborComponent_20(_l) {
+function View_ViborComponent_19(_l) {
+    return i0.ɵvid(0, [(_l()(), i0.ɵeld(0, null, null, 1, 'li', [['class',
+                'select-dropdown-optgroup-option loader']], null, null, null, null, null)), (_l()(), i0.ɵted(null, ['\n                Пусто\n            ']))], null, null);
+}
+function View_ViborComponent_21(_l) {
     return i0.ɵvid(0, [(_l()(), i0.ɵeld(0, null, null, 1, 'button', [['class',
                 'select-dropdown-pager-loadmore']], null, [[null, 'mousedown']], function (_v, en, $event) {
             var ad = true;
@@ -228,10 +232,10 @@ function View_ViborComponent_20(_l) {
             return ad;
         }, null, null)), (_l()(), i0.ɵted(null, ['\n                Загрузить ещё\n            ']))], null, null);
 }
-function View_ViborComponent_19(_l) {
+function View_ViborComponent_20(_l) {
     return i0.ɵvid(0, [(_l()(), i0.ɵeld(0, null, null, 9, 'div', [['class',
                 'select-dropdown-pager']], null, null, null, null, null)), (_l()(), i0.ɵted(null, ['\n            '])), (_l()(), i0.ɵeld(0, null, null, 3, 'p', [['class', 'select-dropdown-pager-page']], null, null, null, null, null)), (_l()(), i0.ɵted(null, ['\n                ', ' / ', '\n            '])), i0.ɵppd(1), i0.ɵppd(1), (_l()(),
-            i0.ɵted(null, ['\n            '])), (_l()(), i0.ɵand(16777216, null, null, 1, null, View_ViborComponent_20)), i0.ɵdid(16384, null, 0, i1.NgIf, [i0.ViewContainerRef, i0.TemplateRef], { ngIf: [0, 'ngIf'] }, null),
+            i0.ɵted(null, ['\n            '])), (_l()(), i0.ɵand(16777216, null, null, 1, null, View_ViborComponent_21)), i0.ɵdid(16384, null, 0, i1.NgIf, [i0.ViewContainerRef, i0.TemplateRef], { ngIf: [0, 'ngIf'] }, null),
         (_l()(), i0.ɵted(null, ['\n        ']))], function (_ck, _v) {
         var _co = _v.component;
         var currVal_2 = ((_co.CurrentCache.countPages > 1) && (_co.CurrentCache.currentPage < _co.CurrentCache.countPages));
@@ -244,14 +248,17 @@ function View_ViborComponent_19(_l) {
     });
 }
 function View_ViborComponent_8(_l) {
-    return i0.ɵvid(0, [(_l()(), i0.ɵeld(0, null, null, 18, 'div', [['class',
-                'select-dropdown']], null, null, null, null, null)), (_l()(), i0.ɵted(null, ['\n        '])), (_l()(), i0.ɵeld(0, null, null, 12, 'ul', [['class', 'select-dropdown-optgroup']], null, null, null, null, null)), (_l()(), i0.ɵted(null, ['\n            '])), (_l()(), i0.ɵand(16777216, null, null, 1, null, View_ViborComponent_9)), i0.ɵdid(16384, null, 0, i1.NgIf, [i0.ViewContainerRef, i0.TemplateRef], { ngIf: [0, 'ngIf'], ngIfElse: [1, 'ngIfElse'] }, null), (_l()(), i0.ɵted(null, ['\n\n            '])), (_l()(),
+    return i0.ɵvid(0, [(_l()(), i0.ɵeld(0, null, null, 21, 'div', [['class',
+                'select-dropdown']], null, null, null, null, null)), (_l()(), i0.ɵted(null, ['\n        '])), (_l()(), i0.ɵeld(0, null, null, 15, 'ul', [['class', 'select-dropdown-optgroup']], null, null, null, null, null)), (_l()(), i0.ɵted(null, ['\n            '])), (_l()(), i0.ɵand(16777216, null, null, 1, null, View_ViborComponent_9)), i0.ɵdid(16384, null, 0, i1.NgIf, [i0.ViewContainerRef, i0.TemplateRef], { ngIf: [0, 'ngIf'], ngIfElse: [1, 'ngIfElse'] }, null), (_l()(), i0.ɵted(null, ['\n\n            '])), (_l()(),
             i0.ɵand(0, [['dropdownT', 2]], null, 0, null, View_ViborComponent_11)),
         (_l()(), i0.ɵted(null, ['\n\n            '])), (_l()(), i0.ɵand(16777216, null, null, 1, null, View_ViborComponent_14)), i0.ɵdid(16384, null, 0, i1.NgIf, [i0.ViewContainerRef, i0.TemplateRef], { ngIf: [0, 'ngIf'] }, null), (_l()(), i0.ɵted(null, ['\n            '])), (_l()(),
             i0.ɵand(16777216, null, null, 1, null, View_ViborComponent_15)),
         i0.ɵdid(16384, null, 0, i1.NgIf, [i0.ViewContainerRef, i0.TemplateRef], { ngIf: [0,
+                'ngIf'] }, null), (_l()(), i0.ɵted(null, ['\n            '])),
+        (_l()(), i0.ɵand(16777216, null, null, 1, null, View_ViborComponent_19)),
+        i0.ɵdid(16384, null, 0, i1.NgIf, [i0.ViewContainerRef, i0.TemplateRef], { ngIf: [0,
                 'ngIf'] }, null), (_l()(), i0.ɵted(null, ['\n        '])), (_l()(),
-            i0.ɵted(null, ['\n        '])), (_l()(), i0.ɵand(16777216, null, null, 1, null, View_ViborComponent_19)), i0.ɵdid(16384, null, 0, i1.NgIf, [i0.ViewContainerRef, i0.TemplateRef], { ngIf: [0, 'ngIf'] }, null),
+            i0.ɵted(null, ['\n        '])), (_l()(), i0.ɵand(16777216, null, null, 1, null, View_ViborComponent_20)), i0.ɵdid(16384, null, 0, i1.NgIf, [i0.ViewContainerRef, i0.TemplateRef], { ngIf: [0, 'ngIf'] }, null),
         (_l()(), i0.ɵted(null, ['\n    ']))], function (_ck, _v) {
         var _co = _v.component;
         var currVal_0 = !_co.DropdownTemplate;
@@ -261,8 +268,10 @@ function View_ViborComponent_8(_l) {
         _ck(_v, 10, 0, currVal_2);
         var currVal_3 = _co.ShowNew;
         _ck(_v, 13, 0, currVal_3);
-        var currVal_4 = (_co.CurrentCache && (_co.CurrentCache.countPages > 1));
-        _ck(_v, 17, 0, currVal_4);
+        var currVal_4 = _co.ShowEmpty;
+        _ck(_v, 16, 0, currVal_4);
+        var currVal_5 = (_co.CurrentCache && (_co.CurrentCache.countPages > 1));
+        _ck(_v, 20, 0, currVal_5);
     }, null);
 }
 function View_ViborComponent_0(_l) {

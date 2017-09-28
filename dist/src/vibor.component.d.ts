@@ -77,6 +77,7 @@ export declare class ViborComponent implements OnInit, OnChanges, ControlValueAc
     AddNewObject(value: Observable<any> | any): void;
     private SetNewObject(newObject);
     readonly ShowNew: boolean;
+    readonly ShowEmpty: boolean;
     private cacheLazyData;
 }
 export interface CacheInfo {
