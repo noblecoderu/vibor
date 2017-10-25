@@ -65,7 +65,7 @@ const template = `
                        (blur)="hideDropdownListWithDelay()"
                        (keydown)="keyDown($event)"/>
             </li>
-            <li class="select-search-list-item" [hidden]="!dataListSub || dataListSub.closed">
+            <li class="select-search-list-item select-search-list-item_loader-center" [hidden]="!dataListSub || dataListSub.closed">
                 <div class="select-search-list-item_loader"></div>
             </li>
 
