@@ -333,9 +333,9 @@ function View_ViborComponent_0(_l) {
             return [p0_0];
         }, [i3.DefaultValueAccessor]), i0.ɵdid(671744, [[1, 4], ['inputControl', 4]], 0, i3.NgModel, [[8, null], [8, null], [8, null], [2, i3.NG_VALUE_ACCESSOR]], { name: [0, 'name'], isDisabled: [1, 'isDisabled'], model: [2, 'model'] }, { update: 'ngModelChange' }),
         i0.ɵprd(2048, null, i3.NgControl, null, [i3.NgModel]), i0.ɵdid(16384, null, 0, i3.NgControlStatus, [i3.NgControl], null, null),
-        (_l()(), i0.ɵted(null, ['\n            '])), (_l()(), i0.ɵted(null, ['\n            '])), (_l()(), i0.ɵeld(0, null, null, 3, 'li', [['class', 'select-search-list-item']], [[8, 'hidden', 0]], null, null, null, null)), (_l()(), i0.ɵted(null, ['\n                '])),
-        (_l()(), i0.ɵeld(0, null, null, 0, 'div', [['class', 'select-search-list-item_loader']], null, null, null, null, null)),
-        (_l()(), i0.ɵted(null, ['\n            '])), (_l()(), i0.ɵted(null, ['\n\n            '])), (_l()(), i0.ɵeld(0, null, null, 1, 'span', [['class', 'arrow']], null, [[null, 'click']], function (_v, en, $event) {
+        (_l()(), i0.ɵted(null, ['\n            '])), (_l()(), i0.ɵted(null, ['\n            '])), (_l()(), i0.ɵeld(0, null, null, 3, 'li', [['class', 'select-search-list-item select-search-list-item_loader-center']], [[8, 'hidden', 0]], null, null, null, null)),
+        (_l()(), i0.ɵted(null, ['\n                '])), (_l()(), i0.ɵeld(0, null, null, 0, 'div', [['class', 'select-search-list-item_loader']], null, null, null, null, null)), (_l()(), i0.ɵted(null, ['\n            '])), (_l()(), i0.ɵted(null, ['\n\n            '])),
+        (_l()(), i0.ɵeld(0, null, null, 1, 'span', [['class', 'arrow']], null, [[null, 'click']], function (_v, en, $event) {
             var ad = true;
             var _co = _v.component;
             if (('click' === en)) {

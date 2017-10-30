@@ -446,7 +446,7 @@ var ViborComponent = (function () {
                 options = this.options;
             }
             else if (this.dataList instanceof Function) {
-                if (!(this.query in this.cacheLazyData)) {
+                if (!(this.query in this.cacheLazyData) && this.cacheLazyData[this.oldQuery]) {
                     options = this.cacheLazyData[this.oldQuery]['objects'];
                 }
                 else {
