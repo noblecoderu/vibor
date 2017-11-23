@@ -392,6 +392,6 @@ exports.ViborComponentNgFactory = i0.ɵccf('vibor', i2.ViborComponent, View_Vibo
     countOnPage: 'countOnPage', placeholder: 'placeholder', name: 'name', required: 'required',
     listFormatter: 'listFormatter', dropdownFormatter: 'dropdownFormatter', viewProperty: 'viewProperty',
     modelProperty: 'modelProperty', preloadProperty: 'preloadProperty', preloadField: 'preloadField',
-    searchProperty: 'searchProperty', dataList: 'dataList', onlyEmitter: 'onlyEmitter',
-    newMessage: 'newMessage', CreateNew: 'CreateNew' }, { changeFullModel: 'changeFullModel' }, ['*']);
+    searchProperty: 'searchProperty', dataList: 'dataList', excludeList: 'excludeList',
+    onlyEmitter: 'onlyEmitter', newMessage: 'newMessage', CreateNew: 'CreateNew' }, { changeFullModel: 'changeFullModel' }, ['*']);
 //# sourceMappingURL=vibor.component.ngfactory.js.map

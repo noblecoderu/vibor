@@ -98,6 +98,15 @@ var ViborComponent = (function () {
                     return false;
                 }
                 return JSON.stringify(f).indexOf(_this.query) >= 0;
+            }).filter(function (data) {
+                if (!_this.excludeList) {
+                    return true;
+                }
+                var d = helpers_1.fetchFromObject(data, _this.modelProperty).valueOf();
+                return _this.excludeList.findIndex(function (ex) {
+                    var a = helpers_1.fetchFromObject(ex, _this.modelProperty).valueOf();
+                    return deepEqual(d, a);
+                }) < 0;
             });
         }
         else if (this.dataList instanceof Function) {
@@ -571,6 +580,7 @@ ViborComponent.propDecorators = {
     'preloadField': [{ type: core_1.Input },],
     'searchProperty': [{ type: core_1.Input },],
     'dataList': [{ type: core_1.Input },],
+    'excludeList': [{ type: core_1.Input },],
     'onlyEmitter': [{ type: core_1.Input },],
     'changeFullModel': [{ type: core_1.Output, args: ['changeFullModel',] },],
     'newMessage': [{ type: core_1.Input },],

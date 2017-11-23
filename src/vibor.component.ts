@@ -182,6 +182,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
     @Input() public searchProperty = 'query';
 
     @Input() public dataList: ((param: Object, page: number, countOnPage?: number) => Observable<IDataResponse>) | Array<any>;
+    @Input() public excludeList: Array<any>;
     @Input() public onlyEmitter: boolean;
     @Output('changeFullModel') public changeFullModel: EventEmitter<any> = new EventEmitter();
 
@@ -262,6 +263,16 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
                     return false;
                 }
                 return JSON.stringify(f).indexOf(this.query) >= 0;
+            }).filter(data => {
+                if (!this.excludeList) {
+                    return true;
+                }
+
+                let d = fetchFromObject(data, this.modelProperty).valueOf();
+                return this.excludeList.findIndex(ex => {
+                    let a = fetchFromObject(ex, this.modelProperty).valueOf();
+                    return deepEqual(d, a);
+                }) < 0;
             });
         } else if (this.dataList instanceof Function) {
             if (this.dataListSub) { this.dataListSub.unsubscribe(); }

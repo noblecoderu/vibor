@@ -36,6 +36,7 @@ export declare class ViborComponent implements OnInit, OnChanges, ControlValueAc
     preloadField: string;
     searchProperty: string;
     dataList: ((param: Object, page: number, countOnPage?: number) => Observable<IDataResponse>) | Array<any>;
+    excludeList: Array<any>;
     onlyEmitter: boolean;
     changeFullModel: EventEmitter<any>;
     newMessage: string;
