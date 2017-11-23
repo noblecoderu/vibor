@@ -302,10 +302,19 @@ var ViborComponent = (function () {
     };
     // FORMS
     ViborComponent.prototype.writeValue = function (value) {
+        var _this = this;
         // Нормальный update модели
         if (value) {
             if ((value instanceof Array && !this.multiple) || (!(value instanceof Array) && this.multiple)) {
                 throw new Error('Model Type Error');
+            }
+            if (value instanceof Array) {
+                if (value.length === this.Model.length && value.every(function (v) { return _this.Model.indexOf(v) >= 0; })) {
+                    return;
+                }
+            }
+            else if (this.Model === value) {
+                return;
             }
             this.firstLoad = true;
             this.Model = value;
