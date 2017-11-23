@@ -622,7 +622,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
             if (!(this.query in this.cacheLazyData) && this.cacheLazyData[this.oldQuery]) {
                 options = this.cacheLazyData[this.oldQuery]['objects'];
             } else {
-                options = this.CurrentCache.objects;
+                options = this.CurrentCache ? this.CurrentCache.objects : [];
             }
         }
         return (options || []).filter(op => {

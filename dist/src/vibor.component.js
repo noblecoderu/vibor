@@ -468,7 +468,7 @@ var ViborComponent = (function () {
                     options = this.cacheLazyData[this.oldQuery]['objects'];
                 }
                 else {
-                    options = this.CurrentCache.objects;
+                    options = this.CurrentCache ? this.CurrentCache.objects : [];
                 }
             }
             return (options || []).filter(function (op) {
