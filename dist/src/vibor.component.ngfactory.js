@@ -14,11 +14,11 @@ var styles_ViborComponent = [];
 exports.RenderType_ViborComponent = i0.ɵcrt({ encapsulation: 2,
     styles: styles_ViborComponent, data: {} });
 function View_ViborComponent_3(_l) {
-    return i0.ɵvid(0, [(_l()(), i0.ɵeld(0, null, null, 5, 'li', [['class',
+    return i0.ɵvid(0, [(_l()(), i0.ɵeld(0, 0, null, null, 5, 'li', [['class',
                 'select-search-list-item select-search-list-item_selection']], [[2, 'focused',
                 null]], null, null, null, null)), (_l()(),
-            i0.ɵted(null, ['\n                      '])), (_l()(), i0.ɵeld(0, null, null, 0, 'div', [], [[8, 'innerHTML', 1]], null, null, null, null)), (_l()(), i0.ɵted(null, ['\n                      '])),
-        (_l()(), i0.ɵeld(0, null, null, 0, 'a', [['class', 'select-search-list-item_remove']], null, [[null, 'click']], function (_v, en, $event) {
+            i0.ɵted(-1, null, ['\n                      '])), (_l()(), i0.ɵeld(2, 0, null, null, 0, 'div', [], [[8, 'innerHTML', 1]], null, null, null, null)), (_l()(), i0.ɵted(-1, null, ['\n                      '])), (_l()(), i0.ɵeld(4, 0, null, null, 0, 'a', [['class', 'select-search-list-item_remove']], null, [[null,
+                'click']], function (_v, en, $event) {
             var ad = true;
             var _co = _v.component;
             if (('click' === en)) {
@@ -26,7 +26,7 @@ function View_ViborComponent_3(_l) {
                 ad = (pd_0 && ad);
             }
             return ad;
-        }, null, null)), (_l()(), i0.ɵted(null, ['\n                  ']))], null, function (_ck, _v) {
+        }, null, null)), (_l()(), i0.ɵted(-1, null, ['\n                  ']))], null, function (_ck, _v) {
         var _co = _v.component;
         var currVal_0 = (_co.backspaceFocus && _co.last);
         _ck(_v, 0, 0, currVal_0);
@@ -35,9 +35,9 @@ function View_ViborComponent_3(_l) {
     });
 }
 function View_ViborComponent_2(_l) {
-    return i0.ɵvid(0, [(_l()(), i0.ɵeld(0, null, null, 4, null, null, null, null, null, null, null)),
-        (_l()(), i0.ɵted(null, ['\n                  '])), (_l()(), i0.ɵand(16777216, null, null, 1, null, View_ViborComponent_3)), i0.ɵdid(802816, null, 0, i1.NgForOf, [i0.ViewContainerRef, i0.TemplateRef, i0.IterableDiffers], { ngForOf: [0, 'ngForOf'], ngForTrackBy: [1, 'ngForTrackBy'] }, null), (_l()(),
-            i0.ɵted(null, ['\n              ']))], function (_ck, _v) {
+    return i0.ɵvid(0, [(_l()(), i0.ɵeld(0, 0, null, null, 4, null, null, null, null, null, null, null)),
+        (_l()(), i0.ɵted(-1, null, ['\n                  '])), (_l()(), i0.ɵand(16777216, null, null, 1, null, View_ViborComponent_3)), i0.ɵdid(3, 802816, null, 0, i1.NgForOf, [i0.ViewContainerRef, i0.TemplateRef, i0.IterableDiffers], { ngForOf: [0, 'ngForOf'], ngForTrackBy: [1, 'ngForTrackBy'] }, null), (_l()(),
+            i0.ɵted(-1, null, ['\n              ']))], function (_ck, _v) {
         var _co = _v.component;
         var currVal_0 = _co.output;
         var currVal_1 = _co.TrackByFn;
@@ -45,10 +45,10 @@ function View_ViborComponent_2(_l) {
     }, null);
 }
 function View_ViborComponent_6(_l) {
-    return i0.ɵvid(0, [(_l()(), i0.ɵeld(0, null, null, 0, null, null, null, null, null, null, null))], null, null);
+    return i0.ɵvid(0, [(_l()(), i0.ɵeld(0, 0, null, null, 0, null, null, null, null, null, null, null))], null, null);
 }
 function View_ViborComponent_7(_l) {
-    return i0.ɵvid(0, [(_l()(), i0.ɵeld(0, null, null, 0, 'a', [['class',
+    return i0.ɵvid(0, [(_l()(), i0.ɵeld(0, 0, null, null, 0, 'a', [['class',
                 'select-search-list-item_remove']], null, [[null, 'click']], function (_v, en, $event) {
             var ad = true;
             var _co = _v.component;
@@ -60,15 +60,14 @@ function View_ViborComponent_7(_l) {
         }, null, null))], null, null);
 }
 function View_ViborComponent_5(_l) {
-    return i0.ɵvid(0, [(_l()(), i0.ɵeld(0, null, null, 8, 'li', [['class',
+    return i0.ɵvid(0, [(_l()(), i0.ɵeld(0, 0, null, null, 8, 'li', [['class',
                 'select-search-list-item select-search-list-item_selection']], [[2, 'focused',
                 null]], null, null, null, null)), (_l()(),
-            i0.ɵted(null, ['\n                      '])), (_l()(), i0.ɵand(16777216, null, null, 2, null, View_ViborComponent_6)), i0.ɵdid(540672, null, 0, i1.NgTemplateOutlet, [i0.ViewContainerRef], { ngTemplateOutletContext: [0,
+            i0.ɵted(-1, null, ['\n                      '])), (_l()(), i0.ɵand(16777216, null, null, 2, null, View_ViborComponent_6)), i0.ɵdid(3, 540672, null, 0, i1.NgTemplateOutlet, [i0.ViewContainerRef], { ngTemplateOutletContext: [0,
                 'ngTemplateOutletContext'], ngTemplateOutlet: [1, 'ngTemplateOutlet'] }, null),
-        i0.ɵpod({ item: 0 }), (_l()(), i0.ɵted(null, ['\n                      '])),
+        i0.ɵpod(4, { item: 0 }), (_l()(), i0.ɵted(-1, null, ['\n                      '])),
         (_l()(), i0.ɵand(16777216, null, null, 1, null, View_ViborComponent_7)),
-        i0.ɵdid(16384, null, 0, i1.NgIf, [i0.ViewContainerRef, i0.TemplateRef], { ngIf: [0,
-                'ngIf'] }, null), (_l()(), i0.ɵted(null, ['\n                  ']))], function (_ck, _v) {
+        i0.ɵdid(7, 16384, null, 0, i1.NgIf, [i0.ViewContainerRef, i0.TemplateRef], { ngIf: [0, 'ngIf'] }, null), (_l()(), i0.ɵted(-1, null, ['\n                  ']))], function (_ck, _v) {
         var _co = _v.component;
         var currVal_1 = _ck(_v, 4, 0, _v.context.$implicit);
         var currVal_2 = _co.SelectedTemplate;
@@ -82,10 +81,10 @@ function View_ViborComponent_5(_l) {
     });
 }
 function View_ViborComponent_4(_l) {
-    return i0.ɵvid(0, [(_l()(), i0.ɵted(null, ['\n                  '])), (_l()(),
+    return i0.ɵvid(0, [(_l()(), i0.ɵted(-1, null, ['\n                  '])), (_l()(),
             i0.ɵand(16777216, null, null, 1, null, View_ViborComponent_5)),
-        i0.ɵdid(802816, null, 0, i1.NgForOf, [i0.ViewContainerRef, i0.TemplateRef,
-            i0.IterableDiffers], { ngForOf: [0, 'ngForOf'], ngForTrackBy: [1, 'ngForTrackBy'] }, null), (_l()(), i0.ɵted(null, ['\n              ']))], function (_ck, _v) {
+        i0.ɵdid(2, 802816, null, 0, i1.NgForOf, [i0.ViewContainerRef, i0.TemplateRef,
+            i0.IterableDiffers], { ngForOf: [0, 'ngForOf'], ngForTrackBy: [1, 'ngForTrackBy'] }, null), (_l()(), i0.ɵted(-1, null, ['\n              ']))], function (_ck, _v) {
         var _co = _v.component;
         var currVal_0 = _co.output;
         var currVal_1 = _co.TrackByFn;
@@ -93,9 +92,9 @@ function View_ViborComponent_4(_l) {
     }, null);
 }
 function View_ViborComponent_1(_l) {
-    return i0.ɵvid(0, [(_l()(), i0.ɵeld(0, null, null, 6, null, null, null, null, null, null, null)),
-        (_l()(), i0.ɵted(null, ['\n              '])), (_l()(), i0.ɵand(16777216, null, null, 1, null, View_ViborComponent_2)), i0.ɵdid(16384, null, 0, i1.NgIf, [i0.ViewContainerRef, i0.TemplateRef], { ngIf: [0, 'ngIf'],
-            ngIfElse: [1, 'ngIfElse'] }, null), (_l()(), i0.ɵted(null, ['\n\n              '])), (_l()(), i0.ɵand(0, [['selectedT', 2]], null, 0, null, View_ViborComponent_4)), (_l()(), i0.ɵted(null, ['\n            ']))], function (_ck, _v) {
+    return i0.ɵvid(0, [(_l()(), i0.ɵeld(0, 0, null, null, 6, null, null, null, null, null, null, null)),
+        (_l()(), i0.ɵted(-1, null, ['\n              '])), (_l()(), i0.ɵand(16777216, null, null, 1, null, View_ViborComponent_2)), i0.ɵdid(3, 16384, null, 0, i1.NgIf, [i0.ViewContainerRef, i0.TemplateRef], { ngIf: [0,
+                'ngIf'], ngIfElse: [1, 'ngIfElse'] }, null), (_l()(), i0.ɵted(-1, null, ['\n\n              '])), (_l()(), i0.ɵand(0, [['selectedT', 2]], null, 0, null, View_ViborComponent_4)), (_l()(), i0.ɵted(-1, null, ['\n            ']))], function (_ck, _v) {
         var _co = _v.component;
         var currVal_0 = !_co.SelectedTemplate;
         var currVal_1 = i0.ɵnov(_v, 5);
@@ -103,7 +102,7 @@ function View_ViborComponent_1(_l) {
     }, null);
 }
 function View_ViborComponent_10(_l) {
-    return i0.ɵvid(0, [(_l()(), i0.ɵeld(0, null, null, 1, 'li', [['class',
+    return i0.ɵvid(0, [(_l()(), i0.ɵeld(0, 0, null, null, 1, 'li', [['class',
                 'select-dropdown-optgroup-option']], [[2, 'active', null], [8, 'innerHTML',
                 1]], [[null, 'mousedown']], function (_v, en, $event) {
             var ad = true;
@@ -113,7 +112,7 @@ function View_ViborComponent_10(_l) {
                 ad = (pd_0 && ad);
             }
             return ad;
-        }, null, null)), (_l()(), i0.ɵted(null, ['\n                ']))], null, function (_ck, _v) {
+        }, null, null)), (_l()(), i0.ɵted(-1, null, ['\n                ']))], null, function (_ck, _v) {
         var _co = _v.component;
         var currVal_0 = (_v.context.index === _co.selectorPosition);
         var currVal_1 = _co.getDropdownFormatted(_v.context.$implicit);
@@ -121,18 +120,18 @@ function View_ViborComponent_10(_l) {
     });
 }
 function View_ViborComponent_9(_l) {
-    return i0.ɵvid(0, [(_l()(), i0.ɵeld(0, null, null, 4, null, null, null, null, null, null, null)),
-        (_l()(), i0.ɵted(null, ['\n                '])), (_l()(), i0.ɵand(16777216, null, null, 1, null, View_ViborComponent_10)), i0.ɵdid(802816, null, 0, i1.NgForOf, [i0.ViewContainerRef, i0.TemplateRef, i0.IterableDiffers], { ngForOf: [0, 'ngForOf'] }, null), (_l()(), i0.ɵted(null, ['\n            ']))], function (_ck, _v) {
+    return i0.ɵvid(0, [(_l()(), i0.ɵeld(0, 0, null, null, 4, null, null, null, null, null, null, null)),
+        (_l()(), i0.ɵted(-1, null, ['\n                '])), (_l()(), i0.ɵand(16777216, null, null, 1, null, View_ViborComponent_10)), i0.ɵdid(3, 802816, null, 0, i1.NgForOf, [i0.ViewContainerRef, i0.TemplateRef, i0.IterableDiffers], { ngForOf: [0, 'ngForOf'] }, null), (_l()(), i0.ɵted(-1, null, ['\n            ']))], function (_ck, _v) {
         var _co = _v.component;
         var currVal_0 = _co.Options;
         _ck(_v, 3, 0, currVal_0);
     }, null);
 }
 function View_ViborComponent_13(_l) {
-    return i0.ɵvid(0, [(_l()(), i0.ɵeld(0, null, null, 0, null, null, null, null, null, null, null))], null, null);
+    return i0.ɵvid(0, [(_l()(), i0.ɵeld(0, 0, null, null, 0, null, null, null, null, null, null, null))], null, null);
 }
 function View_ViborComponent_12(_l) {
-    return i0.ɵvid(0, [(_l()(), i0.ɵeld(0, null, null, 5, 'li', [['class',
+    return i0.ɵvid(0, [(_l()(), i0.ɵeld(0, 0, null, null, 5, 'li', [['class',
                 'select-dropdown-optgroup-option']], [[2, 'active', null]], [[null,
                 'mousedown']], function (_v, en, $event) {
             var ad = true;
@@ -142,11 +141,11 @@ function View_ViborComponent_12(_l) {
                 ad = (pd_0 && ad);
             }
             return ad;
-        }, null, null)), (_l()(), i0.ɵted(null, ['\n                    '])),
+        }, null, null)), (_l()(), i0.ɵted(-1, null, ['\n                    '])),
         (_l()(), i0.ɵand(16777216, null, null, 2, null, View_ViborComponent_13)),
-        i0.ɵdid(540672, null, 0, i1.NgTemplateOutlet, [i0.ViewContainerRef], { ngTemplateOutletContext: [0,
+        i0.ɵdid(3, 540672, null, 0, i1.NgTemplateOutlet, [i0.ViewContainerRef], { ngTemplateOutletContext: [0,
                 'ngTemplateOutletContext'], ngTemplateOutlet: [1, 'ngTemplateOutlet'] }, null),
-        i0.ɵpod({ item: 0 }), (_l()(), i0.ɵted(null, ['\n                ']))], function (_ck, _v) {
+        i0.ɵpod(4, { item: 0 }), (_l()(), i0.ɵted(-1, null, ['\n                ']))], function (_ck, _v) {
         var _co = _v.component;
         var currVal_1 = _ck(_v, 4, 0, _v.context.$implicit);
         var currVal_2 = _co.DropdownTemplate;
@@ -158,26 +157,26 @@ function View_ViborComponent_12(_l) {
     });
 }
 function View_ViborComponent_11(_l) {
-    return i0.ɵvid(0, [(_l()(), i0.ɵted(null, ['\n                '])), (_l()(),
+    return i0.ɵvid(0, [(_l()(), i0.ɵted(-1, null, ['\n                '])), (_l()(),
             i0.ɵand(16777216, null, null, 1, null, View_ViborComponent_12)),
-        i0.ɵdid(802816, null, 0, i1.NgForOf, [i0.ViewContainerRef, i0.TemplateRef,
-            i0.IterableDiffers], { ngForOf: [0, 'ngForOf'] }, null), (_l()(), i0.ɵted(null, ['\n            ']))], function (_ck, _v) {
+        i0.ɵdid(2, 802816, null, 0, i1.NgForOf, [i0.ViewContainerRef, i0.TemplateRef,
+            i0.IterableDiffers], { ngForOf: [0, 'ngForOf'] }, null), (_l()(), i0.ɵted(-1, null, ['\n            ']))], function (_ck, _v) {
         var _co = _v.component;
         var currVal_0 = _co.Options;
         _ck(_v, 2, 0, currVal_0);
     }, null);
 }
 function View_ViborComponent_14(_l) {
-    return i0.ɵvid(0, [(_l()(), i0.ɵeld(0, null, null, 1, 'li', [['class',
-                'select-dropdown-optgroup-option loader']], null, null, null, null, null)), (_l()(), i0.ɵted(null, ['\n                Загрузка\n            ']))], null, null);
+    return i0.ɵvid(0, [(_l()(), i0.ɵeld(0, 0, null, null, 1, 'li', [['class',
+                'select-dropdown-optgroup-option loader']], null, null, null, null, null)), (_l()(), i0.ɵted(-1, null, ['\n                Загрузка\n            ']))], null, null);
 }
 function View_ViborComponent_17(_l) {
-    return i0.ɵvid(0, [(_l()(), i0.ɵeld(0, null, null, 0, null, null, null, null, null, null, null))], null, null);
+    return i0.ɵvid(0, [(_l()(), i0.ɵeld(0, 0, null, null, 0, null, null, null, null, null, null, null))], null, null);
 }
 function View_ViborComponent_16(_l) {
-    return i0.ɵvid(0, [(_l()(), i0.ɵeld(0, null, null, 5, null, null, null, null, null, null, null)),
-        (_l()(), i0.ɵted(null, ['\n                    '])), (_l()(), i0.ɵand(16777216, null, null, 2, null, View_ViborComponent_17)), i0.ɵdid(540672, null, 0, i1.NgTemplateOutlet, [i0.ViewContainerRef], { ngTemplateOutletContext: [0,
-                'ngTemplateOutletContext'], ngTemplateOutlet: [1, 'ngTemplateOutlet'] }, null), i0.ɵpod({ query: 0 }), (_l()(), i0.ɵted(null, ['\n                ']))], function (_ck, _v) {
+    return i0.ɵvid(0, [(_l()(), i0.ɵeld(0, 0, null, null, 5, null, null, null, null, null, null, null)),
+        (_l()(), i0.ɵted(-1, null, ['\n                    '])), (_l()(), i0.ɵand(16777216, null, null, 2, null, View_ViborComponent_17)), i0.ɵdid(3, 540672, null, 0, i1.NgTemplateOutlet, [i0.ViewContainerRef], { ngTemplateOutletContext: [0,
+                'ngTemplateOutletContext'], ngTemplateOutlet: [1, 'ngTemplateOutlet'] }, null), i0.ɵpod(4, { query: 0 }), (_l()(), i0.ɵted(-1, null, ['\n                ']))], function (_ck, _v) {
         var _co = _v.component;
         var currVal_0 = _ck(_v, 4, 0, _co.query);
         var currVal_1 = _co.createTemplate.templateRef;
@@ -185,14 +184,14 @@ function View_ViborComponent_16(_l) {
     }, null);
 }
 function View_ViborComponent_18(_l) {
-    return i0.ɵvid(0, [(_l()(), i0.ɵted(null, ['\n                    ', '\n                ']))], null, function (_ck, _v) {
+    return i0.ɵvid(0, [(_l()(), i0.ɵted(0, null, ['\n                    ', '\n                ']))], null, function (_ck, _v) {
         var _co = _v.component;
         var currVal_0 = _co.newMessage;
         _ck(_v, 0, 0, currVal_0);
     });
 }
 function View_ViborComponent_15(_l) {
-    return i0.ɵvid(0, [(_l()(), i0.ɵeld(0, null, null, 6, 'li', [['class',
+    return i0.ɵvid(0, [(_l()(), i0.ɵeld(0, 0, null, null, 6, 'li', [['class',
                 'select-dropdown-optgroup-option loader']], [[2, 'active', null]], [[null,
                 'mousedown']], function (_v, en, $event) {
             var ad = true;
@@ -202,10 +201,10 @@ function View_ViborComponent_15(_l) {
                 ad = (pd_0 && ad);
             }
             return ad;
-        }, null, null)), (_l()(), i0.ɵted(null, ['\n\n                '])),
+        }, null, null)), (_l()(), i0.ɵted(-1, null, ['\n\n                '])),
         (_l()(), i0.ɵand(16777216, null, null, 1, null, View_ViborComponent_16)),
-        i0.ɵdid(16384, null, 0, i1.NgIf, [i0.ViewContainerRef, i0.TemplateRef], { ngIf: [0,
-                'ngIf'], ngIfElse: [1, 'ngIfElse'] }, null), (_l()(), i0.ɵted(null, ['\n\n                '])), (_l()(), i0.ɵand(0, [['templateWithMessage', 2]], null, 0, null, View_ViborComponent_18)), (_l()(), i0.ɵted(null, ['\n            ']))], function (_ck, _v) {
+        i0.ɵdid(3, 16384, null, 0, i1.NgIf, [i0.ViewContainerRef, i0.TemplateRef], { ngIf: [0, 'ngIf'], ngIfElse: [1, 'ngIfElse'] }, null), (_l()(), i0.ɵted(-1, null, ['\n\n                '])), (_l()(), i0.ɵand(0, [['templateWithMessage',
+                2]], null, 0, null, View_ViborComponent_18)), (_l()(), i0.ɵted(-1, null, ['\n            ']))], function (_ck, _v) {
         var _co = _v.component;
         var currVal_1 = _co.createTemplate;
         var currVal_2 = i0.ɵnov(_v, 5);
@@ -217,11 +216,11 @@ function View_ViborComponent_15(_l) {
     });
 }
 function View_ViborComponent_19(_l) {
-    return i0.ɵvid(0, [(_l()(), i0.ɵeld(0, null, null, 1, 'li', [['class',
-                'select-dropdown-optgroup-option loader']], null, null, null, null, null)), (_l()(), i0.ɵted(null, ['\n                Пусто\n            ']))], null, null);
+    return i0.ɵvid(0, [(_l()(), i0.ɵeld(0, 0, null, null, 1, 'li', [['class',
+                'select-dropdown-optgroup-option loader']], null, null, null, null, null)), (_l()(), i0.ɵted(-1, null, ['\n                Пусто\n            ']))], null, null);
 }
 function View_ViborComponent_21(_l) {
-    return i0.ɵvid(0, [(_l()(), i0.ɵeld(0, null, null, 1, 'button', [['class',
+    return i0.ɵvid(0, [(_l()(), i0.ɵeld(0, 0, null, null, 1, 'button', [['class',
                 'select-dropdown-pager-loadmore']], null, [[null, 'mousedown']], function (_v, en, $event) {
             var ad = true;
             var _co = _v.component;
@@ -230,13 +229,16 @@ function View_ViborComponent_21(_l) {
                 ad = (pd_0 && ad);
             }
             return ad;
-        }, null, null)), (_l()(), i0.ɵted(null, ['\n                Загрузить ещё\n            ']))], null, null);
+        }, null, null)), (_l()(), i0.ɵted(-1, null, ['\n                Загрузить ещё\n            ']))], null, null);
 }
 function View_ViborComponent_20(_l) {
-    return i0.ɵvid(0, [(_l()(), i0.ɵeld(0, null, null, 9, 'div', [['class',
-                'select-dropdown-pager']], null, null, null, null, null)), (_l()(), i0.ɵted(null, ['\n            '])), (_l()(), i0.ɵeld(0, null, null, 3, 'p', [['class', 'select-dropdown-pager-page']], null, null, null, null, null)), (_l()(), i0.ɵted(null, ['\n                ', ' / ', '\n            '])), i0.ɵppd(1), i0.ɵppd(1), (_l()(),
-            i0.ɵted(null, ['\n            '])), (_l()(), i0.ɵand(16777216, null, null, 1, null, View_ViborComponent_21)), i0.ɵdid(16384, null, 0, i1.NgIf, [i0.ViewContainerRef, i0.TemplateRef], { ngIf: [0, 'ngIf'] }, null),
-        (_l()(), i0.ɵted(null, ['\n        ']))], function (_ck, _v) {
+    return i0.ɵvid(0, [(_l()(), i0.ɵeld(0, 0, null, null, 9, 'div', [['class',
+                'select-dropdown-pager']], null, null, null, null, null)), (_l()(), i0.ɵted(-1, null, ['\n            '])), (_l()(),
+            i0.ɵeld(2, 0, null, null, 3, 'p', [['class', 'select-dropdown-pager-page']], null, null, null, null, null)),
+        (_l()(), i0.ɵted(3, null, ['\n                ', ' / ', '\n            '])),
+        i0.ɵppd(4, 1), i0.ɵppd(5, 1), (_l()(), i0.ɵted(-1, null, ['\n            '])),
+        (_l()(), i0.ɵand(16777216, null, null, 1, null, View_ViborComponent_21)),
+        i0.ɵdid(8, 16384, null, 0, i1.NgIf, [i0.ViewContainerRef, i0.TemplateRef], { ngIf: [0, 'ngIf'] }, null), (_l()(), i0.ɵted(-1, null, ['\n        ']))], function (_ck, _v) {
         var _co = _v.component;
         var currVal_2 = ((_co.CurrentCache.countPages > 1) && (_co.CurrentCache.currentPage < _co.CurrentCache.countPages));
         _ck(_v, 8, 0, currVal_2);
@@ -248,18 +250,18 @@ function View_ViborComponent_20(_l) {
     });
 }
 function View_ViborComponent_8(_l) {
-    return i0.ɵvid(0, [(_l()(), i0.ɵeld(0, null, null, 21, 'div', [['class',
-                'select-dropdown']], null, null, null, null, null)), (_l()(), i0.ɵted(null, ['\n        '])), (_l()(), i0.ɵeld(0, null, null, 15, 'ul', [['class', 'select-dropdown-optgroup']], null, null, null, null, null)), (_l()(), i0.ɵted(null, ['\n            '])), (_l()(), i0.ɵand(16777216, null, null, 1, null, View_ViborComponent_9)), i0.ɵdid(16384, null, 0, i1.NgIf, [i0.ViewContainerRef, i0.TemplateRef], { ngIf: [0, 'ngIf'], ngIfElse: [1, 'ngIfElse'] }, null), (_l()(), i0.ɵted(null, ['\n\n            '])), (_l()(),
-            i0.ɵand(0, [['dropdownT', 2]], null, 0, null, View_ViborComponent_11)),
-        (_l()(), i0.ɵted(null, ['\n\n            '])), (_l()(), i0.ɵand(16777216, null, null, 1, null, View_ViborComponent_14)), i0.ɵdid(16384, null, 0, i1.NgIf, [i0.ViewContainerRef, i0.TemplateRef], { ngIf: [0, 'ngIf'] }, null), (_l()(), i0.ɵted(null, ['\n            '])), (_l()(),
-            i0.ɵand(16777216, null, null, 1, null, View_ViborComponent_15)),
-        i0.ɵdid(16384, null, 0, i1.NgIf, [i0.ViewContainerRef, i0.TemplateRef], { ngIf: [0,
-                'ngIf'] }, null), (_l()(), i0.ɵted(null, ['\n            '])),
+    return i0.ɵvid(0, [(_l()(), i0.ɵeld(0, 0, null, null, 21, 'div', [['class',
+                'select-dropdown']], null, null, null, null, null)), (_l()(), i0.ɵted(-1, null, ['\n        '])), (_l()(), i0.ɵeld(2, 0, null, null, 15, 'ul', [['class', 'select-dropdown-optgroup']], null, null, null, null, null)), (_l()(),
+            i0.ɵted(-1, null, ['\n            '])), (_l()(), i0.ɵand(16777216, null, null, 1, null, View_ViborComponent_9)), i0.ɵdid(5, 16384, null, 0, i1.NgIf, [i0.ViewContainerRef, i0.TemplateRef], { ngIf: [0, 'ngIf'], ngIfElse: [1,
+                'ngIfElse'] }, null), (_l()(), i0.ɵted(-1, null, ['\n\n            '])),
+        (_l()(), i0.ɵand(0, [['dropdownT', 2]], null, 0, null, View_ViborComponent_11)),
+        (_l()(), i0.ɵted(-1, null, ['\n\n            '])), (_l()(), i0.ɵand(16777216, null, null, 1, null, View_ViborComponent_14)), i0.ɵdid(10, 16384, null, 0, i1.NgIf, [i0.ViewContainerRef, i0.TemplateRef], { ngIf: [0,
+                'ngIf'] }, null), (_l()(), i0.ɵted(-1, null, ['\n            '])),
+        (_l()(), i0.ɵand(16777216, null, null, 1, null, View_ViborComponent_15)),
+        i0.ɵdid(13, 16384, null, 0, i1.NgIf, [i0.ViewContainerRef, i0.TemplateRef], { ngIf: [0, 'ngIf'] }, null), (_l()(), i0.ɵted(-1, null, ['\n            '])),
         (_l()(), i0.ɵand(16777216, null, null, 1, null, View_ViborComponent_19)),
-        i0.ɵdid(16384, null, 0, i1.NgIf, [i0.ViewContainerRef, i0.TemplateRef], { ngIf: [0,
-                'ngIf'] }, null), (_l()(), i0.ɵted(null, ['\n        '])), (_l()(),
-            i0.ɵted(null, ['\n        '])), (_l()(), i0.ɵand(16777216, null, null, 1, null, View_ViborComponent_20)), i0.ɵdid(16384, null, 0, i1.NgIf, [i0.ViewContainerRef, i0.TemplateRef], { ngIf: [0, 'ngIf'] }, null),
-        (_l()(), i0.ɵted(null, ['\n    ']))], function (_ck, _v) {
+        i0.ɵdid(16, 16384, null, 0, i1.NgIf, [i0.ViewContainerRef, i0.TemplateRef], { ngIf: [0, 'ngIf'] }, null), (_l()(), i0.ɵted(-1, null, ['\n        '])),
+        (_l()(), i0.ɵted(-1, null, ['\n        '])), (_l()(), i0.ɵand(16777216, null, null, 1, null, View_ViborComponent_20)), i0.ɵdid(20, 16384, null, 0, i1.NgIf, [i0.ViewContainerRef, i0.TemplateRef], { ngIf: [0, 'ngIf'] }, null), (_l()(), i0.ɵted(-1, null, ['\n    ']))], function (_ck, _v) {
         var _co = _v.component;
         var currVal_0 = !_co.DropdownTemplate;
         var currVal_1 = i0.ɵnov(_v, 7);
@@ -276,8 +278,9 @@ function View_ViborComponent_8(_l) {
 }
 function View_ViborComponent_0(_l) {
     return i0.ɵvid(0, [i0.ɵpid(0, i1.DecimalPipe, [i0.LOCALE_ID]), i0.ɵqud(402653184, 1, { inputControl: 0 }),
-        (_l()(), i0.ɵted(null, ['\n  '])), i0.ɵncd(null, 0), (_l()(), i0.ɵted(null, ['\n\n  '])), (_l()(), i0.ɵeld(0, null, null, 25, 'div', [['class',
-                'select-search']], null, [[null, 'click']], function (_v, en, $event) {
+        (_l()(), i0.ɵted(-1, null, ['\n  '])), i0.ɵncd(null, 0), (_l()(),
+            i0.ɵted(-1, null, ['\n\n  '])), (_l()(), i0.ɵeld(5, 0, null, null, 25, 'div', [['class', 'select-search']], null, [[null,
+                'click']], function (_v, en, $event) {
             var ad = true;
             var _co = _v.component;
             if (('click' === en)) {
@@ -285,14 +288,17 @@ function View_ViborComponent_0(_l) {
                 ad = (pd_0 && ad);
             }
             return ad;
-        }, null, null)), (_l()(), i0.ɵted(null, ['\n      '])),
-        (_l()(), i0.ɵeld(0, null, null, 22, 'ul', [['class', 'select-search-list']], null, null, null, null, null)),
-        (_l()(), i0.ɵted(null, ['\n            '])), (_l()(), i0.ɵand(16777216, null, null, 1, null, View_ViborComponent_1)), i0.ɵdid(16384, null, 0, i1.NgIf, [i0.ViewContainerRef, i0.TemplateRef], { ngIf: [0, 'ngIf'] }, null), (_l()(), i0.ɵted(null, ['\n\n            '])), (_l()(),
-            i0.ɵeld(0, null, null, 8, 'li', [['class', 'select-search-list-item select-search-list-item_input']], [[2, 'select-search-list-item_hide', null]], null, null, null, null)), (_l()(), i0.ɵted(null, ['\n                '])),
-        (_l()(), i0.ɵeld(0, null, null, 5, 'input', [['autocomplete', 'off']], [[8, 'placeholder', 0], [2, 'ng-untouched', null], [2, 'ng-touched', null],
-            [2, 'ng-pristine', null], [2, 'ng-dirty', null], [2, 'ng-valid',
-                null], [2, 'ng-invalid', null], [2, 'ng-pending', null]], [[null, 'ngModelChange'], [null, 'input'], [null,
-                'blur'], [null, 'keydown'], [null, 'compositionstart'],
+        }, null, null)), (_l()(), i0.ɵted(-1, null, ['\n      '])),
+        (_l()(), i0.ɵeld(7, 0, null, null, 22, 'ul', [['class', 'select-search-list']], null, null, null, null, null)),
+        (_l()(), i0.ɵted(-1, null, ['\n            '])), (_l()(), i0.ɵand(16777216, null, null, 1, null, View_ViborComponent_1)), i0.ɵdid(10, 16384, null, 0, i1.NgIf, [i0.ViewContainerRef, i0.TemplateRef], { ngIf: [0,
+                'ngIf'] }, null), (_l()(), i0.ɵted(-1, null, ['\n\n            '])),
+        (_l()(), i0.ɵeld(12, 0, null, null, 8, 'li', [['class', 'select-search-list-item select-search-list-item_input']], [[2, 'select-search-list-item_hide', null]], null, null, null, null)), (_l()(), i0.ɵted(-1, null, ['\n                '])),
+        (_l()(), i0.ɵeld(14, 0, null, null, 5, 'input', [['autocomplete',
+                'off']], [[8, 'placeholder', 0], [2, 'ng-untouched', null], [2, 'ng-touched',
+                null], [2, 'ng-pristine', null], [2, 'ng-dirty', null],
+            [2, 'ng-valid', null], [2, 'ng-invalid', null], [2, 'ng-pending',
+                null]], [[null, 'ngModelChange'], [null, 'input'],
+            [null, 'blur'], [null, 'keydown'], [null, 'compositionstart'],
             [null, 'compositionend']], function (_v, en, $event) {
             var ad = true;
             var _co = _v.component;
@@ -329,13 +335,13 @@ function View_ViborComponent_0(_l) {
                 ad = (pd_7 && ad);
             }
             return ad;
-        }, null, null)), i0.ɵdid(16384, null, 0, i3.DefaultValueAccessor, [i0.Renderer2, i0.ElementRef, [2, i3.COMPOSITION_BUFFER_MODE]], null, null), i0.ɵprd(1024, null, i3.NG_VALUE_ACCESSOR, function (p0_0) {
+        }, null, null)), i0.ɵdid(15, 16384, null, 0, i3.DefaultValueAccessor, [i0.Renderer2, i0.ElementRef, [2, i3.COMPOSITION_BUFFER_MODE]], null, null), i0.ɵprd(1024, null, i3.NG_VALUE_ACCESSOR, function (p0_0) {
             return [p0_0];
-        }, [i3.DefaultValueAccessor]), i0.ɵdid(671744, [[1, 4], ['inputControl', 4]], 0, i3.NgModel, [[8, null], [8, null], [8, null], [2, i3.NG_VALUE_ACCESSOR]], { name: [0, 'name'], isDisabled: [1, 'isDisabled'], model: [2, 'model'] }, { update: 'ngModelChange' }),
-        i0.ɵprd(2048, null, i3.NgControl, null, [i3.NgModel]), i0.ɵdid(16384, null, 0, i3.NgControlStatus, [i3.NgControl], null, null),
-        (_l()(), i0.ɵted(null, ['\n            '])), (_l()(), i0.ɵted(null, ['\n            '])), (_l()(), i0.ɵeld(0, null, null, 3, 'li', [['class', 'select-search-list-item select-search-list-item_loader-center']], [[8, 'hidden', 0]], null, null, null, null)),
-        (_l()(), i0.ɵted(null, ['\n                '])), (_l()(), i0.ɵeld(0, null, null, 0, 'div', [['class', 'select-search-list-item_loader']], null, null, null, null, null)), (_l()(), i0.ɵted(null, ['\n            '])), (_l()(), i0.ɵted(null, ['\n\n            '])),
-        (_l()(), i0.ɵeld(0, null, null, 1, 'span', [['class', 'arrow']], null, [[null, 'click']], function (_v, en, $event) {
+        }, [i3.DefaultValueAccessor]), i0.ɵdid(17, 671744, [[1, 4], ['inputControl', 4]], 0, i3.NgModel, [[8, null], [8, null], [8, null], [2, i3.NG_VALUE_ACCESSOR]], { name: [0, 'name'], isDisabled: [1, 'isDisabled'], model: [2, 'model'] }, { update: 'ngModelChange' }),
+        i0.ɵprd(2048, null, i3.NgControl, null, [i3.NgModel]), i0.ɵdid(19, 16384, null, 0, i3.NgControlStatus, [i3.NgControl], null, null),
+        (_l()(), i0.ɵted(-1, null, ['\n            '])), (_l()(), i0.ɵted(-1, null, ['\n            '])), (_l()(), i0.ɵeld(22, 0, null, null, 3, 'li', [['class', 'select-search-list-item select-search-list-item_loader-center']], [[8, 'hidden', 0]], null, null, null, null)),
+        (_l()(), i0.ɵted(-1, null, ['\n                '])), (_l()(), i0.ɵeld(24, 0, null, null, 0, 'div', [['class', 'select-search-list-item_loader']], null, null, null, null, null)),
+        (_l()(), i0.ɵted(-1, null, ['\n            '])), (_l()(), i0.ɵted(-1, null, ['\n\n            '])), (_l()(), i0.ɵeld(27, 0, null, null, 1, 'span', [['class', 'arrow']], null, [[null, 'click']], function (_v, en, $event) {
             var ad = true;
             var _co = _v.component;
             if (('click' === en)) {
@@ -343,8 +349,9 @@ function View_ViborComponent_0(_l) {
                 ad = (pd_0 && ad);
             }
             return ad;
-        }, null, null)), (_l()(), i0.ɵted(null, ['\n            '])),
-        (_l()(), i0.ɵted(null, ['\n        '])), (_l()(), i0.ɵted(null, ['\n    '])), (_l()(), i0.ɵted(null, ['\n\n    '])), (_l()(), i0.ɵand(16777216, null, null, 1, null, View_ViborComponent_8)), i0.ɵdid(16384, null, 0, i1.NgIf, [i0.ViewContainerRef, i0.TemplateRef], { ngIf: [0, 'ngIf'] }, null)], function (_ck, _v) {
+        }, null, null)), (_l()(), i0.ɵted(-1, null, ['\n            '])),
+        (_l()(), i0.ɵted(-1, null, ['\n        '])), (_l()(), i0.ɵted(-1, null, ['\n    '])), (_l()(), i0.ɵted(-1, null, ['\n\n    '])), (_l()(), i0.ɵand(16777216, null, null, 1, null, View_ViborComponent_8)), i0.ɵdid(33, 16384, null, 0, i1.NgIf, [i0.ViewContainerRef, i0.TemplateRef], { ngIf: [0,
+                'ngIf'] }, null)], function (_ck, _v) {
         var _co = _v.component;
         var currVal_0 = (_co.multiple || !_co.isOpen);
         _ck(_v, 10, 0, currVal_0);
@@ -373,10 +380,10 @@ function View_ViborComponent_0(_l) {
 }
 exports.View_ViborComponent_0 = View_ViborComponent_0;
 function View_ViborComponent_Host_0(_l) {
-    return i0.ɵvid(0, [(_l()(), i0.ɵeld(0, null, null, 6, 'vibor', [], null, null, null, View_ViborComponent_0, exports.RenderType_ViborComponent)),
+    return i0.ɵvid(0, [(_l()(), i0.ɵeld(0, 0, null, null, 6, 'vibor', [], null, null, null, View_ViborComponent_0, exports.RenderType_ViborComponent)),
         i0.ɵprd(5120, null, i3.NG_VALUE_ACCESSOR, function (p0_0) {
             return [p0_0];
-        }, [i2.ViborComponent]), i0.ɵdid(638976, null, 4, i2.ViborComponent, [i0.ElementRef], null, null), i0.ɵqud(335544320, 1, { bothTemplate: 0 }), i0.ɵqud(335544320, 2, { dropdownTemplate: 0 }), i0.ɵqud(335544320, 3, { selectedTemplate: 0 }), i0.ɵqud(335544320, 4, { createTemplate: 0 })], function (_ck, _v) {
+        }, [i2.ViborComponent]), i0.ɵdid(2, 638976, null, 4, i2.ViborComponent, [i0.ElementRef], null, null), i0.ɵqud(335544320, 1, { bothTemplate: 0 }), i0.ɵqud(335544320, 2, { dropdownTemplate: 0 }), i0.ɵqud(335544320, 3, { selectedTemplate: 0 }), i0.ɵqud(335544320, 4, { createTemplate: 0 })], function (_ck, _v) {
         _ck(_v, 2, 0);
     }, null);
 }
