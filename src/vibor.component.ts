@@ -481,7 +481,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
             if ((value instanceof Array && !this.multiple) || (!(value instanceof Array) && this.multiple)) {
                 throw new Error('Model Type Error');
             }
-            if (value instanceof Array) {
+            if (value instanceof Array && this.Model instanceof Array) {
                 if (value.length === this.Model.length && value.every(v => this.Model.indexOf(v) >= 0)) {
                     return;
                 }

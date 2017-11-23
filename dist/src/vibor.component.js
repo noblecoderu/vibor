@@ -308,7 +308,7 @@ var ViborComponent = (function () {
             if ((value instanceof Array && !this.multiple) || (!(value instanceof Array) && this.multiple)) {
                 throw new Error('Model Type Error');
             }
-            if (value instanceof Array) {
+            if (value instanceof Array && this.Model instanceof Array) {
                 if (value.length === this.Model.length && value.every(function (v) { return _this.Model.indexOf(v) >= 0; })) {
                     return;
                 }
