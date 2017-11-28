@@ -468,6 +468,10 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
                 this.Output = this.Model;
             } else if (!(this.Model instanceof Array) && !this.multiple) {
                 this.Output = [this.Model];
+
+                if (!this.output || !this.output.length) {
+                  this.Model = undefined;
+                }
             }
         }
 

@@ -298,6 +298,9 @@ var ViborComponent = (function () {
             }
             else if (!(this.Model instanceof Array) && !this.multiple) {
                 this.Output = [this.Model];
+                if (!this.output || !this.output.length) {
+                    this.Model = undefined;
+                }
             }
         }
         if (inputs['multiple']) {
