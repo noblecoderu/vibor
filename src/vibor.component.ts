@@ -183,7 +183,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
 
     @Input() public dataList: ((param: Object, page: number, countOnPage?: number) => Observable<IDataResponse>) | Array<any>;
     @Input() public excludeList: Array<any>;
-    @Input() public additionalFilter: {};
+    @Input() public additionalFilter = {};
     @Input() public onlyEmitter: boolean;
     @Output('changeFullModel') public changeFullModel: EventEmitter<any> = new EventEmitter();
 

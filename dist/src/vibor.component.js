@@ -26,6 +26,7 @@ var ViborComponent = (function () {
         this.preloadProperty = 'ids'; // Ключ запроса к серверу для предзагрузки, если undefined записывается весь объект
         this.preloadField = undefined; // Значение поля, которе необходимо отправить в запрос.
         this.searchProperty = 'query';
+        this.additionalFilter = {};
         this.changeFullModel = new core_1.EventEmitter();
         this.newMessage = undefined;
         this.CreateNew = function (query) {
