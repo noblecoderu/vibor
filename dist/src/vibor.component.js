@@ -315,6 +315,9 @@ var ViborComponent = (function () {
                 this.el.classList.remove('multiple');
             }
         }
+        if (inputs['additionalFilter']) {
+            this.currentCache = this.GetCache(this.query);
+        }
     };
     // FORMS
     ViborComponent.prototype.writeValue = function (value) {

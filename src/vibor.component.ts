@@ -488,6 +488,10 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
                 this.el.classList.remove('multiple');
             }
         }
+
+        if (inputs['additionalFilter']) {
+            this.currentCache = this.GetCache(this.query);
+        }
     }
 
     constructor(elementRef: ElementRef) {
