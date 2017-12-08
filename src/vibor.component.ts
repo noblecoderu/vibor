@@ -114,13 +114,13 @@ const template = `
                 Пусто
             </li>
         </ul>
-        <div class="select-dropdown-pager" *ngIf="CurrentCache && CurrentCache.countPages > 1">
+        <div class="select-dropdown-pager" *ngIf="currentCache && currentCache.countPages > 1">
             <p class="select-dropdown-pager-page">
-                {{ CurrentCache.currentPage | number }} / {{ CurrentCache.countPages | number }}
+                {{ currentCache.currentPage | number }} / {{ currentCache.countPages | number }}
             </p>
             <button
                 class="select-dropdown-pager-loadmore"
-                    *ngIf="CurrentCache.countPages > 1 && CurrentCache.currentPage < CurrentCache.countPages"
+                    *ngIf="currentCache.countPages > 1 && currentCache.currentPage < currentCache.countPages"
                     (mousedown)="nextPage($event)">
                 Загрузить ещё
             </button>
@@ -183,6 +183,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
 
     @Input() public dataList: ((param: Object, page: number, countOnPage?: number) => Observable<IDataResponse>) | Array<any>;
     @Input() public excludeList: Array<any>;
+    @Input() public additionalFilter: {};
     @Input() public onlyEmitter: boolean;
     @Output('changeFullModel') public changeFullModel: EventEmitter<any> = new EventEmitter();
 
@@ -276,19 +277,24 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
             });
         } else if (this.dataList instanceof Function) {
             if (this.dataListSub) { this.dataListSub.unsubscribe(); }
-            if (!this.CurrentCache) {
-                this.cacheLazyData[this.query] = {
+            if (!this.currentCache) {
+                this.currentCache = {
                     countElement: 0,
                     countPages: 1,
                     currentPage: 1,
-                    objects: []
+                    objects: [],
+                    query: this.query,
+                    params: Object.assign({}, this.additionalFilter)
                 };
-                let tmp: CacheInfo = this.CurrentCache, params: any = {};
+                this.cacheLazyData.push(this.currentCache);
+
+                let params = Object.assign({}, this.additionalFilter) as any;
                 params[this.searchProperty] = this.query;
+
                 this.dataListSub = (<Observable<IDataResponse>>this.dataList(params, 1, this.countOnPage)).subscribe(answer => {
-                    tmp.objects = tmp.objects.concat(answer.list);
-                    tmp.countElement = answer.headers['count'];
-                    tmp.countPages = Math.ceil(tmp.countElement / this.countOnPage);
+                    this.currentCache.objects = this.currentCache.objects.concat(answer.list);
+                    this.currentCache.countElement = answer.headers['count'];
+                    this.currentCache.countPages = Math.ceil(this.currentCache.countElement / this.countOnPage);
                 }, () => { });
             }
         }
@@ -300,6 +306,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
         // executing after user stopped typing
         this.delay(() => {
             this.oldQuery = this.query;
+            this.currentCache = this.GetCache(this.query);
             this.updateOptions();
         }, delayMs);
     }
@@ -355,28 +362,27 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
 
     public nextPage($event: Event): void {
         $event.preventDefault();
-        let tmp: CacheInfo = this.CurrentCache;
 
         // Validators
         if (!(this.dataList instanceof Function)) {
             throw new Error('Data List mast be Function');
         }
-        if (!tmp) {
+        if (!this.currentCache) {
             throw new Error('For next page need cache for first Page');
         }
-        if (tmp.currentPage >= tmp.countPages) { throw new Error('Max Page Limit'); }
+        if (this.currentCache.currentPage >= this.currentCache.countPages) { throw new Error('Max Page Limit'); }
 
         if (this.dataListSub) { this.dataListSub.unsubscribe(); }
 
-        let params: any = {};
+        let params: any = Object.assign({}, this.additionalFilter);
         params[this.searchProperty] = this.query;
 
-        this.dataListSub = (<Observable<IDataResponse>>this.dataList(params, tmp.currentPage + 1, this.countOnPage)).subscribe(answer => {
-            tmp.currentPage++;
-            tmp.countElement = answer.headers['count'];
-            tmp.countPages = Math.ceil(tmp.countElement / this.countOnPage);
-            tmp.objects = tmp.objects.concat(answer.list);
-            this.selectorPosition = (tmp.currentPage - 1) * this.countOnPage + 1;
+        this.dataListSub = this.dataList(params, this.currentCache.currentPage + 1, this.countOnPage).subscribe(answer => {
+            this.currentCache.currentPage++;
+            this.currentCache.countElement = answer.headers['count'];
+            this.currentCache.countPages = Math.ceil(this.currentCache.countElement / this.countOnPage);
+            this.currentCache.objects = this.currentCache.objects.concat(answer.list);
+            this.selectorPosition = (this.currentCache.currentPage - 1) * this.countOnPage + 1;
             this.focusSelectedOption();
         }, () => { });
     }
@@ -623,10 +629,12 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
         if (this.dataList instanceof Array) {
             options = this.options;
         } else if (this.dataList instanceof Function) {
-            if (!(this.query in this.cacheLazyData) && this.cacheLazyData[this.oldQuery]) {
-                options = this.cacheLazyData[this.oldQuery]['objects'];
+            let oldCache = this.GetCache(this.oldQuery);
+
+            if (!this.currentCache && oldCache) {
+                options = oldCache.objects;
             } else {
-                options = this.CurrentCache ? this.CurrentCache.objects : [];
+                options = this.currentCache ? this.currentCache.objects : [];
             }
         }
         return (options || []).filter(op => {
@@ -638,9 +646,12 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
         });
     }
 
-    get CurrentCache(): CacheInfo | undefined {
+    public currentCache: CacheInfo;
+    private GetCache(query: string): CacheInfo {
         if (this.dataList instanceof Function) {
-            return <CacheInfo>this.cacheLazyData[this.query];
+            return this.cacheLazyData.find(cache => {
+                return cache.query === this.query && deepEqual(cache.params, this.additionalFilter);
+            })
         }
         return undefined;
     }
@@ -694,7 +705,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
 
 
     // CACHE
-    private cacheLazyData: { [key: string]: CacheInfo } = {};
+    private cacheLazyData: Array<CacheInfo> = [];
 }
 
 export interface CacheInfo {
@@ -702,4 +713,7 @@ export interface CacheInfo {
     countPages: number;
     currentPage: number;
     objects: Array<any>;
+
+    query: string;
+    params: any;
 }

@@ -1,6 +1,6 @@
 {
   "name": "vibor",
-  "version": "0.7.5",
+  "version": "0.7.6",
   "scripts": {
     "build": "ngc -p tsconfig.json",
     "lint": "tslint --type-check --project tsconfig.json src/**/*.ts",

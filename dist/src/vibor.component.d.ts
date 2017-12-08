@@ -37,6 +37,7 @@ export declare class ViborComponent implements OnInit, OnChanges, ControlValueAc
     searchProperty: string;
     dataList: ((param: Object, page: number, countOnPage?: number) => Observable<IDataResponse>) | Array<any>;
     excludeList: Array<any>;
+    additionalFilter: {};
     onlyEmitter: boolean;
     changeFullModel: EventEmitter<any>;
     newMessage: string;
@@ -74,7 +75,8 @@ export declare class ViborComponent implements OnInit, OnChanges, ControlValueAc
     readonly ValueFromOutput: any;
     Output: Array<any>;
     readonly Options: Array<any>;
-    readonly CurrentCache: CacheInfo | undefined;
+    currentCache: CacheInfo;
+    private GetCache(query);
     AddNewObject(value: Observable<any> | any): void;
     private SetNewObject(newObject);
     readonly ShowNew: boolean;
@@ -86,4 +88,6 @@ export interface CacheInfo {
     countPages: number;
     currentPage: number;
     objects: Array<any>;
+    query: string;
+    params: any;
 }

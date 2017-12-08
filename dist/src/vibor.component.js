@@ -6,7 +6,7 @@ var Observable_1 = require("rxjs/Observable");
 var vibor_template_directive_1 = require("./vibor.template.directive");
 var helpers_1 = require("./helpers");
 var deepEqual = require('deep-equal');
-var template = "\n  <ng-content></ng-content>\n\n  <div class=\"select-search\" (click)=\"showDropdownList($event);\">\n      <ul class=\"select-search-list\">\n            <ng-container *ngIf=\"multiple || !isOpen\">\n              <ng-container *ngIf=\"!SelectedTemplate; else selectedT\">\n                  <li class=\"select-search-list-item select-search-list-item_selection\"\n                      *ngFor=\"let item of output; let $index=index; let $last=last; trackBy: TrackByFn;\"\n                      [class.focused]=\"backspaceFocus && last\">\n                      <div [innerHTML]=\"getListFormatted(item)\"></div>\n                      <a class=\"select-search-list-item_remove\" (click)=\"!disabled && removeOne($index, $event)\"></a>\n                  </li>\n              </ng-container>\n\n              <ng-template #selectedT>\n                  <li class=\"select-search-list-item select-search-list-item_selection\"\n                      *ngFor=\"let item of output; let $index=index; let $last=last; trackBy: TrackByFn;\"\n                      [class.focused]=\"backspaceFocus && last\">\n                      <ng-container *ngTemplateOutlet=\"SelectedTemplate; context: {item: item}\"></ng-container>\n                      <a class=\"select-search-list-item_remove\" *ngIf=\"!disabled\" (click)=\"!disabled && removeOne($index, $event)\"></a>\n                  </li>\n              </ng-template>\n            </ng-container>\n\n            <li class=\"select-search-list-item select-search-list-item_input\"\n                [class.select-search-list-item_hide]=\"InputHide\">\n                <input autocomplete=\"off\"\n                       #inputControl=\"ngModel\"\n                       [name]=\"name\"\n                       [disabled]=\"disabled\"\n                       [(ngModel)]=\"query\"\n                       [placeholder]=\"output.length == 0 ? placeholder : ''\"\n                       (input)=\"updateOptionsInDelay()\"\n                       (blur)=\"hideDropdownListWithDelay()\"\n                       (keydown)=\"keyDown($event)\"/>\n            </li>\n            <li class=\"select-search-list-item select-search-list-item_loader-center\" [hidden]=\"!dataListSub || dataListSub.closed\">\n                <div class=\"select-search-list-item_loader\"></div>\n            </li>\n\n            <span class=\"arrow\" (click)=\"toggleDropdown($event)\">\n            </span>\n        </ul>\n    </div>\n\n    <div class=\"select-dropdown\" *ngIf=\"isOpen\">\n        <ul class=\"select-dropdown-optgroup\">\n            <ng-container *ngIf=\"!DropdownTemplate; else dropdownT\">\n                <li class=\"select-dropdown-optgroup-option\"\n                    *ngFor=\"let option of Options; let i=index\"\n                    (mousedown)=\"selectOne($event, option)\"\n                    [class.active]=\"i === selectorPosition\"\n                    [innerHTML]=\"getDropdownFormatted(option)\">\n                </li>\n            </ng-container>\n\n            <ng-template #dropdownT>\n                <li class=\"select-dropdown-optgroup-option\"\n                    *ngFor=\"let option of Options; let i=index\"\n                    (mousedown)=\"selectOne($event, option)\"\n                    [class.active]=\"i === selectorPosition\">\n                    <ng-container *ngTemplateOutlet=\"DropdownTemplate; context: {item: option}\"></ng-container>\n                </li>\n            </ng-template>\n\n            <li class=\"select-dropdown-optgroup-option loader\" *ngIf=\"dataListSub && !dataListSub.closed\">\n                \u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430\n            </li>\n            <li class=\"select-dropdown-optgroup-option loader\"\n                (mousedown)=\"AddNewObject(CreateNew(query));\"\n                [class.active]=\"selectorPosition === Options.length\"\n                *ngIf=\"ShowNew\">\n\n                <ng-container *ngIf=\"createTemplate; else templateWithMessage\">\n                    <ng-container *ngTemplateOutlet=\"createTemplate.templateRef; context: {query: query}\"></ng-container>\n                </ng-container>\n\n                <ng-template #templateWithMessage>\n                    {{ newMessage }}\n                </ng-template>\n            </li>\n            <li class=\"select-dropdown-optgroup-option loader\" *ngIf=\"ShowEmpty\">\n                \u041F\u0443\u0441\u0442\u043E\n            </li>\n        </ul>\n        <div class=\"select-dropdown-pager\" *ngIf=\"CurrentCache && CurrentCache.countPages > 1\">\n            <p class=\"select-dropdown-pager-page\">\n                {{ CurrentCache.currentPage | number }} / {{ CurrentCache.countPages | number }}\n            </p>\n            <button\n                class=\"select-dropdown-pager-loadmore\"\n                    *ngIf=\"CurrentCache.countPages > 1 && CurrentCache.currentPage < CurrentCache.countPages\"\n                    (mousedown)=\"nextPage($event)\">\n                \u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044C \u0435\u0449\u0451\n            </button>\n        </div>\n    </div>";
+var template = "\n  <ng-content></ng-content>\n\n  <div class=\"select-search\" (click)=\"showDropdownList($event);\">\n      <ul class=\"select-search-list\">\n            <ng-container *ngIf=\"multiple || !isOpen\">\n              <ng-container *ngIf=\"!SelectedTemplate; else selectedT\">\n                  <li class=\"select-search-list-item select-search-list-item_selection\"\n                      *ngFor=\"let item of output; let $index=index; let $last=last; trackBy: TrackByFn;\"\n                      [class.focused]=\"backspaceFocus && last\">\n                      <div [innerHTML]=\"getListFormatted(item)\"></div>\n                      <a class=\"select-search-list-item_remove\" (click)=\"!disabled && removeOne($index, $event)\"></a>\n                  </li>\n              </ng-container>\n\n              <ng-template #selectedT>\n                  <li class=\"select-search-list-item select-search-list-item_selection\"\n                      *ngFor=\"let item of output; let $index=index; let $last=last; trackBy: TrackByFn;\"\n                      [class.focused]=\"backspaceFocus && last\">\n                      <ng-container *ngTemplateOutlet=\"SelectedTemplate; context: {item: item}\"></ng-container>\n                      <a class=\"select-search-list-item_remove\" *ngIf=\"!disabled\" (click)=\"!disabled && removeOne($index, $event)\"></a>\n                  </li>\n              </ng-template>\n            </ng-container>\n\n            <li class=\"select-search-list-item select-search-list-item_input\"\n                [class.select-search-list-item_hide]=\"InputHide\">\n                <input autocomplete=\"off\"\n                       #inputControl=\"ngModel\"\n                       [name]=\"name\"\n                       [disabled]=\"disabled\"\n                       [(ngModel)]=\"query\"\n                       [placeholder]=\"output.length == 0 ? placeholder : ''\"\n                       (input)=\"updateOptionsInDelay()\"\n                       (blur)=\"hideDropdownListWithDelay()\"\n                       (keydown)=\"keyDown($event)\"/>\n            </li>\n            <li class=\"select-search-list-item select-search-list-item_loader-center\" [hidden]=\"!dataListSub || dataListSub.closed\">\n                <div class=\"select-search-list-item_loader\"></div>\n            </li>\n\n            <span class=\"arrow\" (click)=\"toggleDropdown($event)\">\n            </span>\n        </ul>\n    </div>\n\n    <div class=\"select-dropdown\" *ngIf=\"isOpen\">\n        <ul class=\"select-dropdown-optgroup\">\n            <ng-container *ngIf=\"!DropdownTemplate; else dropdownT\">\n                <li class=\"select-dropdown-optgroup-option\"\n                    *ngFor=\"let option of Options; let i=index\"\n                    (mousedown)=\"selectOne($event, option)\"\n                    [class.active]=\"i === selectorPosition\"\n                    [innerHTML]=\"getDropdownFormatted(option)\">\n                </li>\n            </ng-container>\n\n            <ng-template #dropdownT>\n                <li class=\"select-dropdown-optgroup-option\"\n                    *ngFor=\"let option of Options; let i=index\"\n                    (mousedown)=\"selectOne($event, option)\"\n                    [class.active]=\"i === selectorPosition\">\n                    <ng-container *ngTemplateOutlet=\"DropdownTemplate; context: {item: option}\"></ng-container>\n                </li>\n            </ng-template>\n\n            <li class=\"select-dropdown-optgroup-option loader\" *ngIf=\"dataListSub && !dataListSub.closed\">\n                \u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430\n            </li>\n            <li class=\"select-dropdown-optgroup-option loader\"\n                (mousedown)=\"AddNewObject(CreateNew(query));\"\n                [class.active]=\"selectorPosition === Options.length\"\n                *ngIf=\"ShowNew\">\n\n                <ng-container *ngIf=\"createTemplate; else templateWithMessage\">\n                    <ng-container *ngTemplateOutlet=\"createTemplate.templateRef; context: {query: query}\"></ng-container>\n                </ng-container>\n\n                <ng-template #templateWithMessage>\n                    {{ newMessage }}\n                </ng-template>\n            </li>\n            <li class=\"select-dropdown-optgroup-option loader\" *ngIf=\"ShowEmpty\">\n                \u041F\u0443\u0441\u0442\u043E\n            </li>\n        </ul>\n        <div class=\"select-dropdown-pager\" *ngIf=\"currentCache && currentCache.countPages > 1\">\n            <p class=\"select-dropdown-pager-page\">\n                {{ currentCache.currentPage | number }} / {{ currentCache.countPages | number }}\n            </p>\n            <button\n                class=\"select-dropdown-pager-loadmore\"\n                    *ngIf=\"currentCache.countPages > 1 && currentCache.currentPage < currentCache.countPages\"\n                    (mousedown)=\"nextPage($event)\">\n                \u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044C \u0435\u0449\u0451\n            </button>\n        </div>\n    </div>";
 var ViborComponent = (function () {
     function ViborComponent(elementRef) {
         this.firstLoad = false;
@@ -41,7 +41,7 @@ var ViborComponent = (function () {
         this.onChange = function () { };
         this.onTouched = function () { };
         // CACHE
-        this.cacheLazyData = {};
+        this.cacheLazyData = [];
         this.el = elementRef.nativeElement;
         this.output = [];
     }
@@ -113,19 +113,22 @@ var ViborComponent = (function () {
             if (this.dataListSub) {
                 this.dataListSub.unsubscribe();
             }
-            if (!this.CurrentCache) {
-                this.cacheLazyData[this.query] = {
+            if (!this.currentCache) {
+                this.currentCache = {
                     countElement: 0,
                     countPages: 1,
                     currentPage: 1,
-                    objects: []
+                    objects: [],
+                    query: this.query,
+                    params: Object.assign({}, this.additionalFilter)
                 };
-                var tmp_1 = this.CurrentCache, params = {};
+                this.cacheLazyData.push(this.currentCache);
+                var params = Object.assign({}, this.additionalFilter);
                 params[this.searchProperty] = this.query;
                 this.dataListSub = this.dataList(params, 1, this.countOnPage).subscribe(function (answer) {
-                    tmp_1.objects = tmp_1.objects.concat(answer.list);
-                    tmp_1.countElement = answer.headers['count'];
-                    tmp_1.countPages = Math.ceil(tmp_1.countElement / _this.countOnPage);
+                    _this.currentCache.objects = _this.currentCache.objects.concat(answer.list);
+                    _this.currentCache.countElement = answer.headers['count'];
+                    _this.currentCache.countPages = Math.ceil(_this.currentCache.countElement / _this.countOnPage);
                 }, function () { });
             }
         }
@@ -136,6 +139,7 @@ var ViborComponent = (function () {
         // executing after user stopped typing
         this.delay(function () {
             _this.oldQuery = _this.query;
+            _this.currentCache = _this.GetCache(_this.query);
             _this.updateOptions();
         }, delayMs);
     };
@@ -184,28 +188,27 @@ var ViborComponent = (function () {
     ViborComponent.prototype.nextPage = function ($event) {
         var _this = this;
         $event.preventDefault();
-        var tmp = this.CurrentCache;
         // Validators
         if (!(this.dataList instanceof Function)) {
             throw new Error('Data List mast be Function');
         }
-        if (!tmp) {
+        if (!this.currentCache) {
             throw new Error('For next page need cache for first Page');
         }
-        if (tmp.currentPage >= tmp.countPages) {
+        if (this.currentCache.currentPage >= this.currentCache.countPages) {
             throw new Error('Max Page Limit');
         }
         if (this.dataListSub) {
             this.dataListSub.unsubscribe();
         }
-        var params = {};
+        var params = Object.assign({}, this.additionalFilter);
         params[this.searchProperty] = this.query;
-        this.dataListSub = this.dataList(params, tmp.currentPage + 1, this.countOnPage).subscribe(function (answer) {
-            tmp.currentPage++;
-            tmp.countElement = answer.headers['count'];
-            tmp.countPages = Math.ceil(tmp.countElement / _this.countOnPage);
-            tmp.objects = tmp.objects.concat(answer.list);
-            _this.selectorPosition = (tmp.currentPage - 1) * _this.countOnPage + 1;
+        this.dataListSub = this.dataList(params, this.currentCache.currentPage + 1, this.countOnPage).subscribe(function (answer) {
+            _this.currentCache.currentPage++;
+            _this.currentCache.countElement = answer.headers['count'];
+            _this.currentCache.countPages = Math.ceil(_this.currentCache.countElement / _this.countOnPage);
+            _this.currentCache.objects = _this.currentCache.objects.concat(answer.list);
+            _this.selectorPosition = (_this.currentCache.currentPage - 1) * _this.countOnPage + 1;
             _this.focusSelectedOption();
         }, function () { });
     };
@@ -467,11 +470,12 @@ var ViborComponent = (function () {
                 options = this.options;
             }
             else if (this.dataList instanceof Function) {
-                if (!(this.query in this.cacheLazyData) && this.cacheLazyData[this.oldQuery]) {
-                    options = this.cacheLazyData[this.oldQuery]['objects'];
+                var oldCache = this.GetCache(this.oldQuery);
+                if (!this.currentCache && oldCache) {
+                    options = oldCache.objects;
                 }
                 else {
-                    options = this.CurrentCache ? this.CurrentCache.objects : [];
+                    options = this.currentCache ? this.currentCache.objects : [];
                 }
             }
             return (options || []).filter(function (op) {
@@ -485,16 +489,15 @@ var ViborComponent = (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(ViborComponent.prototype, "CurrentCache", {
-        get: function () {
-            if (this.dataList instanceof Function) {
-                return this.cacheLazyData[this.query];
-            }
-            return undefined;
-        },
-        enumerable: true,
-        configurable: true
-    });
+    ViborComponent.prototype.GetCache = function (query) {
+        var _this = this;
+        if (this.dataList instanceof Function) {
+            return this.cacheLazyData.find(function (cache) {
+                return cache.query === _this.query && deepEqual(cache.params, _this.additionalFilter);
+            });
+        }
+        return undefined;
+    };
     // CreateNew
     ViborComponent.prototype.AddNewObject = function (value) {
         var _this = this;
@@ -584,6 +587,7 @@ ViborComponent.propDecorators = {
     'searchProperty': [{ type: core_1.Input },],
     'dataList': [{ type: core_1.Input },],
     'excludeList': [{ type: core_1.Input },],
+    'additionalFilter': [{ type: core_1.Input },],
     'onlyEmitter': [{ type: core_1.Input },],
     'changeFullModel': [{ type: core_1.Output, args: ['changeFullModel',] },],
     'newMessage': [{ type: core_1.Input },],

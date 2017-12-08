@@ -240,12 +240,12 @@ function View_ViborComponent_20(_l) {
         (_l()(), i0.ɵand(16777216, null, null, 1, null, View_ViborComponent_21)),
         i0.ɵdid(8, 16384, null, 0, i1.NgIf, [i0.ViewContainerRef, i0.TemplateRef], { ngIf: [0, 'ngIf'] }, null), (_l()(), i0.ɵted(-1, null, ['\n        ']))], function (_ck, _v) {
         var _co = _v.component;
-        var currVal_2 = ((_co.CurrentCache.countPages > 1) && (_co.CurrentCache.currentPage < _co.CurrentCache.countPages));
+        var currVal_2 = ((_co.currentCache.countPages > 1) && (_co.currentCache.currentPage < _co.currentCache.countPages));
         _ck(_v, 8, 0, currVal_2);
     }, function (_ck, _v) {
         var _co = _v.component;
-        var currVal_0 = i0.ɵunv(_v, 3, 0, _ck(_v, 4, 0, i0.ɵnov(_v.parent.parent, 0), _co.CurrentCache.currentPage));
-        var currVal_1 = i0.ɵunv(_v, 3, 1, _ck(_v, 5, 0, i0.ɵnov(_v.parent.parent, 0), _co.CurrentCache.countPages));
+        var currVal_0 = i0.ɵunv(_v, 3, 0, _ck(_v, 4, 0, i0.ɵnov(_v.parent.parent, 0), _co.currentCache.currentPage));
+        var currVal_1 = i0.ɵunv(_v, 3, 1, _ck(_v, 5, 0, i0.ɵnov(_v.parent.parent, 0), _co.currentCache.countPages));
         _ck(_v, 3, 0, currVal_0, currVal_1);
     });
 }
@@ -272,7 +272,7 @@ function View_ViborComponent_8(_l) {
         _ck(_v, 13, 0, currVal_3);
         var currVal_4 = _co.ShowEmpty;
         _ck(_v, 16, 0, currVal_4);
-        var currVal_5 = (_co.CurrentCache && (_co.CurrentCache.countPages > 1));
+        var currVal_5 = (_co.currentCache && (_co.currentCache.countPages > 1));
         _ck(_v, 20, 0, currVal_5);
     }, null);
 }
@@ -393,5 +393,6 @@ exports.ViborComponentNgFactory = i0.ɵccf('vibor', i2.ViborComponent, View_Vibo
     listFormatter: 'listFormatter', dropdownFormatter: 'dropdownFormatter', viewProperty: 'viewProperty',
     modelProperty: 'modelProperty', preloadProperty: 'preloadProperty', preloadField: 'preloadField',
     searchProperty: 'searchProperty', dataList: 'dataList', excludeList: 'excludeList',
-    onlyEmitter: 'onlyEmitter', newMessage: 'newMessage', CreateNew: 'CreateNew' }, { changeFullModel: 'changeFullModel' }, ['*']);
+    additionalFilter: 'additionalFilter', onlyEmitter: 'onlyEmitter', newMessage: 'newMessage',
+    CreateNew: 'CreateNew' }, { changeFullModel: 'changeFullModel' }, ['*']);
 //# sourceMappingURL=vibor.component.ngfactory.js.map
