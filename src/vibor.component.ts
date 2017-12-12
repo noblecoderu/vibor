@@ -707,10 +707,6 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
         return this.Options.length === 0 && (!(this.dataList instanceof Function) || (this.dataListSub.closed));
     }
 
-    public UpdateValue() {
-        this.writeValue(this.Model);
-    }
-
 
     // CACHE
     private cacheLazyData: Array<CacheInfo> = [];
