@@ -553,6 +553,9 @@ var ViborComponent = (function () {
         enumerable: true,
         configurable: true
     });
+    ViborComponent.prototype.UpdateValue = function () {
+        this.writeValue(this.Model);
+    };
     return ViborComponent;
 }());
 ViborComponent.decorators = [
