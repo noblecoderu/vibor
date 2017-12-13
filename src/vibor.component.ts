@@ -147,8 +147,8 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
 
     public isOpen: boolean;
 
-    private oldQuery = '';
-    public query = '';
+    private oldQuery: string;
+    public query: string;
 
     private selectorPosition = 0;
     private waitTime = 500;
@@ -390,7 +390,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
     // MODEL
     private clearProperty(): void {
         this.selectorPosition = 0;
-        this.query = '';
+        this.query = undefined;
     }
 
     public selectOne($event: MouseEvent | KeyboardEvent, data: any): void {

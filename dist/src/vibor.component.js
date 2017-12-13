@@ -10,8 +10,6 @@ var template = "\n  <ng-content></ng-content>\n\n  <div class=\"select-search\" 
 var ViborComponent = (function () {
     function ViborComponent(elementRef) {
         this.firstLoad = false;
-        this.oldQuery = '';
-        this.query = '';
         this.selectorPosition = 0;
         this.waitTime = 500;
         // Inputs & Outputs
@@ -216,7 +214,7 @@ var ViborComponent = (function () {
     // MODEL
     ViborComponent.prototype.clearProperty = function () {
         this.selectorPosition = 0;
-        this.query = '';
+        this.query = undefined;
     };
     ViborComponent.prototype.selectOne = function ($event, data) {
         // Фильтр ненужных событий
