@@ -321,7 +321,7 @@ var ViborComponent = (function () {
     ViborComponent.prototype.writeValue = function (value) {
         var _this = this;
         // Нормальный update модели
-        if (value !== null) {
+        if (value) {
             if ((value instanceof Array && !this.multiple) || (!(value instanceof Array) && this.multiple)) {
                 throw new Error('Model Type Error');
             }

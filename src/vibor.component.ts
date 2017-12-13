@@ -502,7 +502,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
     // FORMS
     public writeValue(value: any): void {
         // Нормальный update модели
-        if (value !== null) {
+        if (value) {
             if ((value instanceof Array && !this.multiple) || (!(value instanceof Array) && this.multiple)) {
                 throw new Error('Model Type Error');
             }
