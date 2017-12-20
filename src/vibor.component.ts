@@ -39,7 +39,7 @@ const template = `
                       *ngFor="let item of output; let $index=index; let $last=last; trackBy: TrackByFn;"
                       [class.focused]="backspaceFocus && last">
                       <div [innerHTML]="getListFormatted(item)"></div>
-                      <a class="select-search-list-item_remove" (click)="!disabled && removeOne($index, $event)"></a>
+                      <a class="select-search-list-item_remove" *ngIf="allowReset" (click)="!disabled && removeOne($index, $event)"></a>
                   </li>
               </ng-container>
 
@@ -47,8 +47,11 @@ const template = `
                   <li class="select-search-list-item select-search-list-item_selection"
                       *ngFor="let item of output; let $index=index; let $last=last; trackBy: TrackByFn;"
                       [class.focused]="backspaceFocus && last">
-                      <ng-container *ngTemplateOutlet="SelectedTemplate; context: {item: item}"></ng-container>
-                      <a class="select-search-list-item_remove" *ngIf="!disabled" (click)="!disabled && removeOne($index, $event)"></a>
+                        <ng-container *ngTemplateOutlet="SelectedTemplate; context: {item: item}"></ng-container>
+                        <a class="select-search-list-item_remove"
+                           *ngIf="allowReset && !disabled"
+                           (click)="!disabled && removeOne($index, $event)">
+                        </a>
                   </li>
               </ng-template>
             </ng-container>
@@ -165,6 +168,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
     @Input() public placeholder = 'Vibor';
     @Input() public name: string;
     @Input() public required = false;
+    @Input() public allowReset = true;
     public disabled = false;
 
     // Отображение списков

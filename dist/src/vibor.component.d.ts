@@ -23,6 +23,7 @@ export declare class ViborComponent implements OnInit, OnChanges, ControlValueAc
     placeholder: string;
     name: string;
     required: boolean;
+    allowReset: boolean;
     disabled: boolean;
     bothTemplate: ViborBothDirective;
     dropdownTemplate: ViborDropdownDirective;
