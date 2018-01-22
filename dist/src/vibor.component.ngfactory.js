@@ -373,7 +373,7 @@ function View_ViborComponent_0(_l) {
         var _co = _v.component;
         var currVal_1 = _co.InputHide;
         _ck(_v, 12, 0, currVal_1);
-        var currVal_2 = ((_co.output.length == 0) ? _co.placeholder : '');
+        var currVal_2 = (((_co.output.length == 0) || (_co.multiple && (_co.output.length < _co.multipleLimit))) ? _co.placeholder : '');
         var currVal_3 = i0.ɵnov(_v, 19).ngClassUntouched;
         var currVal_4 = i0.ɵnov(_v, 19).ngClassTouched;
         var currVal_5 = i0.ɵnov(_v, 19).ngClassPristine;

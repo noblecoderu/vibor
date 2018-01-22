@@ -63,7 +63,7 @@ const template = `
                        [name]="name"
                        [disabled]="disabled"
                        [(ngModel)]="query"
-                       [placeholder]="output.length == 0 ? placeholder : ''"
+                       [placeholder]="output.length == 0 || (multiple && output.length < multipleLimit) ? placeholder : ''"
                        (input)="updateOptionsInDelay()"
                        (blur)="hideDropdownListWithDelay()"
                        (keydown)="keyDown($event)"/>
@@ -162,7 +162,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
 
     // Inputs & Outputs
     @Input() public multiple = false;
-    @Input() public multipleLimit = 5;
+    @Input() public multipleLimit = Infinity;
     @Input() public countOnPage = 10;
 
     @Input() public placeholder = 'Vibor';
