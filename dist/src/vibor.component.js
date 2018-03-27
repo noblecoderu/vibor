@@ -528,6 +528,7 @@ var ViborComponent = (function () {
                 }
             }
         }
+        this.firstLoad = false;
         this.selectOne(new MouseEvent('click'), newObject);
     };
     Object.defineProperty(ViborComponent.prototype, "ShowNew", {

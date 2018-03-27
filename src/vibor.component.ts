@@ -690,6 +690,7 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
             }
         }
 
+        this.firstLoad = false;
         this.selectOne(new MouseEvent('click'), newObject);
     }
 
