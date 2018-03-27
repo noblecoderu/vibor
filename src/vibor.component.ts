@@ -691,6 +691,8 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
         }
 
         this.firstLoad = false;
+        this.query = undefined;
+        this.currentCache = this.GetCache(this.query);
         this.selectOne(new MouseEvent('click'), newObject);
     }
 

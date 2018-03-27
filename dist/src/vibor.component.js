@@ -529,6 +529,8 @@ var ViborComponent = (function () {
             }
         }
         this.firstLoad = false;
+        this.query = undefined;
+        this.currentCache = this.GetCache(this.query);
         this.selectOne(new MouseEvent('click'), newObject);
     };
     Object.defineProperty(ViborComponent.prototype, "ShowNew", {
