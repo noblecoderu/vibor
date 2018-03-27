@@ -520,10 +520,11 @@ var ViborComponent = (function () {
             this.dataList.push(newObject);
         }
         else if (this.dataList instanceof Function) {
-            for (var cacheKey in this.cacheLazyData) {
-                if (this.query.includes(cacheKey) || cacheKey === undefined || cacheKey === "") {
-                    this.cacheLazyData[cacheKey].countElement++;
-                    this.cacheLazyData[cacheKey].objects.push(newObject);
+            for (var _i = 0, _a = this.cacheLazyData; _i < _a.length; _i++) {
+                var cache = _a[_i];
+                if (this.query.includes(cache.query) || cache.query === undefined || cache.query === '') {
+                    cache.countElement++;
+                    cache.objects.push(newObject);
                 }
             }
         }

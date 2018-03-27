@@ -682,10 +682,10 @@ export class ViborComponent implements OnInit, OnChanges, ControlValueAccessor {
         if (this.dataList instanceof Array) {
             this.dataList.push(newObject);
         } else if (this.dataList instanceof Function) {
-            for (let cacheKey in this.cacheLazyData) {
-                if (this.query.includes(cacheKey) || cacheKey === undefined || cacheKey === "") {
-                    this.cacheLazyData[cacheKey].countElement++;
-                    this.cacheLazyData[cacheKey].objects.push(newObject);
+            for (let cache of this.cacheLazyData) {
+                if (this.query.includes(cache.query) || cache.query === undefined || cache.query === '') {
+                    cache.countElement++;
+                    cache.objects.push(newObject);
                 }
             }
         }
