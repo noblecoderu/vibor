@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'lib-ng-vibor',
+  selector: 'vibor',
   template: `
     <p>
       ng-vibor works!
