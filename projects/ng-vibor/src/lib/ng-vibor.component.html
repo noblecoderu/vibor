@@ -1,77 +1,79 @@
-<ng-content></ng-content>
+<div class="root-vibor">
+  <ng-content></ng-content>
 
-<div class="select-search" (click)="showDropdownList($event);">
-  <ul class="select-search-list">
-    <ng-container *ngIf="multiple || !isOpen">
-      <ng-container *ngIf="!SelectedTemplate; else selectedT">
-        <li class="select-search-list-item select-search-list-item_selection" *ngFor="let item of output; let $index=index; let $last=last; trackBy: TrackByFn;">
-          <div [innerHTML]="getListFormatted(item)"></div>
-          <a class="select-search-list-item_remove" *ngIf="allowReset" (click)="!disabled && removeOne($index, $event)"></a>
+  <div class="select-search" (click)="showDropdownList($event);">
+    <ul class="select-search-list">
+      <ng-container *ngIf="multiple || !isOpen">
+        <ng-container *ngIf="!SelectedTemplate; else selectedT">
+          <li class="select-search-list-item select-search-list-item_selection" *ngFor="let item of output; let $index=index; let $last=last; trackBy: TrackByFn;">
+            <div [innerHTML]="getListFormatted(item)"></div>
+            <a class="select-search-list-item_remove" *ngIf="allowReset" (click)="!disabled && removeOne($index, $event)"></a>
+          </li>
+        </ng-container>
+
+        <ng-template #selectedT>
+          <li class="select-search-list-item select-search-list-item_selection" *ngFor="let item of output; let $index=index; let $last=last; trackBy: TrackByFn;">
+            <ng-container *ngTemplateOutlet="SelectedTemplate; context: {item: item}"></ng-container>
+            <a class="select-search-list-item_remove" *ngIf="allowReset && !disabled" (click)="!disabled && removeOne($index, $event)">
+            </a>
+          </li>
+        </ng-template>
+      </ng-container>
+
+      <li class="select-search-list-item select-search-list-item_input" [class.select-search-list-item_hide]="InputHide">
+        <input autocomplete="off" #inputControl="ngModel" [name]="name" [disabled]="disabled" [(ngModel)]="query" [placeholder]="output.length == 0 || (multiple && output.length < multipleLimit) ? placeholder : ''"
+          (input)="updateOptionsInDelay()" (blur)="hideDropdownListWithDelay()" (keydown)="keyDown($event)" />
+      </li>
+      <li class="select-search-list-item select-search-list-item_loader-center" [hidden]="!dataListSub || dataListSub.closed">
+        <div class="select-search-list-item_loader"></div>
+      </li>
+
+      <span class="arrow" (click)="toggleDropdown($event)">
+      </span>
+    </ul>
+  </div>
+
+  <div class="select-dropdown" *ngIf="isOpen">
+    <ul class="select-dropdown-optgroup">
+      <ng-container *ngIf="!DropdownTemplate; else dropdownT">
+        <li class="select-dropdown-optgroup-option" *ngFor="let option of Options; let i=index" (mousedown)="selectOne($event, option)"
+          [class.active]="i === selectorPosition" [innerHTML]="getDropdownFormatted(option)">
         </li>
       </ng-container>
 
-      <ng-template #selectedT>
-        <li class="select-search-list-item select-search-list-item_selection" *ngFor="let item of output; let $index=index; let $last=last; trackBy: TrackByFn;">
-          <ng-container *ngTemplateOutlet="SelectedTemplate; context: {item: item}"></ng-container>
-          <a class="select-search-list-item_remove" *ngIf="allowReset && !disabled" (click)="!disabled && removeOne($index, $event)">
-          </a>
+      <ng-template #dropdownT>
+        <li class="select-dropdown-optgroup-option" *ngFor="let option of Options; let i=index" (mousedown)="selectOne($event, option)"
+          [class.active]="i === selectorPosition">
+          <ng-container *ngTemplateOutlet="DropdownTemplate; context: {item: option}"></ng-container>
         </li>
       </ng-template>
-    </ng-container>
 
-    <li class="select-search-list-item select-search-list-item_input" [class.select-search-list-item_hide]="InputHide">
-      <input autocomplete="off" #inputControl="ngModel" [name]="name" [disabled]="disabled" [(ngModel)]="query" [placeholder]="output.length == 0 || (multiple && output.length < multipleLimit) ? placeholder : ''"
-        (input)="updateOptionsInDelay()" (blur)="hideDropdownListWithDelay()" (keydown)="keyDown($event)" />
-    </li>
-    <li class="select-search-list-item select-search-list-item_loader-center" [hidden]="!dataListSub || dataListSub.closed">
-      <div class="select-search-list-item_loader"></div>
-    </li>
-
-    <span class="arrow" (click)="toggleDropdown($event)">
-    </span>
-  </ul>
-</div>
-
-<div class="select-dropdown" *ngIf="isOpen">
-  <ul class="select-dropdown-optgroup">
-    <ng-container *ngIf="!DropdownTemplate; else dropdownT">
-      <li class="select-dropdown-optgroup-option" *ngFor="let option of Options; let i=index" (mousedown)="selectOne($event, option)"
-        [class.active]="i === selectorPosition" [innerHTML]="getDropdownFormatted(option)">
+      <li class="select-dropdown-optgroup-option loader" *ngIf="dataListSub && !dataListSub.closed">
+        Загрузка
       </li>
-    </ng-container>
+      <li class="select-dropdown-optgroup-option loader" (mousedown)="AddNewObject(CreateNew(query));" [class.active]="selectorPosition === Options.length"
+        *ngIf="ShowNew">
 
-    <ng-template #dropdownT>
-      <li class="select-dropdown-optgroup-option" *ngFor="let option of Options; let i=index" (mousedown)="selectOne($event, option)"
-        [class.active]="i === selectorPosition">
-        <ng-container *ngTemplateOutlet="DropdownTemplate; context: {item: option}"></ng-container>
+        <ng-container *ngIf="createTemplate; else templateWithMessage">
+          <ng-container *ngTemplateOutlet="createTemplate.templateRef; context: {query: query}"></ng-container>
+        </ng-container>
+
+        <ng-template #templateWithMessage>
+          {{ newMessage }}
+        </ng-template>
       </li>
-    </ng-template>
-
-    <li class="select-dropdown-optgroup-option loader" *ngIf="dataListSub && !dataListSub.closed">
-      Загрузка
-    </li>
-    <li class="select-dropdown-optgroup-option loader" (mousedown)="AddNewObject(CreateNew(query));" [class.active]="selectorPosition === Options.length"
-      *ngIf="ShowNew">
-
-      <ng-container *ngIf="createTemplate; else templateWithMessage">
-        <ng-container *ngTemplateOutlet="createTemplate.templateRef; context: {query: query}"></ng-container>
-      </ng-container>
-
-      <ng-template #templateWithMessage>
-        {{ newMessage }}
-      </ng-template>
-    </li>
-    <li class="select-dropdown-optgroup-option loader" *ngIf="ShowEmpty">
-      Пусто
-    </li>
-  </ul>
-  <div class="select-dropdown-pager" *ngIf="currentCache && currentCache.countPages > 1">
-    <p class="select-dropdown-pager-page">
-      {{ currentCache.currentPage | number }} / {{ currentCache.countPages | number }}
-    </p>
-    <button class="select-dropdown-pager-loadmore" *ngIf="currentCache.countPages > 1 && currentCache.currentPage < currentCache.countPages"
-      (mousedown)="nextPage($event)">
-      Загрузить ещё
-    </button>
+      <li class="select-dropdown-optgroup-option loader" *ngIf="ShowEmpty">
+        Пусто
+      </li>
+    </ul>
+    <div class="select-dropdown-pager" *ngIf="currentCache && currentCache.countPages > 1">
+      <p class="select-dropdown-pager-page">
+        {{ currentCache.currentPage | number }} / {{ currentCache.countPages | number }}
+      </p>
+      <button class="select-dropdown-pager-loadmore" *ngIf="currentCache.countPages > 1 && currentCache.currentPage < currentCache.countPages"
+        (mousedown)="nextPage($event)">
+        Загрузить ещё
+      </button>
+    </div>
   </div>
 </div>
