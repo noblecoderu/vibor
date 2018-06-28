@@ -15,7 +15,7 @@ import { ViborBothDirective, ViborCreateDirective, ViborDropdownDirective, Vibor
     ViborBothDirective, ViborCreateDirective, ViborDropdownDirective, ViborSelectedDirective
   ],
   exports: [
-    NgViborComponent
+    NgViborComponent, FormsModule
   ]
 })
 export class NgViborModule { }
