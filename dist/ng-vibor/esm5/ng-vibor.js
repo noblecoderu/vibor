@@ -1,0 +1,11 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+/**
+ * Generated bundle index. Do not edit.
+ */
+export { NgViborService, NgViborComponent, NgViborModule } from './public_api';
+export { ViborBothDirective as ɵc, ViborCreateDirective as ɵd, ViborDropdownDirective as ɵa, ViborSelectedDirective as ɵb } from './lib/ng-vibor-template.directive';
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibmctdmlib3IuanMiLCJzb3VyY2VSb290Ijoibmc6Ly9uZy12aWJvci8iLCJzb3VyY2VzIjpbIm5nLXZpYm9yLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7QUFJQSxnRUFBYyxjQUFjLENBQUM7QUFFN0IsT0FBTyxFQUFDLGtCQUFrQixJQUFJLEVBQUUsRUFBQyxvQkFBb0IsSUFBSSxFQUFFLEVBQUMsc0JBQXNCLElBQUksRUFBRSxFQUFDLHNCQUFzQixJQUFJLEVBQUUsRUFBQyxNQUFNLG1DQUFtQyxDQUFDIiwic291cmNlc0NvbnRlbnQiOlsiLyoqXG4gKiBHZW5lcmF0ZWQgYnVuZGxlIGluZGV4LiBEbyBub3QgZWRpdC5cbiAqL1xuXG5leHBvcnQgKiBmcm9tICcuL3B1YmxpY19hcGknO1xuXG5leHBvcnQge1ZpYm9yQm90aERpcmVjdGl2ZSBhcyDJtWMsVmlib3JDcmVhdGVEaXJlY3RpdmUgYXMgybVkLFZpYm9yRHJvcGRvd25EaXJlY3RpdmUgYXMgybVhLFZpYm9yU2VsZWN0ZWREaXJlY3RpdmUgYXMgybVifSBmcm9tICcuL2xpYi9uZy12aWJvci10ZW1wbGF0ZS5kaXJlY3RpdmUnOyJdfQ==
