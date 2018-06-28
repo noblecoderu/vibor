@@ -56,7 +56,7 @@ export class NgViborComponent implements OnInit, OnChanges, ControlValueAccessor
   public selectorPosition = 0;
   private waitTime = 500;
 
-  private el: HTMLElement;           // this component  element `<vibor>`
+  private el: Element;           // this component  element `<vibor>`
   private inputEl: HTMLInputElement; // `<input>` element in `<vibor>` for auto complete
   @ViewChild('inputControl') public inputControl: NgModel;
 
@@ -365,6 +365,7 @@ export class NgViborComponent implements OnInit, OnChanges, ControlValueAccessor
   // INIT
   public ngOnInit(): void {
     // this.Model = this.ValueFromOutput; Это вроде тут тоже уже не надо.
+    this.el = this.elementRef.nativeElement.getElementsByClassName('root-vibor').item(0);
     this.inputEl = <HTMLInputElement>(this.el.querySelector('input'));
   }
 
@@ -398,8 +399,7 @@ export class NgViborComponent implements OnInit, OnChanges, ControlValueAccessor
     }
   }
 
-  constructor(elementRef: ElementRef) {
-    this.el = elementRef.nativeElement;
+  constructor(private elementRef: ElementRef<HTMLDivElement>) {
     this.output = [];
   }
 
