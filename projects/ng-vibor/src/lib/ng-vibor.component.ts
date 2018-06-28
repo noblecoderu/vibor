@@ -365,7 +365,7 @@ export class NgViborComponent implements OnInit, OnChanges, ControlValueAccessor
   // INIT
   public ngOnInit(): void {
     // this.Model = this.ValueFromOutput; Это вроде тут тоже уже не надо.
-    this.el = this.elementRef.nativeElement.getElementsByClassName('root-vibor').item(0);
+    this.el = this.elementRef.nativeElement.getElementsByClassName('vibor').item(0);
     this.inputEl = <HTMLInputElement>(this.el.querySelector('input'));
   }
 

@@ -1,4 +1,4 @@
-<div class="root-vibor">
+<div class="vibor">
   <ng-content></ng-content>
 
   <div class="select-search" (click)="showDropdownList($event);">
@@ -22,7 +22,7 @@
 
       <li class="select-search-list-item select-search-list-item_input" [class.select-search-list-item_hide]="InputHide">
         <input autocomplete="off" #inputControl="ngModel" [name]="name" [disabled]="disabled" [(ngModel)]="query" [placeholder]="output.length == 0 || (multiple && output.length < multipleLimit) ? placeholder : ''"
-          (input)="updateOptionsInDelay()" (blur)="hideDropdownListWithDelay()" (keydown)="keyDown($event)" />
+          (input)="updateOptionsInDelay()" (keydown)="keyDown($event)" />
       </li>
       <li class="select-search-list-item select-search-list-item_loader-center" [hidden]="!dataListSub || dataListSub.closed">
         <div class="select-search-list-item_loader"></div>
