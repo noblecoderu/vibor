@@ -126,7 +126,7 @@
       "root": "projects/ng-vibor",
       "sourceRoot": "projects/ng-vibor/src",
       "projectType": "library",
-      "prefix": "lib",
+      "prefix": "vibor",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",

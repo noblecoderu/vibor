@@ -1,13 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'vibor',
-  template: `
-    <p>
-      ng-vibor works!
-    </p>
-  `,
-  styles: []
+  templateUrl: 'ng-vibor.component.html',
+  styleUrls: ['./ng-vibor.component.scss']
 })
 export class NgViborComponent implements OnInit {
 
