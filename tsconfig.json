@@ -1,32 +1,28 @@
 {
+  "compileOnSave": false,
   "compilerOptions": {
-    "noImplicitAny": true,
-    "module": "commonjs",
-    "target": "es5",
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "allowUnusedLabels": false,
-    "noImplicitReturns": true,
-    "sourceMap": true,
-    "declaration": true,
-    "outDir": "./dist",
-    "lib": [
-      "es2016",
-      "dom"
-    ],
-    "types": [
-      "node"
-    ],
+    "target": "es5",
     "typeRoots": [
       "node_modules/@types"
-    ]
-  },
-  "exclude": [
-    "node_modules",
-    "dist",
-    "**/*.spec.ts"
-  ],
-  "angularCompilerOptions": {
-    "strictMetadataEmit": true
+    ],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
+    "paths": {
+      "ng-vibor": [
+        "dist/ng-vibor"
+      ],
+      "ng-vibor/*": [
+        "dist/ng-vibor/*"
+      ]
+    }
   }
 }
