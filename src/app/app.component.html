@@ -10,5 +10,11 @@
       <span>{{ item.desc }}</span>
     </ng-template>
   </vibor>
+  <vibor placeholder="Асинхронный multivibor" [(ngModel)]="value3" [dataList]="ValueList2" [multiple]="true">
+    <ng-template vibor-dropdown-element let-item="item">
+      <span>{{ item.Name }}</span>
+      <span>{{ item.desc }}</span>
+    </ng-template>
+  </vibor>
 </div>
 

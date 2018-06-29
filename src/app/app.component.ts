@@ -22,11 +22,13 @@ export class AppComponent {
   }
 
   public value1: undefined;
+  public value2: undefined;
+  public value3: undefined;
+
   public ValueList1 = [
     'Value 1', 'Value 2', 'Value 3', 'Value 4', 'Value 5'
   ];
 
-  public value2: undefined;
   public ValueList2 = (params: Object, page: number): Observable<IViborData> => {
     return Observable.create(obs => {
       const list = this.AsyncValues.slice((page - 1) * countOnPage, page * countOnPage);

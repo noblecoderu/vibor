@@ -366,6 +366,8 @@ export class NgViborComponent implements OnInit, OnChanges, ControlValueAccessor
   public ngOnInit(): void {
     // this.Model = this.ValueFromOutput; Это вроде тут тоже уже не надо.
     this.el = this.elementRef.nativeElement.getElementsByClassName('vibor').item(0);
+    if (this.multiple) this.el.classList.add('multiple');
+
     this.inputEl = <HTMLInputElement>(this.el.querySelector('input'));
   }
 
@@ -386,7 +388,7 @@ export class NgViborComponent implements OnInit, OnChanges, ControlValueAccessor
       }
     }
 
-    if (inputs['multiple']) {
+    if (this.el && inputs['multiple']) {
       if (inputs['multiple'].currentValue) {
         this.el.classList.add('multiple');
       } else {
