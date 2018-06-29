@@ -48,7 +48,7 @@
         </li>
       </ng-template>
 
-      <li class="select-dropdown-optgroup-option loader" *ngIf="dataListSub && !dataListSub.closed">
+      <li class="select-dropdown-optgroup-option loading" *ngIf="dataListSub && !dataListSub.closed">
         Загрузка
       </li>
       <li class="select-dropdown-optgroup-option loader" (mousedown)="AddNewObject(CreateNew(query));" [class.active]="selectorPosition === Options.length"

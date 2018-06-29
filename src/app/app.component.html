@@ -6,15 +6,27 @@
   <vibor placeholder="Тестовый выбор" [(ngModel)]="value1" [dataList]="ValueList1" [modelProperty]="undefined" [viewProperty]="undefined"></vibor>
   <vibor placeholder="Асинхронный выбор" [(ngModel)]="value2" [dataList]="ValueList2">
     <ng-template vibor-both-element let-item="item">
-      <span>{{ item.Name }}</span>
-      <span>{{ item.desc }}</span>
+      <span class="vibor__content">
+          <span class="vibor__name">
+            {{ item.Name }}
+            <span class="vibor__pill">60 мин.</span>
+            <span class="vibor__pill">1 200 руб.</span>
+          </span>
+          <span class="vibor__descr-name">
+            {{ item.desc }}
+          </span>
+        </span>
     </ng-template>
   </vibor>
   <vibor placeholder="Асинхронный multivibor" [(ngModel)]="value3" [dataList]="ValueList2" [multiple]="true">
     <ng-template vibor-dropdown-element let-item="item">
-      <span>{{ item.Name }}</span>
-      <span>{{ item.desc }}</span>
+      <span class="vibor__content">
+        <span class="vibor__name">{{ item.Name }}</span>
+        <span class="vibor__descr-name">{{ item.desc }}</span>
+      </span>
     </ng-template>
   </vibor>
 </div>
+
+
 
