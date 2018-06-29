@@ -5,17 +5,17 @@ import { CommonModule } from '@angular/common';
 
 import { NgViborComponent } from './ng-vibor.component';
 import { ViborBothDirective, ViborCreateDirective, ViborDropdownDirective, ViborSelectedDirective } from './ng-vibor-template.directive';
+const components = [NgViborComponent, ViborBothDirective, ViborCreateDirective, ViborDropdownDirective, ViborSelectedDirective]
 
 @NgModule({
   imports: [
     FormsModule, CommonModule
   ],
   declarations: [
-    NgViborComponent,
-    ViborBothDirective, ViborCreateDirective, ViborDropdownDirective, ViborSelectedDirective
+    ...components
   ],
   exports: [
-    NgViborComponent, FormsModule
+    ...components, FormsModule
   ]
 })
 export class NgViborModule { }
