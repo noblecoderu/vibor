@@ -107,6 +107,24 @@ ng build ng-vibor
         }
     }
 
+    .select-dropdown-optgroup {
+        max-height: 300px;
+        overflow-y: auto;
+        border: 1px solid #d5d9de;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        border-top: 0;
+
+        &-option {
+            min-height: 30px;
+            padding: 10px 15px;
+
+            &:hover {
+                background-color: rgba(66, 132, 215, 0.1);
+            }
+        }
+    }
+
 
     // Mod
     .open-vibor {
