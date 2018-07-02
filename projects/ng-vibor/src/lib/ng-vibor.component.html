@@ -6,16 +6,27 @@
       <ng-container *ngIf="multiple || !isOpen">
         <ng-container *ngIf="!SelectedTemplate; else selectedT">
           <li class="select-search-list-item select-search-list-item_selection" *ngFor="let item of output; let $index=index; let $last=last; trackBy: TrackByFn;">
-            <div [innerHTML]="getListFormatted(item)"></div>
-            <a class="select-search-list-item_remove" *ngIf="allowReset" (click)="!disabled && removeOne($index, $event)"></a>
+            <div class="vibor__selection">
+              <div [innerHTML]="getListFormatted(item)"></div>
+              <a class="select-search-list-item_remove" *ngIf="allowReset" (click)="!disabled && removeOne($index, $event)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+                  <path fill="#2c2c2c" d="M10.1 4.5L8 6.6 5.9 4.5 4.5 5.9 6.6 8l-2.1 2.1 1.4 1.4L8 9.4l2.1 2.1 1.4-1.4L9.4 8l2.1-2.1z"/>
+                </svg>
+              </a>
+            </div>
           </li>
         </ng-container>
 
         <ng-template #selectedT>
           <li class="select-search-list-item select-search-list-item_selection" *ngFor="let item of output; let $index=index; let $last=last; trackBy: TrackByFn;">
-            <ng-container *ngTemplateOutlet="SelectedTemplate; context: {item: item}"></ng-container>
-            <a class="select-search-list-item_remove" *ngIf="allowReset && !disabled" (click)="!disabled && removeOne($index, $event)">
-            </a>
+            <div class="vibor__selection">
+              <ng-container *ngTemplateOutlet="SelectedTemplate; context: {item: item}"></ng-container>
+              <a class="select-search-list-item_remove" *ngIf="allowReset && !disabled" (click)="!disabled && removeOne($index, $event)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+                  <path fill="#2c2c2c" d="M10.1 4.5L8 6.6 5.9 4.5 4.5 5.9 6.6 8l-2.1 2.1 1.4 1.4L8 9.4l2.1 2.1 1.4-1.4L9.4 8l2.1-2.1z"/>
+                </svg>
+              </a>
+            </div>
           </li>
         </ng-template>
       </ng-container>

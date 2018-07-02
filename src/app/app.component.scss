@@ -29,11 +29,18 @@
     border: 0;
     font: inherit;
   }
+
+    b {
+        font-weight: normal;
+    }
 }
 
 .vibor {
-  $clr-txt-1: #383d41;
-  $clr-txt-2: #8b8b83;
+    $bg-pill: #e5e5e7;
+    $clr-pill: #2c2c2c;
+    $clr-border: #d5d9de;
+    $clr-txt-1: #383d41;
+    $clr-txt-2: #8b8b83;
 
   &__content {
     display: flex;

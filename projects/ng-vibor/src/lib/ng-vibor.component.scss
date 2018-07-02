@@ -6,7 +6,6 @@ ng build ng-vibor
 // reset style
 .vibor {
 
-    div,
     span,
     a,
     label,
@@ -34,12 +33,18 @@ ng build ng-vibor
         border: 0;
         font: inherit;
     }
+
+    b {
+        font-weight: normal;
+    }
 }
 
 
 .vibor {
 
     //variable
+    $bg-pill: #e5e5e7;
+    $clr-pill: #2c2c2c;
     $clr-border: #d5d9de;
     $clr-txt-1: #383d41;
     $clr-txt-2: #8b8b83;
@@ -81,10 +86,30 @@ ng build ng-vibor
             display: none;
         }
 
+        &_selection {
+            position: relative;
+        }
+
         &_input {
             input {
                 width: 100%;
+                text-overflow: ellipsis;
+                color: $clr-txt-1;
+                &::placeholder {
+                    color: rgba($clr-txt-1, .3);
+                }
             }
+        }
+
+        &_remove {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 16px;
+            height: 16px;
+            margin-left: 5px;
+            border-radius: 50%;
+            background: #bdbdbd;
         }
     }
 
@@ -181,9 +206,54 @@ ng build ng-vibor
 
 
     // Mod
-    .open-vibor {
+    &.open-vibor {
         .select-search .arrow {
-            transform: rotate(180deg);
+            transform: translateY(-50%) rotate(180deg);
+        }
+    }
+
+    &:not(.multiple) {
+        .select-search-list-item {
+            &_remove {
+                position: absolute;
+                right: 25px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
+    }
+
+    &.multiple {
+        .select-search-list {
+            display: flex;
+            flex-flow: row wrap;
+            margin: -5px;
+
+            .select-search-list-item {
+                padding: 5px;
+                flex-shrink: 0;
+
+                &_input {
+                    flex: 1;
+
+                    input {
+                        height: 28px;
+                    }
+                }
+            }
+        }
+
+        .vibor {
+            &__selection {
+                display: flex;
+                align-items: center;
+                height: 28px;
+                padding: 0 7px;
+                border-radius: 3px;
+                font-size: 14px;
+                background: $bg-pill;
+                color: $clr-pill;
+            }
         }
     }
 }
