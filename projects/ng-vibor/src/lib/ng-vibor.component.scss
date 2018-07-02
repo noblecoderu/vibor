@@ -54,6 +54,7 @@ ng build ng-vibor
     "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     $box-shadow-hover-vibor: 0 3px 6px 0 rgba(44, 44, 44, 0.1);
+    $clr-loader: #22272e rgba(34, 39, 46, 0.4) rgba(34, 39, 46, 0.4) rgba(34, 39, 46, 0.4);
 
     // ======================
 
@@ -70,6 +71,11 @@ ng build ng-vibor
         .select-dropdown {
             box-shadow: $box-shadow-hover-vibor;
         }
+    }
+
+    &[disabled] {
+        opacity: .6;
+        pointer-events: none;
     }
 
 
@@ -165,7 +171,7 @@ ng build ng-vibor
             box-sizing: border-box;
             border-width: 2px;
             border-style: solid;
-            border-color: #22272e rgba(34, 39, 46, 0.4) rgba(34, 39, 46, 0.4) rgba(34, 39, 46, 0.4);
+            border-color: $clr-loader;
             border-radius: 100%;
             animation: clockwise .45s linear infinite;
         }
