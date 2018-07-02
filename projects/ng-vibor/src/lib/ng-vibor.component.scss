@@ -43,11 +43,17 @@ ng build ng-vibor
 .vibor {
 
     //variable
+    $bg-remove-btn: #bababa;
     $bg-pill: #e5e5e7;
     $clr-pill: #2c2c2c;
     $clr-border: #d5d9de;
     $clr-txt-1: #383d41;
     $clr-txt-2: #8b8b83;
+    $font-size-input: 14px;
+    $font-family-vibor: -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    $box-shadow-hover-vibor: 0 3px 6px 0 rgba(44, 44, 44, 0.1);
 
     // ======================
 
@@ -56,9 +62,16 @@ ng build ng-vibor
     padding: 10px 15px;
     border: solid 1px $clr-border;
     border-radius: 3px;
-    font-family: -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family: $font-family-vibor;
+    transition: box-shadow .15s linear;
+
+    &:hover {
+        box-shadow: $box-shadow-hover-vibor;
+        .select-dropdown {
+            box-shadow: $box-shadow-hover-vibor;
+        }
+    }
+
 
     .select-search {
         position: relative;
@@ -94,7 +107,9 @@ ng build ng-vibor
             input {
                 width: 100%;
                 text-overflow: ellipsis;
+                font-size: $font-size-input;
                 color: $clr-txt-1;
+
                 &::placeholder {
                     color: rgba($clr-txt-1, .3);
                 }
@@ -109,7 +124,13 @@ ng build ng-vibor
             height: 16px;
             margin-left: 5px;
             border-radius: 50%;
-            background: #bdbdbd;
+            background-color: $bg-remove-btn;
+            cursor: pointer;
+            transition: background-color .15s linear;
+
+            &:hover {
+                background-color: darken($bg-remove-btn, 15%);
+            }
         }
     }
 
@@ -207,6 +228,9 @@ ng build ng-vibor
 
     // Mod
     &.open-vibor {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+
         .select-search .arrow {
             transform: translateY(-50%) rotate(180deg);
         }
