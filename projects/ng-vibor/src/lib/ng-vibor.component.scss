@@ -55,6 +55,8 @@ ng build ng-vibor
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     $box-shadow-hover-vibor: 0 3px 6px 0 rgba(44, 44, 44, 0.1);
     $clr-loader: #22272e rgba(34, 39, 46, 0.4) rgba(34, 39, 46, 0.4) rgba(34, 39, 46, 0.4);
+    $bg-hover-dropdown: rgba(66, 132, 215, 0.1);
+
 
     // ======================
 
@@ -194,7 +196,7 @@ ng build ng-vibor
             padding: 10px 15px;
 
             &:hover {
-                background-color: rgba(66, 132, 215, 0.1);
+                background-color: $bg-hover-dropdown;
             }
         }
     }

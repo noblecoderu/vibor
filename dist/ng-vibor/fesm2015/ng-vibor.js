@@ -1,4 +1,4 @@
-import { Injectable, Directive, TemplateRef, Component, Input, Output, forwardRef, EventEmitter, ElementRef, ContentChild, ViewChild, NgModule, defineInjectable } from '@angular/core';
+import { Injectable, Directive, TemplateRef, NgModule, Component, Input, Output, forwardRef, EventEmitter, ElementRef, ContentChild, ViewChild, defineInjectable } from '@angular/core';
 import { NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
