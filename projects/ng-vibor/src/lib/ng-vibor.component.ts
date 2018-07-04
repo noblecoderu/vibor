@@ -3,7 +3,8 @@ import {
   Input, Output, forwardRef,
   EventEmitter, ElementRef,
   TemplateRef, ContentChild, ViewChild,
-  SimpleChanges
+  SimpleChanges,
+  ViewEncapsulation
 } from '@angular/core';
 import {
   ControlValueAccessor,
@@ -34,6 +35,7 @@ const deepEqual = require('deep-equal');
   selector: 'vibor',
   templateUrl: 'ng-vibor.component.html',
   styleUrls: ['./ng-vibor.component.scss'],
+  encapsulation: ViewEncapsulation.None,
   providers: [{
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => NgViborComponent),
