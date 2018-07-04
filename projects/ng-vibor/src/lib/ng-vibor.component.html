@@ -78,9 +78,9 @@
       </li>
     </ul>
     <div class="select-dropdown-pager" *ngIf="currentCache && currentCache.countPages > 1">
-      <p class="select-dropdown-pager-page">
+      <div class="select-dropdown-pager-page">
         {{ currentCache.currentPage | number }} / {{ currentCache.countPages | number }}
-      </p>
+      </div>
       <button class="select-dropdown-pager-loadmore" *ngIf="currentCache.countPages > 1 && currentCache.currentPage < currentCache.countPages"
         (mousedown)="nextPage($event)">
         Загрузить ещё
