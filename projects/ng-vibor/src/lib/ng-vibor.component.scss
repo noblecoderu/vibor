@@ -65,7 +65,6 @@ ng build ng-vibor
 
     position: relative;
     display: block;
-    padding: 10px 15px;
     border: solid 1px $clr-border;
     border-radius: 3px;
     font-family: $font-family-vibor;
@@ -118,11 +117,18 @@ ng build ng-vibor
 
         &_selection {
             position: relative;
+
+            > div {
+                display: flex;
+                align-items: center;
+                padding: 5px 20px;
+            }
         }
 
         &_input {
             input {
                 width: 100%;
+                padding: 5px 20px;
                 text-overflow: ellipsis;
                 font-size: $font-size-input;
                 color: $clr-txt-3;
@@ -261,7 +267,7 @@ ng build ng-vibor
         .select-search-list-item {
             &_remove {
                 position: absolute;
-                right: 25px;
+                right: 0;
                 top: 50%;
                 transform: translateY(-50%);
             }
