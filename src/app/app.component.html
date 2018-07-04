@@ -63,7 +63,7 @@
     <div class="content__block">
       <div class="content__name">Асинхронный выбор</div>
       <div class="content__vibor">
-        <vibor placeholder="Асинхронный выбор" [(ngModel)]="value2" [dataList]="ValueList2">
+        <vibor placeholder="Асинхронный выбор" [(ngModel)]="value2" [dataList]="ValueList2" [required]="true">
           <ng-template vibor-both-element let-item="item">
             <span class="vibor__content">
               <span class="vibor__name">
