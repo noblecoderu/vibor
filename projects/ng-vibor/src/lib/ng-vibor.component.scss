@@ -52,6 +52,7 @@ ng build ng-vibor
     $clr-txt-1: #383d41;
     $clr-txt-2: #8b8b83;
     $clr-txt-3: #2c2c2c;
+    $clr-txt-4: #999;
     $font-size-input: 14px;
     $font-family-vibor: -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
@@ -90,12 +91,12 @@ ng build ng-vibor
 
     .select-search {
         position: relative;
-        padding-right: 20px;
+        padding-right: 40px;
 
         .arrow {
             content: "";
             position: absolute;
-            right: 0;
+            right: 15px;
             top: 50%;
             transform: translateY(-50%);
             display: block;
@@ -222,6 +223,10 @@ ng build ng-vibor
         &.loading {
             font-size: 16px;
             line-height: 18px;
+            text-align: center;
+            color: $clr-txt-2;
+        }
+        &.loader {
             text-align: center;
             color: $clr-txt-2;
         }
