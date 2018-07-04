@@ -67,6 +67,8 @@ ng build ng-vibor
     border: solid 1px $clr-border;
     border-radius: 3px;
     font-family: $font-family-vibor;
+    font-size: 14px;
+    line-height: 18px;
     transition: box-shadow .15s linear;
 
     &:hover {
@@ -195,8 +197,6 @@ ng build ng-vibor
         &-option {
             min-height: 30px;
             padding: 10px 15px;
-            font-size: 14px;
-            line-height: 18px;
             color: $clr-txt-3;
 
             &:hover {
