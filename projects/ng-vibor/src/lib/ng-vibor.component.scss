@@ -43,8 +43,10 @@ ng build ng-vibor
 .vibor {
 
     //variable
+    $bg-vibor: #fff;
     $bg-remove-btn: #bababa;
     $bg-pill: #e5e5e7;
+    $bg-vibor-disabled: #f4f4f4;
     $clr-pill: #2c2c2c;
     $clr-border: #d5d9de;
     $clr-txt-1: #383d41;
@@ -69,9 +71,11 @@ ng build ng-vibor
     font-family: $font-family-vibor;
     font-size: 14px;
     line-height: 18px;
+    background-color: $bg-vibor;
     transition: box-shadow .15s linear;
 
-    &:hover {
+
+    &:hover:not([disabled]) {
         box-shadow: $box-shadow-hover-vibor;
         .select-dropdown {
             box-shadow: $box-shadow-hover-vibor;
@@ -79,13 +83,15 @@ ng build ng-vibor
     }
 
     &[disabled] {
-        opacity: .6;
+        opacity: .5;
         pointer-events: none;
+        background-color: $bg-vibor-disabled;
     }
 
 
     .select-search {
         position: relative;
+        padding-right: 20px;
 
         .arrow {
             content: "";
@@ -120,6 +126,7 @@ ng build ng-vibor
                 text-overflow: ellipsis;
                 font-size: $font-size-input;
                 color: $clr-txt-3;
+                background-color: transparent;
 
                 &::placeholder {
                     color: rgba($clr-txt-3, .2);
