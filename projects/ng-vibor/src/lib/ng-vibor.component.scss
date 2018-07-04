@@ -155,7 +155,7 @@ ng build ng-vibor
 
     .select-search-list-item_loader-center {
         position: absolute;
-        right: 0;
+        right: -2px;
         top: 50%;
         transform: translateY(-50%);
         display: flex;
@@ -229,6 +229,8 @@ ng build ng-vibor
         border: 0;
         background: transparent;
         box-shadow: none;
+        color: $clr-txt-2;
+        text-transform: uppercase;
     }
 
 
