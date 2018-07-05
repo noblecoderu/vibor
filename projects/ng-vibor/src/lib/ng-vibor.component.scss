@@ -122,14 +122,14 @@ ng build ng-vibor
             > div {
                 display: flex;
                 align-items: center;
-                padding: 5px 20px;
+                padding: 5px 15px;
             }
         }
 
         &_input {
             input {
                 width: 100%;
-                padding: 5px 20px;
+                padding: 5px 15px;
                 text-overflow: ellipsis;
                 font-size: $font-size-input;
                 color: $clr-txt-3;
@@ -157,14 +157,6 @@ ng build ng-vibor
                 background-color: darken($bg-remove-btn, 15%);
             }
         }
-    }
-
-    .select-dropdown {
-        position: absolute;
-        top: 100%;
-        left: -1px;
-        right: -1px;
-        z-index: 2;
     }
 
     .select-search-list-item_loader-center {
@@ -197,11 +189,17 @@ ng build ng-vibor
     }
 
     .select-dropdown {
+        position: absolute;
+        top: 100%;
+        left: -1px;
+        right: -1px;
         border: 1px solid #d5d9de;
         border-bottom-left-radius: 5px;
         border-bottom-right-radius: 5px;
         border-top: 0;
         background: white;
+        overflow: hidden;
+        z-index: 2;
     }
 
     .select-dropdown-optgroup {
