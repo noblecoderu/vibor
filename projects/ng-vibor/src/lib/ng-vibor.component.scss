@@ -112,6 +112,7 @@ ng build ng-vibor
     }
 
     .select-search-list-item {
+
         &_hide {
             display: none;
         }
@@ -122,14 +123,15 @@ ng build ng-vibor
             > div {
                 display: flex;
                 align-items: center;
-                padding: 5px 15px;
+                padding: 0 15px;
             }
         }
 
         &_input {
+
             input {
                 width: 100%;
-                padding: 5px 15px;
+                padding: 0 15px;
                 text-overflow: ellipsis;
                 font-size: $font-size-input;
                 color: $clr-txt-3;
@@ -278,21 +280,27 @@ ng build ng-vibor
     }
 
     &.multiple {
+
+        .select-search {
+            padding: 5px 40px 5px 15px;
+        }
+
         .select-search-list {
             display: flex;
             flex-flow: row wrap;
             margin: -5px;
 
-            .select-search-list-item {
-                padding: 5px;
-                flex-shrink: 0;
+        }
 
-                &_input {
-                    flex: 1;
+        .select-search-list-item {
+            padding: 5px;
 
-                    input {
-                        height: 28px;
-                    }
+            &_input {
+                flex: 1;
+
+                input {
+                    height: 28px;
+                    padding: 0;
                 }
             }
         }
@@ -307,6 +315,22 @@ ng build ng-vibor
                 font-size: 14px;
                 background: $bg-pill;
                 color: $clr-pill;
+            }
+        }
+    }
+}
+
+
+.vibor:not(.multiple) {
+    .select-search-list-item {
+        &_selection {
+            > div {
+                min-height: 38px;
+            }
+        }
+        &_input {
+            input {
+                min-height: 38px;
             }
         }
     }
