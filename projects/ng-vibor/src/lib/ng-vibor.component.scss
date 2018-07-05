@@ -44,6 +44,7 @@ ng build ng-vibor
 
     //variable
     $bg-vibor: #fff;
+    $clr-vibor: #2c2c2c;
     $bg-remove-btn: #bababa;
     $bg-pill: #e5e5e7;
     $bg-vibor-disabled: #f4f4f4;
@@ -73,6 +74,7 @@ ng build ng-vibor
     line-height: 18px;
     background-color: $bg-vibor;
     transition: box-shadow .15s linear;
+    color: $clr-vibor;
 
 
     &:hover:not([disabled]) {
