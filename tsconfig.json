@@ -17,11 +17,11 @@
       "dom"
     ],
     "paths": {
-      "ng-vibor": [
-        "dist/ng-vibor"
+      "vibor": [
+        "dist/vibor"
       ],
-      "ng-vibor/*": [
-        "dist/ng-vibor/*"
+      "vibor/*": [
+        "dist/vibor/*"
       ]
     }
   }
