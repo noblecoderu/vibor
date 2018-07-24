@@ -77,10 +77,17 @@ ng build vibor
     color: $clr-vibor;
 
 
-    &:hover:not([disabled]) {
+    &:hover {
         box-shadow: $box-shadow-hover-vibor;
         .select-dropdown {
             box-shadow: $box-shadow-hover-vibor;
+        }
+    }
+
+    &[disabled]:hover {
+        box-shadow: none;
+        .select-dropdown {
+            box-shadow: none;
         }
     }
 
