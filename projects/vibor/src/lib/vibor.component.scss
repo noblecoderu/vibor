@@ -84,17 +84,17 @@ ng build vibor
         }
     }
 
-    &[disabled]:hover {
-        box-shadow: none;
-        .select-dropdown {
-            box-shadow: none;
-        }
-    }
-
     &[disabled] {
         opacity: .5;
         pointer-events: none;
         background-color: $bg-vibor-disabled;
+
+        &:hover {
+            box-shadow: none;
+            .select-dropdown {
+                box-shadow: none;
+            }
+        }
     }
 
 
