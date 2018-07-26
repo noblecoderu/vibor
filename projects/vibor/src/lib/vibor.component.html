@@ -32,8 +32,15 @@
       </ng-container>
 
       <li class="select-search-list-item select-search-list-item_input" [class.select-search-list-item_hide]="InputHide">
-        <input autocomplete="off" #inputControl="ngModel" [name]="name" [disabled]="disabled" [(ngModel)]="query" [placeholder]="output.length == 0 || (multiple && output.length < multipleLimit) ? placeholder : ''"
-          (input)="updateOptionsInDelay()" (keydown)="keyDown($event)" />
+        <input autocomplete="off"
+          #inputControl="ngModel"
+          [name]="name"
+          [disabled]="disabled"
+          [(ngModel)]="query"
+          [placeholder]="output.length == 0 || (multiple && output.length < multipleLimit) ? placeholder : ''"
+          (input)="updateOptionsInDelay()"
+          (blur)="hideDropdownListWithDelay()"
+          (keydown)="keyDown($event)" />
       </li>
       <li class="select-search-list-item select-search-list-item_loader-center" [hidden]="!dataListSub || dataListSub.closed">
         <div class="select-search-list-item_loader"></div>

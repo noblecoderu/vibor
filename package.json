@@ -3,7 +3,7 @@
   "version": "2.0.6",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "npm run build && ng serve",
     "build": "ng build --prod vibor",
     "npm_pack": "cd dist/vibor && npm pack",
     "package": "npm run build && npm run npm_pack",
