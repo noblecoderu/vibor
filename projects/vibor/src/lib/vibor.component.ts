@@ -120,7 +120,7 @@ export class NgViborComponent implements OnInit, OnChanges, ControlValueAccessor
     }
 
     this.el.classList.add('open-vibor');
-    this.inputEl.focus();
+    setTimeout(() => this.inputEl.focus(), 10);
     this.updateOptions();
     this.onTouched();
   }
