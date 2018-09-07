@@ -593,7 +593,14 @@ export class NgViborComponent implements OnInit, OnChanges, ControlValueAccessor
 
   private SetNewObject(newObject: any) {
     if (this.dataList instanceof Array) {
-      this.dataList.push(newObject);
+      if (!this.dataList.find(d => {
+          let _d = fetchFromObject(d, this.modelProperty) ? fetchFromObject(d, this.modelProperty).valueOf() : undefined;
+          let _n = fetchFromObject(newObject, this.modelProperty) ? fetchFromObject(newObject, this.modelProperty).valueOf() : undefined;
+          return _d === _n;
+        })
+      ) {
+        this.dataList.push(newObject);
+      }
     } else if (this.dataList instanceof Function) {
       for (let cache of this.cacheLazyData) {
         if (this.query.includes(cache.query) || cache.query === undefined || cache.query === '') {
