@@ -1,0 +1,82 @@
+
+// reset style
+.vibor {
+  div,
+  span,
+  a,
+  label,
+  legend,
+  ul,
+  p {
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  a,
+  button,
+  input {
+    outline: none;
+  }
+
+  ol, ul {
+    list-style: none;
+  }
+
+  input {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    font: inherit;
+  }
+
+    b {
+        font-weight: normal;
+    }
+}
+
+.vibor {
+    $bg-pill: #e5e5e7;
+    $clr-pill: #2c2c2c;
+    $clr-border: #d5d9de;
+    $clr-txt-1: #383d41;
+    $clr-txt-2: #8b8b83;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__name {
+    font-size: 14px;
+    line-height: 20px;
+    color: $clr-txt-1;
+
+    > .vibor__pill:first-child {
+      margin-left: 5px;
+    }
+  }
+
+  &__descr-name {
+    display: block;
+    font-size: 11px;
+    line-height: 16px;
+    color: $clr-txt-2;
+  }
+
+  &__pill {
+    display: inline-block;
+    height: 16px;
+    margin-right: 10px;
+    padding: 0 5px;
+    font-size: 11px;
+    line-height: 16px;
+    border-radius: 5px;
+    color: $clr-txt-1;
+    background-color: #d5d9de;
+  }
+
+  &__name + &__descr-name {
+    margin-top: 4px;
+  }
+}
