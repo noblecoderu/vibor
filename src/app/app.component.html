@@ -28,19 +28,19 @@
     color: #2c2c2c;
   }
 
-  .content__vibor + .content__descr {
+  .content__vibor+.content__descr {
     margin-top: 10px;
   }
 
-  .content__name + .content__vibor {
+  .content__name+.content__vibor {
     margin-top: 10px;
   }
 
-  .content__title + .content__block {
+  .content__title+.content__block {
     margin-top: 40px;
   }
 
-  .content__block + .content__block {
+  .content__block+.content__block {
     margin-top: 30px;
   }
 </style>
@@ -53,10 +53,12 @@
     <div class="content__block">
       <div class="content__name">Тестовый выбор</div>
       <div class="content__vibor">
-        <vibor placeholder="Тестовый выбор" [(ngModel)]="value1" [dataList]="ValueList1" [modelProperty]="undefined" [viewProperty]="undefined"></vibor>
+        <vibor placeholder="Тестовый выбор" [(ngModel)]="value1" [dataList]="ValueList1" [modelProperty]="undefined"
+          [viewProperty]="undefined"></vibor>
       </div>
       <div class="content__descr">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto assumenda aut beatae distinctio dolores et ipsa maxime nemo nobis nulla odit porro praesentium quae reprehenderit, rerum sint soluta totam, veritatis.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto assumenda aut beatae distinctio dolores et
+        ipsa maxime nemo nobis nulla odit porro praesentium quae reprehenderit, rerum sint soluta totam, veritatis.
       </div>
     </div>
 
@@ -101,9 +103,17 @@
         </vibor>
       </div>
     </div>
+
+    <div class="content__block">
+      <div class="content__name">Number keyboard</div>
+      <div class="content__vibor">
+        <vibor placeholder="Number keyboard" ngModel
+              keyboardTypes="tel"
+              [dataList]="ValueList1"
+              [modelProperty]="undefined"
+              [viewProperty]="undefined">
+        </vibor>
+      </div>
+    </div>
   </div>
-
 </div>
-
-
-

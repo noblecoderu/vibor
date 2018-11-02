@@ -30,6 +30,8 @@ import {
 
 const deepEqual = require('deep-equal');
 
+declare type KeyboardTypes = "text" | "number" | "tel";
+
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'vibor',
@@ -91,6 +93,10 @@ export class NgViborComponent implements OnInit, OnChanges, ControlValueAccessor
   @Input() public excludeList: Array<any>;
   @Input() public additionalFilter = {};
   @Input() public onlyEmitter: boolean;
+
+  @Input() public keyboardTypes: Array<KeyboardTypes> | KeyboardTypes | undefined;
+  public currentKeyboardType: KeyboardTypes = "text";
+
   @Output('changeFullModel') public changeFullModel: EventEmitter<any> = new EventEmitter();
 
 
@@ -151,7 +157,7 @@ export class NgViborComponent implements OnInit, OnChanges, ControlValueAccessor
   }
 
   private delay: Function = (function (): Function {
-    let timer = 0;
+    let timer;
     return function (callback: any, ms: number): void {
       clearTimeout(timer);
       timer = setTimeout(callback, ms);
@@ -409,6 +415,20 @@ export class NgViborComponent implements OnInit, OnChanges, ControlValueAccessor
 
     if (inputs['additionalFilter']) {
       this.currentCache = this.GetCache(this.query);
+    }
+
+    if (inputs['keyboardTypes']) {
+      let kType: KeyboardTypes = undefined;
+      if (inputs['keyboardTypes'].currentValue instanceof Array) {
+        kType = inputs['keyboardTypes'].currentValue[0];
+      } else if (typeof(inputs['keyboardTypes'].currentValue) === "string") {
+        kType = inputs['keyboardTypes'].currentValue as KeyboardTypes;
+      }
+      if (kType) {
+        this.currentKeyboardType = kType;
+      } else {
+        this.currentKeyboardType = "text";
+      }
     }
   }
 
