@@ -137,7 +137,12 @@ export class NgViborComponent implements OnInit, OnChanges, ControlValueAccessor
     this.inputEl.blur();
   }
 
-  public hideDropdownListWithDelay(): void {
+  public hideDropdownListWithDelay(event: FocusEvent): void {
+    if (event.relatedTarget && event.relatedTarget["id"] === "viborChangeKeyboardButton") {
+      setTimeout(() => this.inputEl.focus(), 300);
+      return;
+    }
+
     setTimeout(() => {
       this.hideDropdownList();
     }, 100);
@@ -652,6 +657,11 @@ export class NgViborComponent implements OnInit, OnChanges, ControlValueAccessor
 
   get ShowEmpty(): boolean {
     return this.Options.length === 0 && (!(this.dataList instanceof Function) || (this.dataListSub.closed));
+  }
+
+  // Keyboard
+  public ChangeKeyboardType() {
+    this.currentKeyboardType = 'number';
   }
 
 
