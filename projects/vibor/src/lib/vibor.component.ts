@@ -4,7 +4,8 @@ import {
   EventEmitter, ElementRef,
   TemplateRef, ContentChild, ViewChild,
   SimpleChanges,
-  ViewEncapsulation
+  ViewEncapsulation,
+  ChangeDetectorRef
 } from '@angular/core';
 import {
   ControlValueAccessor,
@@ -135,6 +136,7 @@ export class NgViborComponent implements OnInit, OnChanges, ControlValueAccessor
     this.el.classList.remove('open-vibor');
     this.isOpen = false;
     this.inputEl.blur();
+    this.cdr.markForCheck();
   }
 
   public hideDropdownListWithDelay(event: FocusEvent): void {
@@ -212,6 +214,8 @@ export class NgViborComponent implements OnInit, OnChanges, ControlValueAccessor
           this.currentCache.objects = this.currentCache.objects.concat(answer.list);
           this.currentCache.countElement = answer.headers['count'];
           this.currentCache.countPages = Math.ceil(this.currentCache.countElement / this.countOnPage);
+
+          this.cdr.markForCheck();
         }, () => { });
       }
     }
@@ -301,6 +305,8 @@ export class NgViborComponent implements OnInit, OnChanges, ControlValueAccessor
       this.currentCache.objects = this.currentCache.objects.concat(answer.list);
       this.selectorPosition = (this.currentCache.currentPage - 1) * this.countOnPage + 1;
       this.focusSelectedOption();
+
+      this.cdr.markForCheck();
     }, () => { });
   }
 
@@ -437,7 +443,7 @@ export class NgViborComponent implements OnInit, OnChanges, ControlValueAccessor
     }
   }
 
-  constructor(private elementRef: ElementRef<HTMLDivElement>) {
+  constructor(private elementRef: ElementRef<HTMLDivElement>, private cdr: ChangeDetectorRef) {
     this.output = [];
   }
 
@@ -546,6 +552,8 @@ export class NgViborComponent implements OnInit, OnChanges, ControlValueAccessor
           this.dataListSub = (<Observable<IDataResponse>>this.dataList(params, 1, this.countOnPage)).subscribe(answer => {
             this.output = answer.list;
             this.changeFullModel.emit(this.output);
+
+            this.cdr.markForCheck();
           }, () => { });
         }
       } else {
@@ -609,10 +617,12 @@ export class NgViborComponent implements OnInit, OnChanges, ControlValueAccessor
       value.subscribe(newObject => {
         if (newObject !== undefined) {
           this.SetNewObject(newObject);
+          this.cdr.markForCheck();
         }
       });
     } else {
       this.SetNewObject(value);
+      this.cdr.markForCheck();
     }
   }
 
