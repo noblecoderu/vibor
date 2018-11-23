@@ -500,7 +500,11 @@ export class NgViborComponent implements OnInit, OnChanges, ControlValueAccessor
     }
 
     // Model
-    this._model = value;
+    if (value instanceof Array) {
+      this._model = value.slice();
+    } else {
+      this._model = value;
+    }
 
     // Forms
     this.onChange(this._model);
