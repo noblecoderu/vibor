@@ -500,7 +500,11 @@ export class NgViborComponent implements OnInit, OnChanges, ControlValueAccessor
     }
 
     // Model
-    this._model = value;
+    if (value instanceof Array) {
+      this._model = value.slice();
+    } else {
+      this._model = value;
+    }
 
     // Forms
     this.onChange(this._model);
@@ -525,7 +529,7 @@ export class NgViborComponent implements OnInit, OnChanges, ControlValueAccessor
       for (let o of this.output) {
         tmp.push(fetchFromObject(o, this.modelProperty));
       }
-      return tmp;
+      return tmp.slice();
     } else {
       return fetchFromObject(this.output[0], this.modelProperty);
     }
@@ -540,12 +544,12 @@ export class NgViborComponent implements OnInit, OnChanges, ControlValueAccessor
         let params: any = {};
         this.firstLoad = false;
         if (!this.preloadProperty) {
-          this.output = newValue;
+          this.output = newValue.slice();
           this.changeFullModel.emit(this.output);
         } else {
           params[this.preloadProperty] = newValue.map(val => fetchFromObject(val, this.preloadField));
           this.dataListSub = (<Observable<IDataResponse>>this.dataList(params, 1, this.countOnPage)).subscribe(answer => {
-            this.output = answer.list;
+            this.output = answer.list.slice();
             this.changeFullModel.emit(this.output);
 
             this.cdr.markForCheck();
