@@ -34,7 +34,6 @@
       <li class="select-search-list-item select-search-list-item_input" [class.select-search-list-item_hide]="InputHide">
         <input autocomplete="off"
           #inputControl="ngModel"
-          [type]="currentKeyboardType"
           [name]="name"
           [disabled]="disabled"
           [(ngModel)]="query"
@@ -45,10 +44,6 @@
       </li>
       <li class="select-search-list-item select-search-list-item_loader-center" [hidden]="!dataListSub || dataListSub.closed">
         <div class="select-search-list-item_loader"></div>
-      </li>
-
-      <li class="select-search-list-item select-search-list-item_loader-center">
-        <button id="viborChangeKeyboardButton" (click)="ChangeKeyboardType();">c</button>
       </li>
 
       <span class="arrow" (click)="toggleDropdown($event)">
