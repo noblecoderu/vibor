@@ -561,6 +561,7 @@ export class NgViborComponent implements OnInit, OnChanges, ControlValueAccessor
           }, () => { });
         }
       } else {
+        this.output = newValue.slice();
         this.changeFullModel.emit(this.output);
       }
       return;
