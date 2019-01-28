@@ -31,7 +31,12 @@ export class AppComponent {
 
   public ValueList2 = (params: Object, page: number): Observable<IViborData> => {
     return Observable.create(obs => {
-      const list = this.AsyncValues.filter(value => params['ids'].includes(value.id)).slice((page - 1) * countOnPage, page * countOnPage);
+      const list = this.AsyncValues.filter(value => {
+        if (params['ids'] instanceof Array) {
+          return params['ids'].includes(value.id);
+        }
+        return true;
+      }).slice((page - 1) * countOnPage, page * countOnPage);
       const t = { list, headers: { count: this.AsyncValues.length } };
       setTimeout(() => {
         obs.next(t);
