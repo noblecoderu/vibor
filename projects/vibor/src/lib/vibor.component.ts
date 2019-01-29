@@ -450,7 +450,7 @@ export class NgViborComponent implements OnInit, OnChanges, ControlValueAccessor
   // FORMS
   public writeValue(value: any): void {
     // Нормальный update модели
-    if (this.Model === value) return;
+    if (this.Model === value || value === "") return;
 
     if (value && ((value instanceof Array && !this.multiple) || (!(value instanceof Array) && this.multiple))) {
       throw new Error('Model Type Error');
