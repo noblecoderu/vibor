@@ -182,7 +182,7 @@ export class NgViborComponent implements OnInit, OnChanges, ControlValueAccessor
         if (f === undefined) {
           return false;
         }
-        return JSON.stringify(f).indexOf(this.query) >= 0;
+        return JSON.stringify(f).toLowerCase().includes(this.query.toLowerCase());
       }).filter(data => {
         if (!this.excludeList) {
           return true;
