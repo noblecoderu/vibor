@@ -217,6 +217,14 @@ ng build vibor
         max-height: 300px;
         overflow-y: auto;
 
+        &__close {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 0;
+            padding: 14px;
+        }
+
         &-option {
             min-height: 30px;
             padding: 10px 15px;
