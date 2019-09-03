@@ -1,6 +1,6 @@
 {
   "name": "vibor",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "peerDependencies": {
     "@angular/core": "^7.1.1",
     "@angular/common": "^7.1.1",

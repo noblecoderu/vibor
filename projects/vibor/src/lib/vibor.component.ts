@@ -59,13 +59,13 @@ export class NgViborComponent implements OnInit, OnChanges, ControlValueAccessor
   public query: string;
 
   public selectorPosition = 0;
-  private waitTime = 500;
 
   private el: Element;           // this component  element `<vibor>`
   private inputEl: HTMLInputElement; // `<input>` element in `<vibor>` for auto complete
   @ViewChild('inputControl') public inputControl: NgModel;
 
   // Inputs & Outputs
+  @Input() public waitTime = 500;
   @Input() public multiple = false;
   @Input() public multipleLimit = Infinity;
   @Input() public countOnPage = 10;
@@ -211,9 +211,11 @@ export class NgViborComponent implements OnInit, OnChanges, ControlValueAccessor
         params[this.searchProperty] = this.query;
 
         this.dataListSub = (<Observable<IDataResponse>>this.dataList(params, 1, this.countOnPage)).subscribe(answer => {
-          this.currentCache.objects = this.currentCache.objects.concat(answer.list);
-          this.currentCache.countElement = answer.headers['count'];
-          this.currentCache.countPages = Math.ceil(this.currentCache.countElement / this.countOnPage);
+          if (answer) {
+            this.currentCache.objects = this.currentCache.objects.concat(answer.list);
+            if (answer.headers['count']) this.currentCache.countElement = answer.headers['count'];
+            this.currentCache.countPages = Math.ceil(this.currentCache.countElement / this.countOnPage);
+          }
 
           this.cdr.markForCheck();
         }, () => { });
@@ -300,7 +302,7 @@ export class NgViborComponent implements OnInit, OnChanges, ControlValueAccessor
 
     this.dataListSub = this.dataList(params, this.currentCache.currentPage + 1, this.countOnPage).subscribe(answer => {
       this.currentCache.currentPage++;
-      this.currentCache.countElement = answer.headers['count'];
+      if (answer.headers['count']) this.currentCache.countElement = answer.headers['count'];
       this.currentCache.countPages = Math.ceil(this.currentCache.countElement / this.countOnPage);
       this.currentCache.objects = this.currentCache.objects.concat(answer.list);
       this.selectorPosition = (this.currentCache.currentPage - 1) * this.countOnPage + 1;
