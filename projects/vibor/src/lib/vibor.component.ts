@@ -211,9 +211,11 @@ export class NgViborComponent implements OnInit, OnChanges, ControlValueAccessor
         params[this.searchProperty] = this.query;
 
         this.dataListSub = (<Observable<IDataResponse>>this.dataList(params, 1, this.countOnPage)).subscribe(answer => {
-          this.currentCache.objects = this.currentCache.objects.concat(answer.list);
-          if (answer.headers['count']) this.currentCache.countElement = answer.headers['count'];
-          this.currentCache.countPages = Math.ceil(this.currentCache.countElement / this.countOnPage);
+          if (answer) {
+            this.currentCache.objects = this.currentCache.objects.concat(answer.list);
+            if (answer.headers['count']) this.currentCache.countElement = answer.headers['count'];
+            this.currentCache.countPages = Math.ceil(this.currentCache.countElement / this.countOnPage);
+          }
 
           this.cdr.markForCheck();
         }, () => { });
