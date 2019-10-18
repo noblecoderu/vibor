@@ -106,6 +106,8 @@ export class NgViborComponent implements OnInit, OnChanges, ControlValueAccessor
     return query;
   }
 
+  private durty: boolean = true;
+
 
   // Subscription
   public dataListSub: Subscription;
@@ -194,6 +196,8 @@ export class NgViborComponent implements OnInit, OnChanges, ControlValueAccessor
           return deepEqual(d, a);
         }) < 0;
       });
+      this.durty = false;
+
     } else if (this.dataList instanceof Function) {
       if (this.dataListSub) { this.dataListSub.unsubscribe(); }
       if (!this.currentCache) {
@@ -216,6 +220,7 @@ export class NgViborComponent implements OnInit, OnChanges, ControlValueAccessor
             if (answer.headers['count']) this.currentCache.countElement = answer.headers['count'];
             this.currentCache.countPages = Math.ceil(this.currentCache.countElement / this.countOnPage);
           }
+          this.durty = false;
 
           this.cdr.markForCheck();
         }, () => { });
@@ -267,6 +272,8 @@ export class NgViborComponent implements OnInit, OnChanges, ControlValueAccessor
         break;
 
       case 13: // ENTER, choose it!!
+        if (this.durty) return;
+
         if (totalNumItem > 0) {
           if (this.selectorPosition === this.Options.length) {
             this.AddNewObject(this.CreateNew(this.query));
@@ -276,9 +283,14 @@ export class NgViborComponent implements OnInit, OnChanges, ControlValueAccessor
         } else if (this.ShowNew) {
           this.AddNewObject(this.CreateNew(this.query));
         }
-        break;
+        this.focusSelectedOption();
+        return;
 
       default: break;
+    }
+
+    if (!this.durty) {
+      this.durty = true;
     }
     this.focusSelectedOption();
   }
@@ -544,6 +556,7 @@ export class NgViborComponent implements OnInit, OnChanges, ControlValueAccessor
     let dataList: Array<any> = [];
     if (this.dataList instanceof Array) {
       dataList = this.dataList;
+      this.durty = false;
     } else if (this.dataList instanceof Function) {
       if (newValue && newValue.length && this.firstLoad) {
         let params: any = {};
@@ -556,6 +569,7 @@ export class NgViborComponent implements OnInit, OnChanges, ControlValueAccessor
           this.dataListSub = (<Observable<IDataResponse>>this.dataList(params, 1, this.countOnPage)).subscribe(answer => {
             this.output = answer.list.slice();
             this.changeFullModel.emit(this.output);
+            this.durty = false;
 
             this.cdr.markForCheck();
           }, () => { });
