@@ -328,6 +328,7 @@ export class NgViborComponent implements OnInit, OnChanges, ControlValueAccessor
   private clearProperty(): void {
     this.selectorPosition = 0;
     this.query = undefined;
+    this.GetCache(undefined);
   }
 
   public selectOne($event: MouseEvent | KeyboardEvent, data: any): void {
