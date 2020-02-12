@@ -26,10 +26,9 @@ import {
     IDataResponse,
     defaultFormatter,
     fetchFromObject,
-    scrollActiveOption
+    scrollActiveOption,
+    deepEqual
 } from './helpers';
-
-const deepEqual = require('deep-equal');
 
 declare type KeyboardTypes = "text" | "number" | "tel";
 

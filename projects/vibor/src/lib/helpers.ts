@@ -150,3 +150,7 @@ function getWidthOrHeight(elem: any, name: any, extra: any): any {
   // use the active box-sizing model to add/subtract irrelevant styles
   return val + augmentWidthOrHeight(name, extra || (isBorderBox ? 'border' : 'content'), valueIsBorderBox, styles);
 }
+
+export function deepEqual(a, b): boolean {
+  return JSON.stringify(a) === JSON.stringify(b);
+}
