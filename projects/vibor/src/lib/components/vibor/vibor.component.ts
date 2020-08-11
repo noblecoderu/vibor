@@ -20,7 +20,7 @@ import {
     ViborCreateDirective,
     ViborDropdownDirective,
     ViborSelectedDirective
-} from './vibor-template.directive';
+} from '../../directives/vibor-template.directive';
 
 import {
     IDataResponse,
@@ -28,7 +28,7 @@ import {
     fetchFromObject,
     scrollActiveOption,
     deepEqual
-} from './helpers';
+} from '../../helpers';
 
 declare type KeyboardTypes = "text" | "number" | "tel";
 
