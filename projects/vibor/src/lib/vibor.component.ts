@@ -76,10 +76,10 @@ export class NgViborComponent implements OnInit, OnChanges, ControlValueAccessor
   public disabled = false;
 
   // Отображение списков
-  @ContentChild(ViborBothDirective, {static: false}) public bothTemplate: ViborBothDirective;
-  @ContentChild(ViborDropdownDirective, {static: false}) public dropdownTemplate: ViborDropdownDirective;
-  @ContentChild(ViborSelectedDirective, {static: false}) public selectedTemplate: ViborSelectedDirective;
-  @ContentChild(ViborCreateDirective, {static: false}) public createTemplate: ViborCreateDirective;
+  @ContentChild(ViborBothDirective) public bothTemplate: ViborBothDirective;
+  @ContentChild(ViborDropdownDirective) public dropdownTemplate: ViborDropdownDirective;
+  @ContentChild(ViborSelectedDirective) public selectedTemplate: ViborSelectedDirective;
+  @ContentChild(ViborCreateDirective) public createTemplate: ViborCreateDirective;
   @Input() public listFormatter: (arg: any, value: string) => string;
   @Input() public dropdownFormatter: (arg: any, value: string) => string;
   @Input() public viewProperty = 'Name';  // Поле для дефолтного отображения
