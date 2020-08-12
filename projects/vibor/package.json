@@ -2,15 +2,12 @@
   "name": "vibor",
   "version": "0.3.0",
   "peerDependencies": {
-    "@angular/core": "10",
-    "@angular/common": "10",
-    "@angular/forms": "10",
+    "@angular/core": "9.x || 10.x",
+    "@angular/common": "9.x || 10.x",
+    "@angular/forms": "9.x || 10.x",
     "rxjs": "^6.6.2"
   },
   "devDependencies": {
     "@types/node": "^12.11.1"
-  },
-  "dependencies": {
-    "tslib": "^2.0.0"
   }
 }
