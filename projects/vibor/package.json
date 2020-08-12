@@ -1,14 +1,13 @@
 {
   "name": "vibor",
-  "version": "0.1.2",
+  "version": "0.3.3",
   "peerDependencies": {
-    "@angular/core": "^7.1.1",
-    "@angular/common": "^7.1.1",
-    "@angular/forms": "^7.1.1",
-    "rxjs": "^6.3.3",
-    "deep-equal": "^1.0.1"
+    "@angular/core": "9.x || 10.x",
+    "@angular/common": "9.x || 10.x",
+    "@angular/forms": "9.x || 10.x",
+    "rxjs": "6.x"
   },
   "devDependencies": {
-    "@types/node": "^8.9.5"
+    "@types/node": "^12.11.1"
   }
 }
